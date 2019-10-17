@@ -80,25 +80,24 @@
       <br>
       <span class="card-title large-text black-text center-align" style="font-size: 2.1rem;">Book a Ticket</span>
       <br>
-      <form action="">
+      <form action="/Booking/Data_submit" method="POST">
+        {% csrf_token %}
         <div class="input-field">
-            <input type=text id="autocomplete-input" class="autocomplete">
+            <input type=text id="autocomplete-input" class="autocomplete" name="From">
             <label for="autocomplete-input" class="black-text">From</label>
       </div>
-      </form>
-      <form action="">
-        <div class="input-field">
-            <input type=text id="autocomplete-input" class="autocomplete">
+      <div class="input-field">
+            <input type=text id="autocomplete-input" class="autocomplete" name="To">
             <label for="autocomplete-input" class="black-text">To</label>
       </div>
       <div class="input-field">
         <i class="material-icons prefix">today</i>
-        <input type="text" id="date" class="datepicker">
+        <input type="text" id="date" class="datepicker" name="Date">
         <label for="date" class="black-text">Date of travel</label>
       </form>
       <br><br><br>
           
-      <div class="form-field center-align">
+      <div class="form-field center-align"></div>
           <button class ="waves-effect waves-light btn-large purple darken-4 ">SEARCH FOR TRAINS</button>
       </div><br>
     </div>

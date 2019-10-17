@@ -1,0 +1,185 @@
+CREATE TABLE PASSENGERS
+(PASSENGER_ID int PRIMARY KEY,
+PASSENGER_NAME varchar(100),
+AGE int,
+PHONE_NUMBER bigint);
+
+CREATE TABLE STATIONS
+(STATION_ID int PRIMARY KEY,
+STATION_NAME varchar(100),
+X int,
+Y int);
+
+CREATE TABLE TRAINS
+(TRAIN_ID int PRIMARY KEY,
+TRAIN_NAME varchar(50),
+ORIGIN varchar(100),
+END_POINT varchar(100),
+DEPARTURE_TIME time,
+MAX_CAPACITY int,
+RAILWAY_CLASS varchar(100));
+
+CREATE TABLE USERS
+(USER_ID varchar(20) PRIMARY KEY,
+USER_NAME varchar(100) NOT NULL,
+PASSWORD varchar(20) NOT NULL);
+
+CREATE TABLE PNR
+(PNR_NUMBER varchar(20) PRIMARY KEY,
+TRAIN_ID int,
+STATUS varchar(50),
+SEAT_NUMBER varchar(10),
+USER_ID varchar(20),
+PASSENGER_ID int,
+BOARDING_POINT int,
+BOARDING_TIME time,
+DESTINATION int,
+DATE_OF_JOURNEY date);
+
+
+CREATE TABLE ROUTES
+(ROUTE_ID int PRIMARY KEY,
+TRAIN_ID int,
+STATION_ID int,
+ARRIVAL_TIME time,
+DEPARTURE_TIME time);
+
+
+
+
+
+INSERT INTO PASSENGERS VALUES
+(1,'SriRam',20,9234958430),
+(2,'Chandrashekar',35,9674856978),
+(3,'Manjula.L',24,7496734096),
+(4,'Devansh.R',41,8476569347),
+(5,'Shreyas.S',22,4637458562),
+(6,'Adithya.K',48,5633847561),
+(7,'Vinay.R',30,6597094669),
+(8,'Ganapathi',21,9237635030),
+(9,'Shubham.S',32,7348697564),
+(10,'Praneeth.B',25,5475869773),
+(11,'Pranav.G',45,7349685606),
+(12,'Kishan.K',49,7634845690),
+(13,'Peter.P',51,9855647856),
+(14,'John.K',29,8934644856),
+(15,'Maya.B',21,7495769586),
+(16,'Ajay.A',26,9726462232),
+(17,'Aryan.S',21,8738471468),
+(18,'K.Kumar',33,9353465756);
+
+INSERT INTO TRAINS VALUES
+(1,'Agra Express','Agra Cantt','New Dehli','10:00:00',2100,'2S,SL,CC'),
+(2,'Bagh Express','Kolkata','Mumbai','8:00:00',1800,'2S,SL,CC,FC,3A'),
+(3,'Mail Express','New Delhi','Ahmedabad','16:00:00',2500,'2S,SL,3A,2A,1A'),
+(4,'Pinakini Express','Vijayawada','Chennai','17:30:00',2500,'2S,SL,CC,FC,3A'),
+(5,'Island Express','Kanyakumari','Bangalore','11:15:00',2250,'2S,SL,CC'),
+(6,'Andhra Express','Hyderabad','New Dehli','15:00:00',3000,'2S,SL,3A,2A,1A'),
+(7,'Rajdhani express','New Delhi','Kanyakumari','12:00:00',3000,'CC,3A,2A,1A'),
+(8,'BNC Express','Nagpur','Chennai','21:15:00',3300,'2S,SL,CC'),
+(9,'ANVT Express','Kolkata','New Dehli','8:30:00',1500,'2S,3A,2A,1A'),
+(10,'Kanyakumari Express','Kanyakumari','Chennai','8:30:00',1500,'2S,CC,2A,1A');
+
+INSERT INTO USERS VALUES
+('U001','sriram11@gmail.com','pwd1001'),
+('U002','devansh@gmail.com','abcdef'),
+('U003','shrs21@gmail.com','12345678'),
+('U004','shubam@gmail.com','passw'),
+('U005','pranav101@gmail.com','abc123'),
+('U006','jonnie@hotmail.com','13579abc'),
+('U007','aryanab84@gmail.com','xyzxyz');
+
+INSERT INTO STATIONS VALUES
+(1,'Agra',27,78),
+(2,'Jaipur',26,75),
+(3,'New Delhi',28,77),
+(4,'Kolkata',22,88),
+(5,'Nagpur',21,79),
+(6,'Indore',22,75),
+(7,'Ahmedabad',23,72),
+(8,'Surat',21,72),
+(9,'Mumbai',19,72),
+(10,'Vijayawada',16,80),
+(11,'Nellore',14,79),
+(12,'Tirupati',13,79),
+(13,'Chennai',13,80),
+(14,'Kanyakumari',8,77),
+(15,'Madurai',9,78),
+(16,'Coimbatore',11,76),
+(17,'Mysore',12,76),
+(18,'Bangalore',12,77),
+(19,'Hyderabad',17,78),
+(20,'Kanpur',6,0);
+
+INSERT INTO PNR VALUES
+('P0001',2,'Active','L2','U001',1,6,'23:00:00',9,20190821),
+('P0002',2,'Active','L3','U001',2,6,'23:00:00',9,20190821),
+('P0003',2,'Active','L4','U001',3,6,'23:00:00',9,20190821),
+('P0004',1,'Active','R44','U002',4,1,'9:45:00',3,20190828),
+('P0005',4,'Active','L22','U003',5,10,'17:15:00',12,20190911),
+('P0006',4,'Active','L23','U003',6,10,'17:15:00',12,20190911),
+('P0007',4,'Active','L24','U003',7,10,'17:15:00',12,20190911),
+('P0008',4,'Active','L25','U003',8,11,'20:30:00',12,20190911),
+('P0009',6,'Cancelled','L31','U004',9,19,'14:30:00',2,20191225),
+('P00010',6,'Cancelled','R31','U004',10,19,'14:30:00',2,20191225),
+('P00011',8,'Active','L11','U005',11,5,'20:50:00',13,20191018),
+('P00012',8,'Active','L12','U005',12,5,'20:50:00',13,20191018),
+('P00013',9,'Active','R47','U005',13,4,'7:25:00',3,20191021),
+('P00014',7,'Cancelled','L41','U006',14,14,'11:45:00',5,20191123),
+('P00015',7,'Active','L42','U006',15,14,'11:45:00',5,20191123),
+('P00016',7,'Active','R42','U006',16,14,'11:45:00',5,20191123),
+('P00017',5,'Active','L37','U007',17,15,'15:40:00',18,20191128),
+('P00018',5,'Active','R37','U007',18,15,'15:40:00',18,20191128);
+
+INSERT INTO ROUTES VALUES
+(1,1,1,'9:30:00','10:00:00'),
+(2,1,2,'14:00:00','14:05:00'),
+(3,1,3,'18:10:00',NULL),
+(4,2,4,'7:45:00','8:00:00'),
+(5,2,5,'15:00:00','15:10:00'),
+(6,2,6,'23:00:00','23:05:00'),
+(7,2,7,'5:00:00','5:10:00'),
+(8,2,8,'8:15:00','8:20:00'),
+(9,2,9,'11:30:00',NULL),
+(10,4,10,'17:00:00','17:30:00'),
+(11,4,11,'20:30:00','20:35:00'),
+(12,4,12,'23:45:00','23:50:00'),
+(13,4,13,'3:00:00',NULL),
+(14,5,14,'10:30:00','11:15:00'),
+(15,5,15,'15:40:00','15:50:00'),
+(16,5,16,'19:50:00','20:00:00'),
+(17,5,17,'21:20:00','21:30:00'),
+(18,5,18,'22:50:00',NULL),
+(19,6,19,'14:20:00','15:00:00'),
+(20,6,5,'20:35:00','20:45:00'),
+(21,6,6,'4:10:00','4:20:00'),
+(22,6,2,'11:00:00','11:15:00'),
+(23,6,3,'15:20:00',NULL),
+(24,7,14,'11:30:00','12:00:00'),
+(25,7,18,'17:30:00','17:40:00'),
+(26,7,13,'20:45:00','21:00:00'),
+(27,7,10,'4:00:00','4:10:00'),
+(28,7,19,'8:15:00','8:25:00'),
+(29,7,5,'4:20:00','4:30:00'),
+(30,7,6,'11:30:00','11:40:00'),
+(31,7,1,'5:20:00','5:30:00'),
+(32,7,3,'7:35:00',NULL),
+(33,3,3,'15:30:00','16:00:00'),
+(34,3,2,'20:10:00','20:20:00'),
+(35,3,7,'5:15:00',NULL),
+(36,8,5,'20:40:00','21:15:00'),
+(37,8,10,'7:30:00','7:40:00'),
+(38,8,11,'10:50:00','11:00:00'),
+(39,8,13,'2:30:00',NULL),
+(40,9,4,'7:00:00','7:30:00'),
+(41,9,20,'15:30:00','15:40:00'),
+(42,9,1,'18:25:00','18:45:00'),
+(43,9,3,'21:15:00',NULL),
+(44,10,14,'8:00:00','8:30:00'),
+(45,10,16,'16:00:00','16:10:00'),
+(46,10,17,'21:00:00','21:10:00'),
+(47,10,18,'22:40:00','22:50:00'),
+(48,10,13,'1:50:00',NULL);
+
+
+

@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'TravelX.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'test.db',
+        'NAME': 'Database.db',
         'USER' : 'root',
         'PASSWORD' : 'root',
         'HOST' : 'localhost',
