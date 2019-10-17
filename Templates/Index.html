@@ -1,0 +1,175 @@
+{% load static from staticfiles %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Import Google Icon Font-->
+  <link href="{% static 'css/material-icons.css' %}" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+   <link rel="stylesheet" href="{% static 'materialize.min.css' %}">
+  <title>Railway</title>
+  <!--Top backgroungd image style-->
+  <style>
+    .top{
+    background: rgba(255, 255, 255,0.5);
+    }
+    .navbar-material .nav-wrapper .brand-logo img {
+    height: 64px;
+    }
+    .section{
+      background-color: rgb(41, 43, 43);
+    }
+        
+  </style>
+</head>
+<body>
+  <header>
+  
+  <!--NAVBAR TOP-->
+  <div class="navbar-fixed">
+  <nav class="nav-wraper z-depth-5">
+    <div class="container">
+    <a href="#" class="brand-logo"><i class="material-icons large">train</i>TravelX</a>
+    <a href="#" class="sidenav-trigger btn-floating btn-large waves-effect waves-light transparent z-depth-0" data-target="mobile-links">
+      <i class="large material-icons">menu</i>
+    </a>   
+    <ul class="right hide-on-med-and-down">
+      <li><a href="#" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">home</i>HOME</a></li>
+      <li><a href="#" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">train</i>TRAINS</a></li>
+      <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">language</i>BOOKING</a></li>
+      <li><a href="..\.\Login\login.html" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>LOGIN</a></li>
+    </ul>
+  </div>
+  </nav>
+</div>
+  <style>
+    nav{
+      transition: 1000ms;
+      background: rgba(255, 255, 255, 0.1);
+    }
+  
+  </style>
+
+  <ul class="sidenav grey darken-4" id="mobile-links">
+    <li><a href="#" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">HOME</a></li>
+    <li><a href="#" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">TRAINS</a></li>
+    <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">BOOK</a></li>
+    <li><a href="..\.\Login\login.html" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">LOGIN</a></li>
+  </ul>
+  </header>
+  <div class="parallax-container" style="margin-top: -100px">
+      <div class="parallax">
+<img src="{% static 'Images/Index_bgf.jpg' %}" alt=""></div></div>
+  <!--END OF NAVBAR-->
+
+  <!--PHOTO SECTION-->
+  <section class="section" id="photosection">   
+  <div class="row">
+    <div class="col s12 l4">
+      <img src="static/Images/Index_interior-2.jpg" class="responsive-img z-depth-4" alt="">
+    </div>
+    <div class="col s12 l7 offset-l1">
+      <h4 class="white-text text-darken-4">Best in-class features</h4>
+      <i class="material-icons medium center-align white-text text-darken-4">wifi<h6 class="center-align" style="font-family: Arial; font-size: 15px">WIFI</h6></i>
+      <!--<i class="material-icons medium center-align indigo-text text-darken-4">fastfood<h6 class="center-align" style="font-family: Arial; font-size: 15px">FOOD</h6></i>-->
+      <i class="material-icons medium center-align white-text text-darken-4">accessible<h6 class="center-align" style="font-family: Arial; font-size: 15px">ACCESIBILITY</h6></i>
+      <i class="material-icons medium center-align white-text text-darken-4">airline_seat_recline_extra<h6 class="center-align" style="font-family: Arial; font-size: 15px">COMFORT</h6></i>
+      <i class="material-icons medium center-align white-text text-darken-4">attach_money<h6 class="center-align" style="font-family: Arial; font-size: 15px">VALUE</h6></i>
+      </div>
+    </div>
+  </div>
+  <!--<div class="row">
+    <div class="col s12 l4 push-l7">
+      <img src="/static/Images/Index_payment.png" class="responsive-img  z-depth-4" alt="">
+    </div>
+    <div class="col s12 l6 pull-l4 right-align">
+      <h4 class="white-text text-darken-4">Easy Payment Options</h4>
+      <p class="right-align white-text text-darken-4">We Support all the following modes of payment:<br>
+        Credit card<br>
+        Debit card<br>
+        Internet banking<br>
+        Wallets(Paytm,PhonePe)
+
+      </p>
+    </div>
+  </div>-->
+  
+  </section>
+  <!--END OF PHOTOSECTION-->
+  <!--PARALLAX-->
+  <div class="parallax-container ">
+    <br><br>
+      <div class="no-pad-bot">
+        <div class="row">
+          <div class="col s6 l2 push-l2">
+              <div class="center-align"><i class="material-icons large white-text">people</i></div>
+              <h4 class="white-text center-align" style="font-weight: lighter; font-size: 250%">Multiple Booking</h4>
+              <p class="white-text center-align" style="font-size: 150%; font-weight: lighter">Thanks to the efficient database design, you can book tickets for multiple people from just one account</p>
+          </div>
+          <div class="col s6 l2 push-l2">
+            <div class="center-align"><i class="material-icons large white-text">money_off</i></div>
+            <h4 class="white-text center-align" style="font-weight: lighter; font-size: 250%">No Cancellation Fee</h4>
+            <p class="white-text center-align" style="font-size: 150%; font-weight: lighter">Decided to change your mind? No problem, because we dont charge any cancellation fee</p>
+          </div>
+          <div class="col s6 l2 push-l2">
+              <div class="center-align"><i class="material-icons large white-text">flash_on</i></div>
+              <h4 class="white-text center-align" style="font-weight: lighter; font-size: 250%">Super fast booking</h4>
+              <p class="white-text center-align" style="font-size: 150%; font-weight: lighter">With our simple and easy to use interface, booking railway tickets has been made simple. Instantly book tickets and be on your way</p>
+          </div>
+          <div class="col s6 l2 push-l2">
+            <div class="center-align"><i class="material-icons large white-text">phone</i></div>
+            <h4 class="white-text center-align" style="font-weight: lighter; font-size: 250%">Booking Options</h4>
+            <p class="white-text center-align" style="font-size: 150%; font-weight: lighter">Head over to the Booking tab for:<br><br>Booking tickets<br>Reservations<br>Ticket status<br>Cancel Tickets</p>
+          </div>
+        </div>
+      </div>
+      <div class="parallax"><img src="/static/Images/Index_parallax bg.jpg" alt="Unsplashed background img 2"></div>
+    </div>
+
+
+    <footer class="page-footer grey darken-4">
+        <div class="container">
+          <div class="row">
+            <div class="col l6 s12">
+              <h5 class="white-text"><span style="font-weight: lighter;">Travel</span><span>X</span></h5>
+              <p class="grey-text text-lighten-4"><span>A simple and easy to use railway booking site.</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container">
+          © 2019 Copyright TravelX, all right reserved.
+          </div>
+        </div>
+      </footer>
+
+
+
+
+
+
+  <script src="{% static 'JS/jquery.js' %}"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="{% static 'JS/materialize.min.js' %}"></script>
+
+  <script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+    })
+    $(window).scroll(function() { // check if scroll event happened
+      if ($(document).scrollTop() > 400) { // check if user scrolled more than 50 from top of the browser window
+        $("nav").css("background", "rgba(255, 255, 255,0.9)");
+        $(".hoverable").css("color", "rgba(0,0,0)");
+        $(".brand-logo").css("color", "rgba(0,0,0)"); // if yes, then change the color of class "navbar-fixed-top" to white (#f8f8f8)
+      } else {
+        $("nav").css("background", "rgba(255,255,255,0.1)");
+        $(".hoverable").css("color", "rgba(255,255,255)");
+        $(".brand-logo").css("color", "rgba(255,255,255)"); // if not, change it back to transparent
+      } 
+    $('.parallax').parallax();
+      });
+  </script>
+</body>
+</html>

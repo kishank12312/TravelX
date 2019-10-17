@@ -1,0 +1,147 @@
+{% load static from staticfiles %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Import Google Icon Font-->
+  <link href="{% static 'css/material-icons.css' %}" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="{% static 'materialize.min.css' %}">
+  <title>Booking A Ticket</title>
+
+<style>
+    body{
+        background: dimgray;
+        background-size: cover;        
+    }
+    .input-field input[type=text]:focus + label {
+     color: rgb(74, 20, 140);
+    }
+    .input-field input:focus + label {
+    color: #4a148c !important;
+    }
+    /* label underline focus color */
+    .row .input-field input:focus {
+        border-bottom: 1px solid #4a148c !important;
+        box-shadow: 0 1px 0 0 #4a148c !important
+    }
+    .card1{
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 16px;
+        border: 2px solid #4a148c;
+    }
+    
+    /* icon prefix focus color */
+    .input-field .prefix.active {
+      color: #4a148c;
+    }
+</style>
+
+</head>
+<body>
+  <header>
+  <!--NAVBAR TOP-->
+  <div class="navbar-fixed">
+  <nav class="nav-wraper z-depth-5 purple darken-4">
+    <div class="container">
+    <a href="#" class="brand-logo">TravelX</a>
+    <a href="#" class="sidenav-trigger btn-floating btn-large waves-effect waves-light transparent z-depth-0" data-target="mobile-links">
+      <i class="large material-icons">menu</i>
+    </a>   
+    <ul class="right hide-on-med-and-down">
+      <li><a href="..\.\Index\Index.html" class="hoverable waves-effect waves-light"><i class="material-icons left">home</i>HOME</a></li>
+      <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">train</i>TRAINS</a></li>
+      <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">language</i>BOOK</a></li>
+      <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">perm_media</i>GALLERY</a></li>
+      <li><a href="..\.\Login\login.html" class="hoverable waves-effect waves-light"><i class="material-icons left">account_circle</i>LOGIN</a></li>
+    </ul>
+  </div>
+  </nav>
+</div>
+
+  <ul class="sidenav grey darken-4" id="mobile-links">
+    <li><a href="#" class="hoverable white-text waves-effect waves-light">HOME</a></li>
+    <li><a href="#" class="hoverable white-text waves-effect waves-light">TRAINS</a></li>
+    <li><a href="#" class="hoverable white-text waves-effect waves-light">BOOK</a></li>
+    <li><a href="#" class="hoverable white-text waves-effect waves-light">GALLERY</a></li>
+    <li><a href="..\.\Login\login.html" class="hoverable white-text waves-effect waves-light">LOGIN</a></li>
+  </ul>
+  </header>
+  <!--END OF NAVBAR-->
+<br><br>
+  <div class="row">
+  <div class="col s10 m8 l4 push-l4 push-m2 push-s1">
+  <div class="card card1 z-depth-5 large">
+    <div class="card-content">
+    <!--Booking-->
+    <div>  
+      <br>
+      <span class="card-title large-text black-text center-align" style="font-size: 2.1rem;">Book a Ticket</span>
+      <br>
+      <form action="">
+        <div class="input-field">
+            <input type=text id="autocomplete-input" class="autocomplete">
+            <label for="autocomplete-input" class="black-text">From</label>
+      </div>
+      </form>
+      <form action="">
+        <div class="input-field">
+            <input type=text id="autocomplete-input" class="autocomplete">
+            <label for="autocomplete-input" class="black-text">To</label>
+      </div>
+      <div class="input-field">
+        <i class="material-icons prefix">today</i>
+        <input type="text" id="date" class="datepicker">
+        <label for="date" class="black-text">Date of travel</label>
+      </form>
+      <br><br><br>
+          
+      <div class="form-field center-align">
+          <button class ="waves-effect waves-light btn-large purple darken-4 ">SEARCH FOR TRAINS</button>
+      </div><br>
+    </div>
+    <!--END OF BOOKING CARD-->
+
+
+    <script src="{% static 'JS/jquery.js' %}"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="{% static 'JS/materialize.min.js' %}"></script>
+
+  <script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+      $('.datepicker').datepicker({
+            container: 'body',
+            
+            autoClose: true
+        });
+      $('input.autocomplete').autocomplete({
+      data: {
+        "Agra": null,
+        "Jaipur": null,
+        "New Delhi": null,
+        "Kolkata": null,
+        "Nagpur": null,
+        "Indore": null,
+        "Ahmedabad": null,
+        "Surat": null,
+        "Mumbai": null,
+        "Vijayawada": null,
+        "Nellore": null,
+        "Tirupati": null,
+        "Chennai": null,
+        "Kanyakumari": null,
+        "Madurai": null,
+        "Coimbatore": null,
+        "Mysore": null,
+        "Bangalore": null,
+        "Hyderabad": null,
+        "Kanpur": null
+          },
+        });
+      });
+  </script>
+</body>
+</html>

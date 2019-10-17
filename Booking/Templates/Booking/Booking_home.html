@@ -1,0 +1,104 @@
+{% load static from staticfiles %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!--Import Google Icon Font-->
+        <link href="{% static 'css/material-icons.css' %}" rel="stylesheet">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="{% static 'materialize.min.css' %}">
+        <title>Booking Home</title>
+    
+          
+</head>
+<body>
+  <header>
+  <!--NAVBAR TOP-->
+  <div class="navbar-fixed">
+  <nav class="nav-wraper z-depth-5 purple darken-4">
+    <div class="container">
+    <a href="#" class="brand-logo">TravelX</a>
+    <a href="#" class="sidenav-trigger btn-floating btn-large waves-effect waves-light transparent z-depth-0" data-target="mobile-links">
+      <i class="large material-icons">menu</i>
+    </a>   
+    <ul class="right hide-on-med-and-down">
+      <li><a href="..\.\Index\Index.html" class="hoverable waves-effect waves-light"><i class="material-icons left">home</i>HOME</a></li>
+      <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">train</i>TRAINS</a></li>
+      <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">language</i>BOOK</a></li>
+      <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">perm_media</i>GALLERY</a></li>
+      <li><a href="..\.\Login\login.html" class="hoverable waves-effect waves-light"><i class="material-icons left">account_circle</i>LOGIN</a></li>
+    </ul>
+  </div>
+  </nav>
+</div>
+
+  <ul class="sidenav grey darken-4" id="mobile-links">
+    <li><a href="#" class="hoverable white-text waves-effect waves-light">HOME</a></li>
+    <li><a href="#" class="hoverable white-text waves-effect waves-light">TRAINS</a></li>
+    <li><a href="#" class="hoverable white-text waves-effect waves-light">BOOK</a></li>
+    <li><a href="#" class="hoverable white-text waves-effect waves-light">GALLERY</a></li>
+    <li><a href="..\.\Login\login.html" class="hoverable white-text waves-effect waves-light">LOGIN</a></li>
+  </ul>
+  </header>
+  <!--END OF NAVBAR-->
+<div class="container">
+  <h3>Booking</h3>
+  <p style="font-size: 150%; font-weight: lighter">Welcome to the booking menu. Choose one of the options below</p>
+<div class="row">
+    <div class="col s6 m6 l3">
+        <div class="card purple darken-4  hoverable waves-effect waves-light">
+            <a href="#">
+            <div class="card-content white-text">
+              <span class="card-title">Reserve a Seat</span>
+            </div></a>
+        </div>
+    </div>
+    <div class="col s6 m6 l3">
+        <div class="card purple darken-4  hoverable waves-effect waves-light">
+            <a href="{% url 'Booking:capture' slug='Book_Ticket' %}">
+            <div class="card-content white-text">
+              <span class="card-title">Book a Ticket</span>
+            </div></a>
+        </div>
+    </div>
+    <div class="col s6 m6 l3">
+        <div class="card purple darken-4  hoverable waves-effect waves-light">
+            <a href="#">
+            <div class="card-content white-text">
+              <span class="card-title">Cancel Ticket</span>
+            </div></a>
+        </div>
+    </div>
+    <div class="col s6 m6 l3">
+        <div class="card purple darken-4  hoverable waves-effect waves-light">
+            <a href="#">
+            <div class="card-content white-text">
+              <span class="card-title">Modify Ticket</span>
+            </div></a>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<script src="{% static 'JS/jquery.js' %}"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="{% static 'JS/materialize.min.js' %}"></script>
+
+  <script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+      });
+  </script>
+</body>
+</html>
