@@ -1,0 +1,122 @@
+{% load static from staticfiles %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Import Google Icon Font-->
+  <link href="{% static 'css/material-icons.css' %}" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="{% static 'materialize.min.css' %}">
+  <title>Train Search Results</title>
+</head>
+
+<header>
+    <!--NAVBAR TOP-->
+    <div class="navbar-fixed">
+    <nav class="nav-wraper z-depth-5 purple darken-4">
+      <div class="container">
+      <a href="#" class="brand-logo"><span style="font-weight: lighter;">Travel</span><span>X</span>    </a>
+      <a href="#" class="sidenav-trigger btn-floating btn-large waves-effect waves-light transparent z-depth-0" data-target="mobile-links">
+        <i class="large material-icons">menu</i>
+      </a>   
+      <ul class="right hide-on-med-and-down">
+        <li><a href="..\.\Index\Index.html" class="hoverable waves-effect waves-light"><i class="material-icons left">home</i>HOME</a></li>
+        <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">train</i>TRAINS</a></li>
+        <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">language</i>BOOK</a></li>
+        <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">perm_media</i>GALLERY</a></li>
+        <li><a href="..\.\Login\login.html" class="hoverable waves-effect waves-light"><i class="material-icons left">account_circle</i>LOGIN</a></li>
+      </ul>
+    </div>
+    </nav>
+  </div>
+  
+    <ul class="sidenav grey darken-4" id="mobile-links">
+      <li><a href="#" class="hoverable white-text waves-effect waves-light">HOME</a></li>
+      <li><a href="#" class="hoverable white-text waves-effect waves-light">TRAINS</a></li>
+      <li><a href="#" class="hoverable white-text waves-effect waves-light">BOOK</a></li>
+      <li><a href="#" class="hoverable white-text waves-effect waves-light">GALLERY</a></li>
+      <li><a href="..\.\Login\login.html" class="hoverable white-text waves-effect waves-light">LOGIN</a></li>
+    </ul>
+</header>
+
+<body>
+<div class="container">
+    <br>
+    <h3 style="font-weight: 300;">Search Results</h3>
+    <h4 style="font-weight: lighter; font-size: 190%;">Your search for trains from {{ input_data.0 }} to {{ input_data.1 }} on {{ input_data.2 }} gave the following results:</h4>    
+</div>    
+<hr>
+<div class="container">
+    <h5 style="font-weight: lighter;">Direct Trains:</h5><br>
+    <table class="responsive-table highlight">
+       <thead>
+         <tr>
+             <th>Train Details</th>
+             <th>Departure Time</th>
+             <th>Arrival time</th>
+             <th>Railway Class</th>
+             <th>Price</th>
+             <th>Book</th>
+         </tr>
+       </thead>
+       <tbody>
+           {% for i in direct.5 %}
+           <tr>
+               <td>Train Name : {{ direct.0.i }}<br>Train ID : {{ direct.1.i }}</td>
+               <td>{{ direct.2.i }}</td>
+               <td>{{ direct.3.i }}</td>
+               <td><a class='dropdown-trigger btn transparent black-text' href='#' data-target='dropdown1'>Select Class<i class="material-icons left">keyboard_arrow_down</i></a>
+                    <ul id='dropdown1' class='dropdown-content'>
+                        {% for j in direct.4.i %}
+                        <li><a href="#!">{{ j }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </td>
+               <td>Bagh Express</td>
+               <td><button class="btn">BOOK</button></td>
+           </tr>
+           {% endfor %}
+       </tbody>
+    </table>
+
+    <h1>{{ data }}</h1>
+</div>
+</body>
+
+<footer class="page-footer grey darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text"><span style="font-weight: lighter;">Travel</span><span>X</span></h5>
+          <p class="grey-text text-lighten-4"><span>A simple and easy to use railway booking site.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2019 Copyright TravelX, all right reserved.
+      </div>
+    </div>
+</footer>
+
+
+
+
+
+
+<script src="{% static 'JS/jquery.js' %}"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="{% static 'JS/materialize.min.js' %}"></script>
+
+<script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+      $('.dropdown-trigger').dropdown();
+    });
+</script>
+
+
+
+</html>
