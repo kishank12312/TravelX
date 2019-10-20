@@ -10,4 +10,5 @@ def choice(request,slug):
     if slug=='Book_Ticket':
         return render(request,'Booking/Book_Ticket.html')
     if slug=='Data_submit':
-        return render(request,'Booking/return.html',{'data':request.POST})
+        f,t,d=request.POST['From'],request.POST['To'],request.POST['Date']
+        return render(request,'Booking/return.html',{'data':[f,t,d]})

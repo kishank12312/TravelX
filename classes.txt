@@ -1,0 +1,9 @@
+1A - AC First Class
+2A - AC 2-Tier
+3A - AC 3-Tier
+FC - First Class
+CC - AC Chair Car
+SL - Sleeper
+2S - Second Sitting
+
+
