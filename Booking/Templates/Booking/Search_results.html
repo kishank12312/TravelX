@@ -1,4 +1,7 @@
 {% load static from staticfiles %}
+{% load poll_extras %}
+
+
 
 <html lang="en">
 <head>
@@ -64,7 +67,7 @@
        <tbody>
            {% for i in direct.5 %}
            <tr>
-               <td>Train Name : {{ direct.0.i }}<br>Train ID : {{ direct.1.i }}</td>
+               <td>Train Name : {{ direct.0 }}<br>Train ID : {{ direct.1.i }}</td>
                <td>{{ direct.2.i }}</td>
                <td>{{ direct.3.i }}</td>
                <td><a class='dropdown-trigger btn transparent black-text' href='#' data-target='dropdown1'>Select Class<i class="material-icons left">keyboard_arrow_down</i></a>

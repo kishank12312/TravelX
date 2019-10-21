@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from . import Functions
 import sqlite3
 
-
 # Create your views here.
 def booking_home(request):
     return render(request,'Booking/Booking_home.html')
