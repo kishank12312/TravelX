@@ -2,6 +2,13 @@
 #con=mysql.connector.connect(host='localhost',user='root',passwd='root',database='travelx')
 #cur=con.cursor()
 
+def route(train_id,cur):
+    '''Returns tuple of strings as (origin,end_point)'''
+    sql='select origin,end_point from trains where train_id={};'.format(train_id)
+    cur.execute(sql);res=cur.fetchall()
+    o,e=res[0][0],res[0][1]
+    return o,e
+
 def class_finder(train_id,cur):
     '''Returns list of classes (list of strings like ['2S', 'SL', '3A', '2A', '1A'])'''
     sql='select railway_classes from trains where train_id={};'.format(train_id)
@@ -53,7 +60,7 @@ def convert_id(ft,tt,cur):
         res=res[0][0]
         ids.append(res)
     return (ids[0],ids[1])
-
+#print(convert_id('agra','new delhi',cur))
 
 def direct_search(f,t,cur):
     '''Returns list of train_ids(ints) of direct trains'''
