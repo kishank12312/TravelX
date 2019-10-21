@@ -20,11 +20,11 @@ def choice(request,slug):
             if inds==[]:
                 train_ids=None
         else:
-            arrivals,departs,train_names,classes,rn=[],[],[],[],''
-            for i in train_ids:
-                rn+=str(i)
-                arr,dept=Functions.timings(i,f,t,cur)
+            arrivals,departs,train_names,classes,rn=[],[],[],[],[]
+            for i in range(len(train_ids)):
+                rn.append(i)
+                arr,dept=Functions.timings(train_ids[i],f,t,cur)
                 arrivals.append(arr);departs.append(dept)
-                name=Functions.namefinder(i,cur);train_names.append(name)
-                clses=Functions.class_finder(i,cur);classes.append(clses)                        
+                name=Functions.namefinder(train_ids[i],cur);train_names.append(name)
+                clses=Functions.class_finder(train_ids[i],cur);classes.append(clses)                        
         return render(request,'Booking/Search_results.html',{'input_data':[fpost,tpost,dpost],'direct':[train_names,train_ids,departs,arrivals,classes,rn]})

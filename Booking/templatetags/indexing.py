@@ -5,4 +5,4 @@ register = template.Library()
 @register.filter
 def index(value,i):
     index=int(i)
-    return value[i]
+    return value[index]
