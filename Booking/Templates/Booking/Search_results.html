@@ -93,7 +93,7 @@ input.value{
        <tbody>
            {% for i in direct.5 %}
           
-           <tr style="border: #311b92 solid 1px; border-left: 1rem #76ff03 solid; border-top-left-radius: 20px;">
+           <tr style=" border-top-left-radius: 20px;">
               <td>Train Name : {{ direct.0|index:i }}<br>Train ID : {{ direct.1|index:i }}</td>
               <td class="center-align"><span>{{ direct.6|index:i|index:0 }} <i class="material-icons small" id='icons'>swap_horiz</i> {{ direct.6|index:i|index:1 }}</span></td>
               <td class="center-align">{{ direct.2|index:i }}</td>
@@ -107,15 +107,46 @@ input.value{
                   <option value="{{ forloop.counter }}">{{ j }}</option>
                   {% endfor %}
                 </select></div>
-                <td><button type="submit" name="testBtn"  class="waves-effect waves-light btn hoverable light-green accent-3 black-text">SEARCH FOR TRAINS</button></form></td>
+                <td><button type="submit" name="testBtn"  class="waves-effect waves-light btn hoverable deep-purple accent-1 black-text">CHECK PRICE AND BOOK</button></form></td>
 
                 </div>
            </tr>
            {% endfor %}
        </tbody>
     </table>
+<br>
+    <br>
+    <table>
+      <thead>
+        <tr>
+            <th>Train 1</th>
+            <th>acbd</th>
+            <th>Train 2</th>
+            <th>Arrival</th>
+            <th>Departure</th>
+            <th id="classes">Railway Class</th>
+             <th>Book</th>
+        </tr>
+      </thead>
 
-    <h1>{{ data }}</h1>
+      <tbody>
+        <tr>
+          <td>Train Name : sdasd<br>Train ID : sd</td>
+          <td>5</td>
+          <td>Train Name : sdasd<br>Train ID : sd</td>
+          <td>$0.87</td>
+          <td>$0.87</td>
+          <td>$0.87</td>
+          <td><button type="submit" name="testBtn"  class="waves-effect waves-light btn hoverable deep-purple accent-1 black-text">SEARCH FOR TRAINS</button></form></td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+    <h5 style="font-weight: lighter;">Direct Trains:</h5><br>
+
+
+
 </div>
 </body>
 

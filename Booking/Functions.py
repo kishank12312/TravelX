@@ -1,6 +1,6 @@
-#import mysql.connector
-#con=mysql.connector.connect(host='localhost',user='root',passwd='root',database='travelx')
-#cur=con.cursor()
+import mysql.connector
+con=mysql.connector.connect(host='localhost',user='root',passwd='root',database='travelx')
+cur=con.cursor()
 
 def route(train_id,cur):
     '''Returns tuple of strings as (origin,end_point)'''
@@ -86,3 +86,4 @@ def indirect_search(f,t,cur):
                 result=[train1,i,train2]
                 return result
     return []
+print(indirect_search(18,2,cur))
