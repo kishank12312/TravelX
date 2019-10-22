@@ -78,6 +78,7 @@ input.value{
 
 <hr>
 
+    {% if direct|direct_check %}
     <h5 style="font-weight: lighter;">Direct Trains:</h5><br>
     <table class="responsive-table highlight">
        <thead>
@@ -114,8 +115,11 @@ input.value{
            {% endfor %}
        </tbody>
     </table>
+    {% else %}<h5 style="font-weight: lighter;;">Sorry, no direct trains found</h5>
+    {% endif %}
 <br>
     <br>
+    <h5 style="font-weight: lighter;">Indirect Trains:</h5><br>
     <table>
       <thead>
         <tr>
@@ -143,7 +147,6 @@ input.value{
       </tbody>
     </table>
 
-    <h5 style="font-weight: lighter;">Direct Trains:</h5><br>
 
 
 

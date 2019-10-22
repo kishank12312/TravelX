@@ -15,12 +15,19 @@ def choice(request,slug):
         fpost,tpost,dpost=request.POST.get('From'),request.POST.get('To'),request.POST.get('Date')
         f,t=Functions.convert_id(fpost,tpost,cur)
         train_ids=Functions.direct_search(f,t,cur)
+        arrivals,departs,train_names,classes,rn,routes=[],[],[],[],[],[]
+        
         if train_ids==[]:
             inds=Functions.indirect_search(f,t,cur)
+            train1_ids=inds[0];junction=inds[1];train2_ids=inds[2]
+            arr,dept=Functions.timings(train_ids[i],f,t,cur)
+            clses=Functions.class_finder(train_ids[i],cur);classes.append(clses)
+
             if inds==[]:
                 train_ids=None
+            
         else:
-            arrivals,departs,train_names,classes,rn,routes=[],[],[],[],[],[]
+            
             for i in range(len(train_ids)):
                 rn.append(i)
                 routes.append(Functions.route(train_ids[i],cur))
