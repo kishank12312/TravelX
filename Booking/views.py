@@ -19,7 +19,12 @@ def choice(request,slug):
         
         if train_ids==[]:
             inds=Functions.indirect_search(f,t,cur)
-            train1_ids=inds[0];junction=inds[1];train2_ids=inds[2]
+            x=Functions.train_lister(inds)
+            arrives,depts,rclass=[]
+            for i in x:
+                Functions.timings(x[0],f,)
+
+
             arr,dept=Functions.timings(train_ids[i],f,t,cur)
             clses=Functions.class_finder(train_ids[i],cur);classes.append(clses)
 
