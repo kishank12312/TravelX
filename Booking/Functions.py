@@ -1,6 +1,6 @@
-import mysql.connector
-con=mysql.connector.connect(host='localhost',user='root',passwd='root',database='travelx')
-cur=con.cursor()
+#import mysql.connector
+#con=mysql.connector.connect(host='localhost',user='root',passwd='root',database='travelx')
+#cur=con.cursor()
 
 def route(train_id,cur):
     '''Returns tuple of strings as (origin,end_point)'''
@@ -29,15 +29,16 @@ def namefinder(train_id,cur):
 def timings(train_id,f,t,cur):
     '''Returns tuple of strings as (arrival,departure)'''
     sql1='select departure_time from routes where train_id={} and station_id={};'
+    print(sql1.format(train_id,f),train_id,f)
     cur.execute(sql1.format(train_id,f))
-    res=cur.fetchall()
-    depart=str(res[0][0])
+    res=cur.fetchall();print(res)
+    depart=str(res[0][0]);print(depart)
     sql2='select arrival_time from routes where train_id={} and station_id={};'
     cur.execute(sql2.format(train_id,t))
-    res=cur.fetchall()
-    arrive=str(res[0][0])
+    res=cur.fetchall();print(res)
+    arrive=str(res[0][0]);print(arrive)
     return arrive,depart
-#print(timings(7,3,5,cur))
+#print(timings(7,1,6,cur))
 
 def date_convert(date):
     '''Returns date formatted as yyyymmdd, str'''
@@ -94,4 +95,4 @@ def train_lister(l):
         for j in l[2]:
             x.append([i,l[1],j])
     return x
-
+#print(train_lister([[1,2],3,[5,6]]))
