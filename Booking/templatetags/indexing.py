@@ -14,3 +14,11 @@ def direct_check(value):
         return False
     else:
         return True
+
+
+@register.filter
+def trange(value):
+    l=[]
+    for i in range(value):
+        l.append(i)
+    return l

@@ -17,7 +17,7 @@ def class_finder(train_id,cur):
     res=res[0][0]
     classes=res.split(',')
     return classes
-
+#print(class_finder(7,cur))
 def namefinder(train_id,cur):
     '''Takes int(train id) and returns the train name as str'''
     sql='select train_name from trains where train_id={};'.format(train_id)
@@ -34,10 +34,11 @@ def timings(train_id,f,t,cur):
     res=cur.fetchall();print(res)
     depart=str(res[0][0]);print(depart)
     sql2='select arrival_time from routes where train_id={} and station_id={};'
+    print(sql2.format(train_id,t),train_id,t)
     cur.execute(sql2.format(train_id,t))
     res=cur.fetchall();print(res)
     arrive=str(res[0][0]);print(arrive)
-    return arrive,depart
+    return arrive,depart 
 #print(timings(7,1,6,cur))
 
 def date_convert(date):
@@ -61,7 +62,7 @@ def convert_id(ft,tt,cur):
         res=res[0][0]
         ids.append(res)
     return (ids[0],ids[1])
-#print(convert_id('agra','new delhi',cur))
+#print(convert_id('agra','new delhi',cur)) 
 
 def direct_search(f,t,cur):
     '''Returns list of train_ids(ints) of direct trains'''
@@ -78,8 +79,7 @@ def direct_search(f,t,cur):
 
 def indirect_search(f,t,cur):
     '''Returns [list of train_ids(ints) till junction,train_id of junction itself,list of train_ids(ints) from junction to destination]'''
-    junctions=[1,6,7,5,13]
-    order=[]
+    junctions=[5,1,7,6,13]
     for i in junctions:
         train1=direct_search(f,i,cur)
         if train1!=[]:
@@ -88,7 +88,7 @@ def indirect_search(f,t,cur):
                 result=[train1,i,train2]
                 return result
     return []
-
+#print(indirect_search(13,3,cur))
 def train_lister(l):
     x=[]
     for i in l[0]:

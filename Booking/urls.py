@@ -21,6 +21,8 @@ app_name = 'Booking'
 
 urlpatterns = [
     path(r'',views.booking_home),
+    path(r'Data_submit/',views.Data_submit),
+    path(r'direct-price/',views.direct_price),
     path(r'<slug:slug>/',views.choice,name='capture'),
 
 ]

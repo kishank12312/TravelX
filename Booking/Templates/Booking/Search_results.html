@@ -77,7 +77,19 @@ input.value{
     <h4 style="font-weight: lighter; font-size: 190%;">Your search for trains from {{ input_data.0 }} to {{ input_data.1 }} on {{ input_data.2 }} gave the following results:</h4>    
 
 <hr>
-
+  <ul class="collapsible">
+    <li>  
+    <div class="collapsible-header"><i class="material-icons">info</i>Information about railway classes(Click to open)</div>
+      <div class="collapsible-body">
+        1A - AC First Class<br>
+        2A - AC 2-Tier<br>
+        3A - AC 3-Tier<br>
+        FC - First Class<br>
+        CC - AC Chair Car<br>
+        SL - Sleeper<br>
+        2S - Second Sitting<br>
+      </div></li>
+    </ul>
     {% if direct|direct_check %}
     <h5 style="font-weight: lighter;">Direct Trains:</h5><br>
     <table class="responsive-table highlight">
@@ -100,9 +112,9 @@ input.value{
               <td class="center-align">{{ direct.2|index:i }}</td>
               <td class="center-align">{{ direct.3|index:i }}</td>
               <td  id="classes"><div class="browser-default">
-                <form action="/xyz" method="POST">{% csrf_token %}
+                <form action="/Booking/direct-price/" method="POST">{% csrf_token %}
                 <input type="hidden" value="{{ direct.1|index:i }}">
-                <select class="form" name="Classes">
+                <select class="form" name="Classes" required>
                   <option value="" disabled selected>Choose Class</option>
                   {% for j in direct.4|index:i %}
                   <option value="{{ forloop.counter }}">{{ j }}</option>
@@ -118,9 +130,11 @@ input.value{
     {% else %}<h5 style="font-weight: lighter;;">Sorry, no direct trains found</h5>
     {% endif %}
 <br>
-    <br>
+<!--INDIRECT SEARCH RESULTS-->    
+
     <h5 style="font-weight: lighter;">Indirect Trains:</h5><br>
-    <table>
+    {% if indirectno != 0 %}
+    <table class="responsive-table highlight">
       <thead>
         <tr>
             <th>Train 1</th>
@@ -132,20 +146,31 @@ input.value{
              <th>Book</th>
         </tr>
       </thead>
-
+      {% for i in indirectno|trange %}
       <tbody>
         <tr>
-          <td>Train Name : sdasd<br>Train ID : sd</td>
-          <td>5</td>
-          <td>Train Name : sdasd<br>Train ID : sd</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td>$0.87</td>
-          <td><button type="submit" name="testBtn"  class="waves-effect waves-light btn hoverable deep-purple accent-1 black-text">SEARCH FOR TRAINS</button></form></td>
-        </tr>
+          <td>Train Name : {{ indirect.0|index:i|index:0 }}<br>Train ID : {{ indirect.0|index:i|index:1 }}</td>
+          <td>{{ indirect.1|index:i }}</td>
+          <td>Train Name : {{ indirect.2|index:i|index:0 }}<br>Train ID : {{ indirect.2|index:i|index:1 }}</td>
+          <td>{{ indirect.3|index:i }}</td>
+          <td>{{ indirect.4|index:i }}</td>
+          <td  id="classes"><div class="browser-default">
+            <form action="/Booking/direct-price/" method="POST">{% csrf_token %}
+            <input type="hidden" value="abc">
+            <select class="form" name="Classes" required>
+              <option value="" disabled selected>Choose Class</option>
+              {% for j in indirect.5|index:i %}
+              <option value="{{ forloop.counter }}">{{ j }}</option>
+              {% endfor %}
+            </select></div>
+            <td><button type="submit" name="testBtn"  class="waves-effect waves-light btn hoverable deep-purple accent-1 black-text">CHECK PRICE AND BOOK</button></form></td>  
         
+        </tr>
       </tbody>
+      {% endfor %}
     </table>
+    {% else %}<h5 style="font-weight: lighter;;">Sorry, no indirect trains found</h5>
+    {% endif %}
 
 
 
@@ -183,6 +208,8 @@ input.value{
       $('.sidenav').sidenav();
       $('.dropdown-trigger').dropdown();
       $('select').formSelect();
+      $("select[required]").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
+      $('.collapsible').collapsible();
     });
 </script>
 
