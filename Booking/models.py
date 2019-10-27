@@ -73,7 +73,7 @@ class Trains(models.Model):
         db_table = 'TRAINS'
 
 class metadata(models.Model):
-    identifier = models.CharField(db_column = 'identifier', max_length = 100, null = True)
+    identifier = models.CharField(primary_key = True,  db_column = 'identifier', max_length = 100, null = False)
     pnr = models.IntegerField(db_column = 'pnr', blank = True, null = True)
     passengername = models.IntegerField(db_column = 'passengername', blank = True, null = True)
     email = models.CharField(max_length = 150, db_column = 'email', blank = True, null = True)

@@ -22,7 +22,9 @@ def Data_submit(request):
     fpost,tpost,dpost=request.POST.get('From'),request.POST.get('To'),request.POST.get('Date')
     date=Functions.date_convert(dpost)
     f,t=Functions.convert_id(fpost,tpost,cur)
-    cur.execute('insert into mdata values(NULL,"{}",NULL,NULL,NULL,{},NULL,NULL,NULL,NULL,NULL,NULL,{},{},NULL,NULL);'.format(identifier,date,f,t))
+    cur.execute('insert into mdata (identifier) values ("{}");'.format(identifier))
+    con.commit()
+    cur.execute('update mdata set traveldate={}, fromid={},toid={} where identifier="{}";'.format(date,f,t,identifier))
     con.commit()
     train_ids=Functions.direct_search(f,t,cur)
     arrivals,departs,train_names,classes,rn,routes=[],[],[],[],[],[]
@@ -73,9 +75,11 @@ def pricedisplay(request):
     con=sqlite3.connect('Database.db')
     cur=con.cursor()
     method = None
+    print(request.POST)
     identifier = request.POST.get('identifier')
     cur.execute('select fromid,toid from mdata where identifier="{}";'.format(identifier))
     res=cur.fetchall()
+    print(res,'select fromid,toid from mdata where identifier="{}";'.format(identifier))
     f,t=res[0][0],res[0][1]
     if len(request.POST.get('choice')) == 1:
         method = 'Direct'
@@ -89,16 +93,16 @@ def pricedisplay(request):
         cost=cost * classprice.get(request.POST.get('Classes'))
         sql='update mdata set train1={},train2=NULL,j=NULL,rclass="{}" where identifier="{}";'.format(tid,request.POST.get('Classes'),identifier)
         cur.execute(sql)
-        con.commit() 
+        con.commit()
+        names = [Functions.namefinder(tid,cur),tid]
     else:
-        tid = request.POST.get('choice')[0]
+        tid = int(request.POST.get('choice')[0])
         cost=Functions.price(tid,f,t,cur)
         cost=cost * classprice.get(request.POST.get('Classes'))
-        sql='update mdata set train1={},train2={},j={},rclass="{}" where identifier="{}";'.format(tid,request.POST.get('choice')[2],request.POST.get('choice')[1],request.POST.get('Classes'),identifier)
+        sql='update mdata set train1={},train2={},j={},rclass="{}" where identifier="{}";'.format(tid,int(request.POST.get('choice')[4]),int(request.POST.get('choice')[2]),request.POST.get('Classes'),identifier)
         cur.execute(sql)
         con.commit()
-    
+        names = [Functions.namefinder(tid,cur),tid,Functions.namefinder(int(request.POST.get('choice')[4]),cur),int(request.POST.get('choice')[4])]
+    snames = [Functions.stationfinder(f,cur),Functions.stationfinder(t,cur)]
 
-
-
-    return render(request,'Booking/direct-price.html',{'data':request.POST,'method':method,'c':c})
+    return render(request,'Booking/direct-price.html',{'snames':snames,'method':method,'cost':cost,'da':request.POST.get('da').split(','),'c':request.POST.get('Classes'),'names':names})

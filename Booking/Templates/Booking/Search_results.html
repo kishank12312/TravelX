@@ -115,6 +115,7 @@ input.value{
                 <form action="/Booking/direct-price/" method="POST">{% csrf_token %}
                 <input type="hidden" name="choice" value="{{ direct.1|index:i }}"></input>
                 <input type="hidden" name='identifier' value='{{ identifier }}'></input>
+                <input type="hidden" name='da' value='{{ direct.2|index:i }},{{ direct.3|index:i }}'></input>
                 <select class="form" name="Classes" required>
                   <option value="" disabled selected>Choose Class</option>
                   {% for j in direct.4|index:i %}
@@ -159,6 +160,7 @@ input.value{
             <form action="/Booking/direct-price/" method="POST">{% csrf_token %}
             <input type="hidden"  name='choice' value="{{ indirect.0|index:i|index:1 }},{{ indirect.1|index:i }},{{ indirect.2|index:i|index:1 }}"></input>
             <input type="hidden" name='identifier' value='{{ identifier }}'></input>
+            <input type="hidden" name='da' value='{{ direct.2|index:i }},{{ direct.3|index:i }}'></input>
             <select class="form" name="Classes" required>
               <option value="" disabled selected>Choose Class</option>
               {% for j in indirect.5|index:i %}

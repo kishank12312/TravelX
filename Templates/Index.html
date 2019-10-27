@@ -19,8 +19,19 @@
     height: 64px;
     }
     .section{
-      background-color: rgb(41, 43, 43);
+      background-color: rgba(65, 65, 65, 0.8);
     }
+    @media only screen and (max-width : 992px) {
+  .parallax img {
+    max-height: 130%; /* or a little bit higher */
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .parallax img {
+    max-height: 170%; /* or higher percentages. It's up to your taste */
+  }
+}
         
   </style>
 </head>
@@ -61,7 +72,7 @@
   </header>
   <div class="parallax-container" style="margin-top: -100px">
       <div class="parallax">
-<img src="{% static 'Images/Index_bgf.jpg' %}" alt=""></div></div>
+<img src="{% static 'Images/Index_background.jpg' %}" alt=""></div></div>
   <!--END OF NAVBAR-->
 
   <!--PHOTO SECTION-->

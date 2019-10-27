@@ -53,10 +53,26 @@
 </header>
 
 <body>
-<br> <br>  <br> <br>
-{{ data }}<br>
-{{ method }}<br>
-{{ c }}<br>
+<br>
+<div class="container">
+  <h3 style="font-weight: lighter;">Detail Confirmation</h3>
+  <hr>
+  {% if method == 'Direct' %}
+  <h5 style="font-weight: lighter;" class="center-align">
+    Method of travel : Direct Train<br><br>
+    <span>Train Name : {{ names.0 }}        -        Train ID : {{ names.1 }}</span><br><br>
+    From : {{ snames.0 }}<br><br>
+    To : {{ snames.1 }}<br><br>
+    Departure Time : {{ da.0 }}<br><br> 
+    Arrival Time : {{ da.1 }}<br><br>
+    Railway Class : {{ c }}<br><br>
+  </h5>
+  <h4 style="font-weight: lighter;" class="center-align">COST : {{ cost }}</h4>
+  {% endif %}
+</div>
+
+
+
 </body>
 <footer class="page-footer grey darken-4">
         <div class="container">

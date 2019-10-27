@@ -105,7 +105,7 @@ def price(train_id,s1,s2,cur):
     cur.execute(sql);res=cur.fetchall()
     x2,y2=res[0]
     distance=((x2-x1)**2 + (y2-y1)**2)**0.5
-    cur.execute('select CF from trains where train_id={};'.format(train_id))
+    cur.execute('select cf from trains where train_id={};'.format(train_id))
     cf=cur.fetchall()[0][0]
     cost=distance * cf
     return cost
@@ -117,3 +117,9 @@ def create_identifier():
     for i in range(15):
         x = x + letters[random.randint(0,i)] + str(random.randint(i,30))
     return x
+
+def stationfinder(station_id,cur):
+    sql='select station_name from stations where station_id={};'.format(station_id)
+    cur.execute(sql)
+    res=cur.fetchall()
+    return res[0][0]
