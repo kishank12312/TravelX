@@ -96,3 +96,24 @@ def train_lister(l):
             x.append([i,l[1],j])
     return x
 #print(train_lister([[1,2],3,[5,6]]))
+
+def price(train_id,s1,s2,cur):
+    sql='Select x,y from stations where station_id={};'.format(s1)
+    cur.execute(sql);res=cur.fetchall()
+    x1,y1=res[0]
+    sql='Select x,y from stations where station_id={};'.format(s2)
+    cur.execute(sql);res=cur.fetchall()
+    x2,y2=res[0]
+    distance=((x2-x1)**2 + (y2-y1)**2)**0.5
+    cur.execute('select CF from trains where train_id={};'.format(train_id))
+    cf=cur.fetchall()[0][0]
+    cost=distance * cf
+    return cost
+#print(price(7,13,19,cur))
+def create_identifier():
+    import random
+    letters='abcdefghijklmnopqrstuvwxyz'
+    x=''
+    for i in range(15):
+        x = x + letters[random.randint(0,i)] + str(random.randint(i,30))
+    return x

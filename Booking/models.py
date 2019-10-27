@@ -67,10 +67,32 @@ class Trains(models.Model):
     departure_time = models.TimeField(db_column='DEPARTURE_TIME', blank=True, null=True)  # Field name made lowercase.
     max_capacity = models.IntegerField(db_column='MAX_CAPACITY', blank=True, null=True)
     railway_classes = models.CharField(db_column='RAILWAY_CLASSES', blank=True, null=True, max_length=200)
-    
+    cf = models.IntegerField( db_column = 'CF', null = True)
     class Meta:
         managed = True
         db_table = 'TRAINS'
+
+class metadata(models.Model):
+    identifier = models.CharField(db_column = 'identifier', max_length = 100, null = True)
+    pnr = models.IntegerField(db_column = 'pnr', blank = True, null = True)
+    passengername = models.IntegerField(db_column = 'passengername', blank = True, null = True)
+    email = models.CharField(max_length = 150, db_column = 'email', blank = True, null = True)
+    traveldate = models.DateField(db_column = 'traveldate', blank = True, null = True)
+    train1 = models.IntegerField(db_column = 'train1', blank = True, null = True)
+    train2 = models.IntegerField(db_column = 'train2', blank = True, null = True)
+    rclass = models.CharField(max_length = 150, db_column = 'rclass', blank = True, null = True)
+    j = models.IntegerField(db_column = 'j', blank = True, null = True)
+    seatno = models.IntegerField(db_column = 'seatno', blank = True, null = True)
+    platformno = models.IntegerField(db_column = 'platformno', blank = True, null = True)
+    fromid = models.IntegerField(db_column = 'fromid', blank = True, null = True)
+    toid = models.IntegerField(db_column = 'toid', blank = True, null = True)
+    arrival = models.DateField(db_column = 'arrival', blank = True, null = 'True')
+    departure = models.DateField(db_column = 'departure', blank = True, null = 'True')
+    
+    class Meta:
+        managed = True
+        db_table = 'mdata' 
+
 
 
 class Users(models.Model):

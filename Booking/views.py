@@ -18,8 +18,12 @@ def Data_submit(request):
     global fpost,dpost,tpost
     con=sqlite3.connect('Database.db')
     cur=con.cursor()
+    identifier=Functions.create_identifier()
     fpost,tpost,dpost=request.POST.get('From'),request.POST.get('To'),request.POST.get('Date')
+    date=Functions.date_convert(dpost)
     f,t=Functions.convert_id(fpost,tpost,cur)
+    cur.execute('insert into mdata values(NULL,"{}",NULL,NULL,NULL,{},NULL,NULL,NULL,NULL,NULL,NULL,{},{},NULL,NULL);'.format(identifier,date,f,t))
+    con.commit()
     train_ids=Functions.direct_search(f,t,cur)
     arrivals,departs,train_names,classes,rn,routes=[],[],[],[],[],[]
     #INDIRECT SEARCH
@@ -63,7 +67,38 @@ def Data_submit(request):
         name=Functions.namefinder(train_ids[i],cur);train_names.append(name)
         clses=Functions.class_finder(train_ids[i],cur);classes.append(clses)
     #---------------------------------------------------------------------------------------------------#                        
-    return render(request,'Booking/Search_results.html',{'input_data':[fpost,tpost,dpost],'direct':[train_names,train_ids,departs,arrivals,classes,rn,routes],'indirect':final,'indirectno':no})
+    return render(request,'Booking/Search_results.html',{'input_data':[fpost,tpost,dpost],'direct':[train_names,train_ids,departs,arrivals,classes,rn,routes],'indirect':final,'indirectno':no,'identifier':identifier})
 
-def direct_price(request):
-    return render(request,'Booking/direct-price.html',{'data':request.POST})
+def pricedisplay(request):
+    con=sqlite3.connect('Database.db')
+    cur=con.cursor()
+    method = None
+    identifier = request.POST.get('identifier')
+    cur.execute('select fromid,toid from mdata where identifier="{}";'.format(identifier))
+    res=cur.fetchall()
+    f,t=res[0][0],res[0][1]
+    if len(request.POST.get('choice')) == 1:
+        method = 'Direct'
+    else:
+        method = 'Indirect'
+    classprice = {'1A':1,'2A':0.8333,'3A':0.6666,'FC':0.5000,'CC':0.3333,'SL':0.1666}
+    c=request.POST.get('Classes')
+    if method == 'Direct':
+        tid = request.POST.get('choice')
+        cost=Functions.price(tid,f,t,cur)
+        cost=cost * classprice.get(request.POST.get('Classes'))
+        sql='update mdata set train1={},train2=NULL,j=NULL,rclass="{}" where identifier="{}";'.format(tid,request.POST.get('Classes'),identifier)
+        cur.execute(sql)
+        con.commit() 
+    else:
+        tid = request.POST.get('choice')[0]
+        cost=Functions.price(tid,f,t,cur)
+        cost=cost * classprice.get(request.POST.get('Classes'))
+        sql='update mdata set train1={},train2={},j={},rclass="{}" where identifier="{}";'.format(tid,request.POST.get('choice')[2],request.POST.get('choice')[1],request.POST.get('Classes'),identifier)
+        cur.execute(sql)
+        con.commit()
+    
+
+
+
+    return render(request,'Booking/direct-price.html',{'data':request.POST,'method':method,'c':c})

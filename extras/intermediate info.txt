@@ -1,0 +1,13 @@
+
+pnr no
+passenger name
+email/ id
+travel date
+train1/train2/j
+rclass
+seat no
+platform no
+from
+to
+arrival
+departure

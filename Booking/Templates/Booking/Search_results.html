@@ -113,11 +113,12 @@ input.value{
               <td class="center-align">{{ direct.3|index:i }}</td>
               <td  id="classes"><div class="browser-default">
                 <form action="/Booking/direct-price/" method="POST">{% csrf_token %}
-                <input type="hidden" value="{{ direct.1|index:i }}">
+                <input type="hidden" name="choice" value="{{ direct.1|index:i }}"></input>
+                <input type="hidden" name='identifier' value='{{ identifier }}'></input>
                 <select class="form" name="Classes" required>
                   <option value="" disabled selected>Choose Class</option>
                   {% for j in direct.4|index:i %}
-                  <option value="{{ forloop.counter }}">{{ j }}</option>
+                  <option value="{{ j }}">{{ j }}</option>
                   {% endfor %}
                 </select></div>
                 <td><button type="submit" name="testBtn"  class="waves-effect waves-light btn hoverable deep-purple accent-1 black-text">CHECK PRICE AND BOOK</button></form></td>
@@ -156,11 +157,12 @@ input.value{
           <td>{{ indirect.4|index:i }}</td>
           <td  id="classes"><div class="browser-default">
             <form action="/Booking/direct-price/" method="POST">{% csrf_token %}
-            <input type="hidden" value="abc">
+            <input type="hidden"  name='choice' value="{{ indirect.0|index:i|index:1 }},{{ indirect.1|index:i }},{{ indirect.2|index:i|index:1 }}"></input>
+            <input type="hidden" name='identifier' value='{{ identifier }}'></input>
             <select class="form" name="Classes" required>
               <option value="" disabled selected>Choose Class</option>
               {% for j in indirect.5|index:i %}
-              <option value="{{ forloop.counter }}">{{ j }}</option>
+              <option value="{{ j }}">{{ j }}</option>
               {% endfor %}
             </select></div>
             <td><button type="submit" name="testBtn"  class="waves-effect waves-light btn hoverable deep-purple accent-1 black-text">CHECK PRICE AND BOOK</button></form></td>  
