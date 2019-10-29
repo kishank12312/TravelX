@@ -15,6 +15,13 @@
   <title>Train Search Results</title>
 
 <style>
+  #space{
+    line-height: 35%;
+  }
+  .col{
+    padding: 0;
+  }
+  
 </style>
 
 
@@ -57,18 +64,60 @@
 <div class="container">
   <h3 style="font-weight: lighter;">Detail Confirmation</h3>
   <hr>
+  <div class="row">
+  <div class="col l3"></div>
+  <div class="col l7">
+  <div class="card">
+  <div class="card-content">
   {% if method == 'Direct' %}
-  <h5 style="font-weight: lighter;" class="center-align">
-    Method of travel : Direct Train<br><br>
-    <span>Train Name : {{ names.0 }}        -        Train ID : {{ names.1 }}</span><br><br>
-    From : {{ snames.0 }}<br><br>
-    To : {{ snames.1 }}<br><br>
-    Departure Time : {{ da.0 }}<br><br> 
-    Arrival Time : {{ da.1 }}<br><br>
-    Railway Class : {{ c }}<br><br>
+  <h5 style="font-weight: lighter;">
+    <b>Method of travel</b> : Direct Train<br><br id='space'>
+    <b>Train Name</b> : {{ names.0 }}<br><br id='space'>
+    <b>Train ID</b> : {{ names.1 }}<br><br id='space'>
+    <b>From</b> : {{ snames.0 }}<br><br id='space'>
+    <b>To</b> : {{ snames.1 }}<br><br id='space'>
+    <b>Departure Time</b> : {{ da.0 }}<br><br id='space'> 
+    <b>Arrival Time</b> : {{ da.1 }}<br><br id='space'>
+    <b>Railway Class</b> : {{ c }}<br><br id='space'>
   </h5>
   <h4 style="font-weight: lighter;" class="center-align">COST : {{ cost }}</h4>
-  {% endif %}
+  <form action="" method="POST">
+      <select class="form" name="Classes" required>
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </select>
+  </form>
+  {% else %}
+  <h5 style="font-weight: lighter;">
+      <b>Method of travel</b> : Indirect Train<br><br id='space'>
+      <b>Train1 Name</b> : {{ names.0 }}<br><br id='space'>
+      <b>Train1 ID</b> : {{ names.1 }}<br><br id='space'>
+      <b>Train2 Name</b> : {{ names.2 }}<br><br id='space'>
+      <b>Train2 ID</b> : {{ names.3 }}<br><br id='space'>
+      <b>Route</b> : From {{ snames.0 }} to {{ snames.1 }} via {{ j }}<br><br id='space'>
+      <b>Departure Time</b> : Departing from {{ snames.0 }} at {{ da.0 }} hrs<br><br id='space'> 
+      <b>Arrival Time</b> : Arriving in {{ snames.1 }} at {{ da.1 }} hrs<br><br id='space'>
+      <b>Railway Class</b> : {{ c }}<br><br id='space'>
+    </h5>
+    <h4 style="font-weight: 500;" class="center-align">COST : <img src="https://img.icons8.com/windows/32/000000/rupee.png">{{ cost }}</h4>
+    <div class="row">
+    <div class="col l3">Number of Passengers :</div>
+    <div class="col l4">
+    <form action="" method="POST">{% csrf_token %}
+        <select class="form" name="Classes" required>
+          <option value="" disabled selected>Choose</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="3">4</option>
+        </select></div>
+        <div class="col l5">
+        <button type="submit" name="testBtn"  class="waves-effect waves-light btn hoverable deep-purple accent-1 black-text">CONFIRM AND BOOK</button>
+    </form></div></div>
+    {% endif %}
+</div></div></div></div>
 </div>
 
 

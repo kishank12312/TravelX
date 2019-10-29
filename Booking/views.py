@@ -98,11 +98,11 @@ def pricedisplay(request):
     else:
         tid = int(request.POST.get('choice')[0])
         cost=Functions.price(tid,f,t,cur)
-        cost=cost * classprice.get(request.POST.get('Classes'))
+        cost=cost * classprice.get(request.POST.get('Classes'));cost = round(cost,2)
         sql='update mdata set train1={},train2={},j={},rclass="{}" where identifier="{}";'.format(tid,int(request.POST.get('choice')[4]),int(request.POST.get('choice')[2]),request.POST.get('Classes'),identifier)
         cur.execute(sql)
         con.commit()
         names = [Functions.namefinder(tid,cur),tid,Functions.namefinder(int(request.POST.get('choice')[4]),cur),int(request.POST.get('choice')[4])]
     snames = [Functions.stationfinder(f,cur),Functions.stationfinder(t,cur)]
 
-    return render(request,'Booking/direct-price.html',{'snames':snames,'method':method,'cost':cost,'da':request.POST.get('da').split(','),'c':request.POST.get('Classes'),'names':names})
+    return render(request,'Booking/direct-price.html',{'snames':snames,'method':method,'cost':cost,'da':request.POST.get('da').split(','),'c':request.POST.get('Classes'),'names':names,'j':Functions.stationfinder(int(request.POST.get('choice')[2]),cur)})
