@@ -69,44 +69,55 @@
   <div class="col l7">
   <div class="card">
   <div class="card-content">
-  {% if method == 'Direct' %}
+  {% if data.method == 'Direct' %}
   <h5 style="font-weight: lighter;">
     <b>Method of travel</b> : Direct Train<br><br id='space'>
-    <b>Train Name</b> : {{ names.0 }}<br><br id='space'>
-    <b>Train ID</b> : {{ names.1 }}<br><br id='space'>
-    <b>From</b> : {{ snames.0 }}<br><br id='space'>
-    <b>To</b> : {{ snames.1 }}<br><br id='space'>
-    <b>Departure Time</b> : {{ da.0 }}<br><br id='space'> 
-    <b>Arrival Time</b> : {{ da.1 }}<br><br id='space'>
-    <b>Railway Class</b> : {{ c }}<br><br id='space'>
+    <b>Train Name</b> : {{ data.names.0 }}<br><br id='space'>
+    <b>Train ID</b> : {{ data.names.1 }}<br><br id='space'>
+    <b>From</b> : {{ data.snames.0 }}<br><br id='space'>
+    <b>To</b> : {{ data.snames.1 }}<br><br id='space'>
+    <b>Departure Time</b> : Departing from {{ data.snames.0 }} at {{ data.da.0 }} hrs<br><br id='space'> 
+    <b>Arrival Time</b> : Arriving in {{ data.snames.1 }} at {{ data.da.1 }} hrs<br><br id='space'>
+    <b>Railway Class</b> : {{ data.c }}<br style="line-height: 0px;">
   </h5>
-  <h4 style="font-weight: lighter;" class="center-align">COST : {{ cost }}</h4>
-  <form action="" method="POST">
-      <select class="form" name="Classes" required>
-        <option value="" disabled selected>Choose your option</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-      </select>
+  <h4 style="font-weight: 500; display: inline-block; padding-left: 6rem;" class="center-align">COST : <img src="https://img.icons8.com/windows/32/000000/rupee.png">{{ data.cost }}</h4>
+  <i style="display: inline-block;" class="material-icons tooltipped" data-position="bottom" data-tooltip="This is the price per passenger.">info</i>
+  <div class="row">
+    <div class="col l3">Number of Passengers :</div>
+    <div class="col l4">
+    <form action="" method="POST">{% csrf_token %}
+      <input type="hidden" name="data" value="{{ data }}">
+        <select class="form" name="Classes" required>
+          <option value="" disabled selected>Choose</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="3">4</option>
+        </select></div>
+        <div class="col l5">
+        <button type="submit" name="testBtn"  class="waves-effect waves-light btn hoverable deep-purple accent-1 black-text">CONFIRM AND BOOK</button>
+    </form></div></div>
   </form>
   {% else %}
   <h5 style="font-weight: lighter;">
       <b>Method of travel</b> : Indirect Train<br><br id='space'>
-      <b>Train1 Name</b> : {{ names.0 }}<br><br id='space'>
-      <b>Train1 ID</b> : {{ names.1 }}<br><br id='space'>
-      <b>Train2 Name</b> : {{ names.2 }}<br><br id='space'>
-      <b>Train2 ID</b> : {{ names.3 }}<br><br id='space'>
-      <b>Route</b> : From {{ snames.0 }} to {{ snames.1 }} via {{ j }}<br><br id='space'>
-      <b>Departure Time</b> : Departing from {{ snames.0 }} at {{ da.0 }} hrs<br><br id='space'> 
-      <b>Arrival Time</b> : Arriving in {{ snames.1 }} at {{ da.1 }} hrs<br><br id='space'>
-      <b>Railway Class</b> : {{ c }}<br><br id='space'>
+      <b>Train1 Name</b> : {{ data.names.0 }}<br><br id='space'>
+      <b>Train1 ID</b> : {{ data.names.1 }}<br><br id='space'>
+      <b>Train2 Name</b> : {{ data.names.2 }}<br><br id='space'>
+      <b>Train2 ID</b> : {{ data.names.3 }}<br><br id='space'>
+      <b>Route</b> : From {{ data.snames.0 }} to {{ data.snames.1 }} via {{ data.j }}<br><br id='space'>
+      <b>Departure Time</b> : Departing from {{ data.snames.0 }} at {{ data.da.0 }} hrs<br><br id='space'> 
+      <b>Arrival Time</b> : Arriving in {{ data.snames.1 }} at {{ data.da.1 }} hrs<br><br id='space'>
+      <b>Railway Class</b> : {{ data.c }}<br><br id='space'>
     </h5>
-    <h4 style="font-weight: 500;" class="center-align">COST : <img src="https://img.icons8.com/windows/32/000000/rupee.png">{{ cost }}</h4>
+    <h4 style="font-weight: 500; display: inline-block; padding-left: 6rem;" class="center-align">COST : <img src="https://img.icons8.com/windows/32/000000/rupee.png">{{ data.cost }}</h4>
+  <i style="display: inline-block;" class="material-icons tooltipped" data-position="bottom" data-tooltip="This is the price per passenger.">info</i>
     <div class="row">
     <div class="col l3">Number of Passengers :</div>
     <div class="col l4">
     <form action="" method="POST">{% csrf_token %}
-        <select class="form" name="Classes" required>
+      <input type="hidden" name="data" value="{{ data }}">  
+      <select class="form" name="Classes" required>
           <option value="" disabled selected>Choose</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -155,6 +166,7 @@
           $('select').formSelect();
           $("select[required]").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
           $('.collapsible').collapsible();
+          $('.tooltipped').tooltip();
         });
     </script>
     
