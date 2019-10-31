@@ -35,6 +35,29 @@
     max-height: 170%; /* or higher percentages. It's up to your taste */
   }
 }
+  .btn{
+    background: white;
+    border: solid 2px #311b92;
+    z-index: 0;
+    transition: 400ms;
+    color: black;
+    padding-bottom: 15%;
+  }
+  .btn:hover{
+    border-radius: 5px;
+    background: #311b92;
+    color: white;
+    
+  }
+  .btn:focus{
+    border-radius: 5px;
+    background: #311b92;
+    color: white;
+  }
+  .btn:active{
+    transform: translateY(4px);
+  }
+
         
   </style>
 </head>
@@ -54,6 +77,7 @@
       <li><a href="#" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">train</i>TRAINS</a></li>
       <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">language</i>BOOKING</a></li>
       <li><a href="..\.\Login\login.html" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>LOGIN</a></li>
+      <li><a href="{% url 'capture' slug='accounts' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>SIGN UP</a></li>
     </ul>
   </div>
   </nav>
@@ -83,9 +107,11 @@
   <div class="container"> 
   <div class="row">
     <div class="col s12 l4"><br>
-      <div class="card card1 z-depth-5 horizontal purple darken-4">
-        <div class="card-content">
-          abcascasceds<br>sadsd
+      <div class="card card1 z-depth-5 ">
+        <div class="card-content center-align">
+          <div class="card-image center-align"><img src="{% static 'Images/Index_tickets.jpg' %}" alt=""></div>
+          <h5 style="font-weight: lighter;" class="center-align">Book Tickets</h5>
+          <a href="{% url 'capture' slug='Booking' %}"><buttton class="btn waves-effect waves-light">Book Now</buttton></a>
         </div>
     </div>
     <div class="col s12 l7 offset-l1">

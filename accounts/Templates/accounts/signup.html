@@ -1,0 +1,115 @@
+{% load static from staticfiles %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Import Google Icon Font-->
+  <link href="{% static 'css/material-icons.css' %}" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+   <link rel="stylesheet" href="{% static 'materialize.min.css' %}">
+  <title>Railway</title>
+  <!--Top backgroungd image style-->
+</head>
+<body>
+<header>
+
+<!--NAVBAR TOP-->
+<div class="navbar-fixed">
+<nav class="nav-wraper z-depth-5 purple darken-4">
+  <div class="container">
+  <a href="#" class="brand-logo"><i class="material-icons large">train</i>TravelX</a>
+  <a href="#" class="sidenav-trigger btn-floating btn-large waves-effect waves-light transparent z-depth-0" data-target="mobile-links">
+    <i class="large material-icons">menu</i>
+  </a>   
+  <ul class="right hide-on-med-and-down">
+    <li><a href="#" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">home</i>HOME</a></li>
+    <li><a href="#" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">train</i>TRAINS</a></li>
+    <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">language</i>BOOKING</a></li>
+    <li><a href="..\.\Login\login.html" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>LOGIN</a></li>
+  </ul>
+</div>
+</nav>
+</div>
+    <style>
+      nav{
+        transition: 1000ms;
+        background: rgba(255, 255, 255, 0.1);
+      }
+    </style>
+<ul class="sidenav grey darken-4" id="mobile-links">
+  <li><a href="#" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">HOME</a></li>
+  <li><a href="#" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">TRAINS</a></li>
+  <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">BOOK</a></li>
+  <li><a href="..\.\Login\login.html" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">LOGIN</a></li>
+</ul>
+</header>
+<br><br><br><br>
+<div class="container">
+    <div class="row">
+    <div class="col s0 l3"></div>
+    <div class="col s12 l6">
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title center-align">Signup</span>
+            <br>
+            <form method="POST">{% csrf_token %}
+                    {{ registration_form }}
+
+            </form>
+        </div></div></div>
+    </div>
+</div>
+
+
+
+
+
+
+<footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text"><span style="font-weight: lighter;">Travel</span><span>X</span></h5>
+          <p class="grey-text text-lighten-4"><span>A simple and easy to use railway booking site.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2019 Copyright TravelX, all right reserved.
+      </div>
+    </div>
+</footer>
+
+
+
+
+
+
+  <script src="{% static 'JS/jquery.js' %}"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="{% static 'JS/materialize.min.js' %}"></script>
+
+  <script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+    })
+    $(window).scroll(function() { // check if scroll event happened
+      if ($(document).scrollTop() > 400) { // check if user scrolled more than 50 from top of the browser window
+        $("nav").css("background", "rgba(255, 255, 255,0.9)");
+        $(".hoverable").css("color", "rgba(0,0,0)");
+        $(".brand-logo").css("color", "rgba(0,0,0)"); // if yes, then change the color of class "navbar-fixed-top" to white (#f8f8f8)
+      } else {
+        $("nav").css("background", "rgba(255,255,255,0.1)");
+        $(".hoverable").css("color", "rgba(255,255,255)");
+        $(".brand-logo").css("color", "rgba(255,255,255)"); // if not, change it back to transparent
+      } 
+    $('.parallax').parallax();
+    $('.datepicker').datepicker();
+      });
+  </script>
+</body>
+</html>
+

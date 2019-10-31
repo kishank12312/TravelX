@@ -69,16 +69,16 @@ INSERT INTO PASSENGERS VALUES
 (18,'K.Kumar',33,9353465756);
 
 INSERT INTO TRAINS VALUES
-(1,'Agra Express','Agra Cantt','New Dehli','10:00:00',2100,'2S,SL,CC'),
-(2,'Bagh Express','Kolkata','Mumbai','8:00:00',1800,'2S,SL,CC,FC,3A'),
-(3,'Mail Express','New Delhi','Ahmedabad','16:00:00',2500,'2S,SL,3A,2A,1A'),
-(4,'Pinakini Express','Vijayawada','Chennai','17:30:00',2500,'2S,SL,CC,FC,3A'),
-(5,'Island Express','Kanyakumari','Bangalore','11:15:00',2250,'2S,SL,CC'),
-(6,'Andhra Express','Hyderabad','New Dehli','15:00:00',3000,'2S,SL,3A,2A,1A'),
-(7,'Rajdhani express','New Delhi','Kanyakumari','12:00:00',3000,'CC,3A,2A,1A'),
-(8,'BNC Express','Nagpur','Chennai','21:15:00',3300,'2S,SL,CC'),
-(9,'ANVT Express','Kolkata','New Dehli','8:30:00',1500,'2S,3A,2A,1A'),
-(10,'Kanyakumari Express','Kanyakumari','Chennai','8:30:00',1500,'2S,CC,2A,1A');
+(1,'Agra Express','Agra Cantt','New Dehli','10:00:00',2100,'FC,SL,CC',NULL),
+(2,'Bagh Express','Kolkata','Mumbai','8:00:00',1800,'2S,SL,CC,FC,3A',NULL),
+(3,'Mail Express','New Delhi','Ahmedabad','16:00:00',2500,'FC,SL,3A,2A,1A',NULL),
+(4,'Pinakini Express','Vijayawada','Chennai','17:30:00',2500,'2S,SL,CC,FC,3A',NULL),
+(5,'Island Express','Kanyakumari','Bangalore','11:15:00',2250,'FC,SL,CC',NULL),
+(6,'Andhra Express','Hyderabad','New Dehli','15:00:00',3000,'FC,SL,3A,2A,1A',NULL),
+(7,'Rajdhani express','New Delhi','Kanyakumari','12:00:00',3000,'CC,3A,2A,1A',NULL),
+(8,'BNC Express','Nagpur','Chennai','21:15:00',3300,'FC,SL,CC',NULL),
+(9,'ANVT Express','Kolkata','New Dehli','8:30:00',1500,'FC,3A,2A,1A',NULL),
+(10,'Kanyakumari Express','Kanyakumari','Chennai','8:30:00',1500,'FC,CC,2A,1A',NULL);
 
 INSERT INTO USERS VALUES
 ('U001','sriram11@gmail.com','pwd1001'),

@@ -81,7 +81,7 @@
     <b>Railway Class</b> : {{ data.c }}<br style="line-height: 0px;">
   </h5>
   <h4 style="font-weight: 500; display: inline-block; padding-left: 6rem;" class="center-align">COST : <img src="https://img.icons8.com/windows/32/000000/rupee.png">{{ data.cost }}</h4>
-  <i style="display: inline-block;" class="material-icons tooltipped" data-position="bottom" data-tooltip="This is the price per passenger.">info</i>
+  <i style="display: inline-block;" class="material-icons tooltipped hoverable" data-position="bottom" data-tooltip="This is the price per passenger.">info</i>
   <div class="row">
     <div class="col l3">Number of Passengers :</div>
     <div class="col l4">
@@ -111,8 +111,9 @@
       <b>Railway Class</b> : {{ data.c }}<br><br id='space'>
     </h5>
     <h4 style="font-weight: 500; display: inline-block; padding-left: 6rem;" class="center-align">COST : <img src="https://img.icons8.com/windows/32/000000/rupee.png">{{ data.cost }}</h4>
-  <i style="display: inline-block;" class="material-icons tooltipped" data-position="bottom" data-tooltip="This is the price per passenger.">info</i>
-    <div class="row">
+  <i style="display: inline-block;" class="material-icons tooltipped hoverable" data-position="bottom" data-tooltip="This is the price per passenger.">info</i>
+  <br><br>  
+  <div class="row">
     <div class="col l3">Number of Passengers :</div>
     <div class="col l4">
     <form action="" method="POST">{% csrf_token %}

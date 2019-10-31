@@ -19,6 +19,30 @@
       background: url(/static/Images/Book_ticket_bg.jpg);
       background-size: cover;
     }
+    .btn{
+    background: rgba(255, 255, 255, 0);
+    border: solid 2px #311b92;
+    z-index: 0;
+    transition: 400ms;
+    color: black;
+    padding-bottom: 10%;
+    padding-top: 1%;
+  }
+  .btn:hover{
+    border-radius: 5px;
+    background: #311b92;
+    color: white;
+    transform: translateY(-2px);
+  }
+  .btn:focus{
+    border-radius: 5px;
+    background: #311b92;
+    color: white;
+  }
+  .btn:active{
+    transform: translateY(4px);
+  }
+
     /*body{
         background: dimgray;
         background-size: cover;        
@@ -105,8 +129,8 @@
       <br><br><br>
           
       <div class="form-field center-align">
-          <button class ="waves-effect waves-light btn-large purple darken-4 ">SEARCH FOR TRAINS</button>
-      </div><br>
+          <button class ="waves-effect waves-light btn">SEARCH FOR TRAINS</button>
+      </div>
     </div>
     <!--END OF BOOKING CARD-->
 
