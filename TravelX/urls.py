@@ -17,8 +17,13 @@ from django.contrib import admin
 from django.urls import include,path
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from accounts.views import logout_view,login_view
+
 
 urlpatterns = [
+    
+    path(r'logout/', logout_view,name='logout'),
+    path(r'login/', login_view,name='login'),
     path(r'admin/', admin.site.urls),
     path(r'Booking/',include('Booking.urls')),
     path(r'accounts/',include('accounts.urls')),

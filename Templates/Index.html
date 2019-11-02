@@ -57,6 +57,9 @@
   .btn:active{
     transform: translateY(4px);
   }
+  h1{
+    background-color: rgba(0,0,0, 0.2);
+  }
 
         
   </style>
@@ -73,11 +76,18 @@
       <i class="large material-icons">menu</i>
     </a>   
     <ul class="right hide-on-med-and-down">
-      <li><a href="#" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">home</i>HOME</a></li>
       <li><a href="#" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">train</i>TRAINS</a></li>
       <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">language</i>BOOKING</a></li>
-      <li><a href="..\.\Login\login.html" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>LOGIN</a></li>
+      {% if request.user.is_authenticated %}
+      <li><a href="#" data-target="dropdown" class="dropdown-trigger" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>MY ACCOUNT</a></li>
+      {% else %}
+      <li><a href="{% url 'login' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>LOGIN</a></li>
       <li><a href="{% url 'capture' slug='accounts' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>SIGN UP</a></li>
+      {% endif %}
+    </ul>
+    <ul id='dropdown' class='dropdown-content'>
+        <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+        <li><a href="#!">ACCOUNT OPTIONS</a></li>
     </ul>
   </div>
   </nav>
@@ -97,9 +107,19 @@
     <li><a href="..\.\Login\login.html" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">LOGIN</a></li>
   </ul>
   </header>
+  
   <div class="parallax-container" style="margin-top: -100px">
-      <div class="parallax">
-<img src="{% static 'Images/Index_background.jpg' %}" alt=""></div></div>
+      <div class="section no-pad-bot transparent">
+          <div class="container">
+            <br><br><br><br><br><br><br><br>
+            <h1 class="header white-text" style="font-weight: lighter;">Welcome to Travelx, {{ request.user.username }}</h1>
+            <br><br>
+    
+          </div>
+        </div>
+    
+      <div class="parallax"><img src="{% static 'Images/Index_background.jpg' %}" alt=""></div></div>
+        
   <!--END OF NAVBAR-->
 
   <!--PHOTO SECTION-->
@@ -109,7 +129,7 @@
     <div class="col s12 l4"><br>
       <div class="card card1 z-depth-5 ">
         <div class="card-content center-align">
-          <div class="card-image center-align"><img src="{% static 'Images/Index_tickets.jpg' %}" alt=""></div>
+          <div class="card-image center-align"><img src="{% static 'Images/Index_tickets.jpg' %}" alt=""></div><hr>
           <h5 style="font-weight: lighter;" class="center-align">Book Tickets</h5>
           <a href="{% url 'capture' slug='Booking' %}"><buttton class="btn waves-effect waves-light">Book Now</buttton></a>
         </div>
@@ -197,6 +217,7 @@
   <script>
     $(document).ready(function(){
       $('.sidenav').sidenav();
+      $('.dropdown-trigger').dropdown();
     })
     $(window).scroll(function() { // check if scroll event happened
       if ($(document).scrollTop() > 400) { // check if user scrolled more than 50 from top of the browser window

@@ -9,7 +9,7 @@
   <link href="{% static 'css/material-icons.css' %}" rel="stylesheet">
   <!-- Compiled and minified CSS -->
    <link rel="stylesheet" href="{% static 'materialize.min.css' %}">
-  <title>Sign Up</title>
+  <title>Login</title>
   <!--Top backgroungd image style-->
 </head>
 <style>
@@ -38,7 +38,7 @@
 
 
   .input-field{
-    width: 85%;
+    width: 95%;
   }
 
   .input-field input[type=text]:focus + label {
@@ -53,7 +53,7 @@
        box-shadow: 0 1px 0 0 #4a148c !important
    }
    .input-field .prefix.active {
-      color: #0077ff;
+      color: #311b92;
     }
 
 </style>
@@ -100,11 +100,16 @@
     <div class="col s12 l6">
     <div class="card">
         <div class="card-content">
-            <span class="card-title center-align" style="font-size: 220%;">Signup</span>
+            <span class="card-title center-align" style="font-size: 220%;">Login</span>
             <br>
             <form method="POST">{% csrf_token %}
-              {% for field in registration_form %}
+              {% for field in login_form %}
               <div class="input-field inline">
+                {% if field.name == 'email'  %}
+                <i style="display: inline-block;" class="material-icons prefix">email</i>
+                {% else %}
+                <i style="display: inline-block;" class="material-icons prefix">vpn_key</i>
+                {% endif %}
                 <label class="black-text" for="{{ field.name }}">{{ field.label }}</label>
                 {{ field }}
                 {% if field.help_text %}
@@ -116,8 +121,19 @@
 
               </div>
               {% endfor %}
+              {% for field in login_form %}
+                {% for error in field.errors %}
+                    <p style="color: red;">{{error}}</p>
+                {% endfor %}
+              {% endfor %}
+        
+	          {% if login_form.non_field_errors %}
+	          	<div style="color:red;">
+	          		<p>{{login_form.non_field_errors}}</p>
+	          	</div>
+	          {% endif %}
             
-            <div class="form-field center-align"><button class="btn" type="submit">Sign Up</button></div>
+            <div class="form-field center-align"><button class="btn" type="submit">LOGIN</button></div>
             </form></div>
         </div></div></div>
     </div>
