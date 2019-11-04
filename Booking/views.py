@@ -108,3 +108,7 @@ def pricedisplay(request):
     snames = [Functions.stationfinder(f,cur),Functions.stationfinder(t,cur)]
     cost = round(cost,2)
     return render(request,'Booking/direct-price.html',{'data':{'snames':snames,'method':method,'cost':cost,'da':request.POST.get('da').split(','),'c':request.POST.get('Classes'),'names':names,'j':junc}})
+
+
+def passengerinfo(request):
+    return render(request,'Booking/Passengerinfo.html')

@@ -1,0 +1,187 @@
+{% load static from staticfiles %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!--Import Google Icon Font-->
+        <link href="{% static 'css/material-icons.css' %}" rel="stylesheet">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="{% static 'materialize.min.css' %}">
+        <title>Booking Home</title>
+<style>
+.btn{
+  border-radius: 5px;
+}
+.container{
+  width: 85%;
+}
+.browser-default{
+  width: 65%;
+}
+.material-icons{
+  vertical-align:-30%;
+}
+#container1
+{
+    text-align:center;
+}
+#classes{
+  padding-left: 3%;
+}
+input.value{
+  vertical-align: middle;
+}
+</style>
+</head>
+<header>
+    <!--NAVBAR TOP-->
+    <div class="navbar-fixed">
+    <nav class="nav-wraper z-depth-5 purple darken-4">
+      <div class="container">
+      <a href="#" class="brand-logo"><span style="font-weight: lighter;">Travel</span><span>X</span>    </a>
+      <a href="#" class="sidenav-trigger btn-floating btn-large waves-effect waves-light transparent z-depth-0" data-target="mobile-links">
+        <i class="large material-icons">menu</i>
+      </a>   
+      <ul class="right hide-on-med-and-down">
+        <li><a href="..\.\Index\Index.html" class="hoverable waves-effect waves-light"><i class="material-icons left">home</i>HOME</a></li>
+        <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">train</i>TRAINS</a></li>
+        <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">language</i>BOOK</a></li>
+        <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">perm_media</i>GALLERY</a></li>
+        <li><a href="..\.\Login\login.html" class="hoverable waves-effect waves-light"><i class="material-icons left">account_circle</i>LOGIN</a></li>
+      </ul>
+    </div>
+    </nav>
+  </div>
+  
+    <ul class="sidenav grey darken-4" id="mobile-links">
+      <li><a href="#" class="hoverable white-text waves-effect waves-light">HOME</a></li>
+      <li><a href="#" class="hoverable white-text waves-effect waves-light">TRAINS</a></li>
+      <li><a href="#" class="hoverable white-text waves-effect waves-light">BOOK</a></li>
+      <li><a href="#" class="hoverable white-text waves-effect waves-light">GALLERY</a></li>
+      <li><a href="..\.\Login\login.html" class="hoverable white-text waves-effect waves-light">LOGIN</a></li>
+    </ul>
+</header>
+<body>
+
+    <div class="card"><h4>Train name</h4><table class="centered">
+        <thead>
+          <tr>
+              <th>Passenger Name</th>
+              <th>Gender</th>
+              <th>Adult/Child</th>
+              <th>Email id</th>
+              <th>Phone number</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td><div class="input field">
+                <input type="text" class="type text" placeholder="Name">
+            </div></td>
+            <td><div class="input field">
+                    <input type="text" class="type text"placeholder="Gender(M/F)">
+                </div></td>
+            <td><div class="input field">
+                    <input type="text" class="type text"placeholder="Adult/Child">
+                </div></td>
+            <td><div class="input field">
+                    <input type="text" class="type text"placeholder="Email id">
+                </div></td>
+             <td><div class="input field">
+                     <input type="text" class="type text"placeholder="Number">
+                </div></td>
+          </tr>
+          <br></br>
+          <tr>
+            <td><div class="input field">
+                     <input type="text" class="type text"placeholder="Name">
+                 </div></td>
+            <td><div class="input field">
+                    <input type="text" class="type text"placeholder="Gender(M/F)">
+                </div></td>
+            <td><div class="input field">
+                     <input type="text" class="type text"placeholder="Adult/Child">
+                 </div></td>
+            <td><div class="input field">
+                    <input type="text" class="type text"placeholder="Email id">
+                </div></td>
+            <td><div class="input field">
+                     <input type="text" class="type text"placeholder="Number">
+                </div></td>
+          </tr>
+          <br></br>
+          <tr>
+             <td><div class="input field">
+                    <input type="text" class="type text"placeholder="Name">
+                 </div></td>
+            <td><div class="input field">
+                    <input type="text" class="type text"placeholder="Gender(M/F)">
+                </div></td>
+            <td><div class="input field">
+                    <input type="text" class="type text"placeholder="Adult/Child">
+                 </div></td>
+            <td><div class="input field">
+                    <input type="text" class="type text"placeholder="Email id">
+                </div></td>
+            <td><div class="input field">
+                    <input type="text" class="type text"placeholder="Number">
+                </div></td>
+          </tr>
+          <br></br>
+          <tr>
+            <td><div class="input field">
+                    <input type="text" class="type text"placeholder="Name">
+                </div></td>
+            <td><div class="input field">
+                   <input type="text" class="type text"placeholder="Gender(M/F)">
+               </div></td>
+            <td><div class="input field">
+                    <input type="text" class="type text"placeholder="Adult/Child">
+                </div></td>
+           <td><div class="input field">
+                   <input type="text" class="type text"placeholder="Email id">
+                </div></td>
+            <td><div class="input field">
+                   <input type="text" class="type text"placeholder="Number">
+                </div></td>
+        </tr>
+        </tbody>
+      </table></div>
+      <br></br>
+      <div id="container1"><button class="btn-large waves-effect waves-light purple darken-4" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+<br></br>
+</body>
+<footer class="page-footer grey darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text"><span style="font-weight: lighter;">Travel</span><span>X</span></h5>
+          <p class="grey-text text-lighten-4"><span>A simple and easy to use railway booking site.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2019 Copyright TravelX, all right reserved.
+      </div>
+    </div>
+</footer>
+<script src="{% static 'JS/jquery.js' %}"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="{% static 'JS/materialize.min.js' %}"></script>
+
+<script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+      $('.dropdown-trigger').dropdown();
+      $('select').formSelect();
+      $("select[required]").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
+      $('.collapsible').collapsible();
+    });
+</script>

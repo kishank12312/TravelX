@@ -1,7 +1,10 @@
-
+username of account
 pnr no
-passenger name
-email/ id
+-passenger name
+-email/ id
+-gender
+-age
+-phone number
 travel date
 train1/train2/j
 rclass
