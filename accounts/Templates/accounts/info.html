@@ -13,9 +13,18 @@
   <!--Top backgroungd image style-->
 </head>
 <style>
-    .page-footer{
-    background-color: #212121;}
+  .page-footer{
+  background-color: #212121;
+  }
 
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  main {
+    flex: 1 0 auto;
+  }
 
   .input-field{
     width: 95%;
@@ -80,12 +89,34 @@
     <div class="row">
         <div class="col l1"><i class="material-icons medium">account_circle</i></div>
         <div class="col l6 left-align"><h3 style="font-weight: lighter; display: inline; padding-bottom: 100%">{{ request.user.username }}</h3></div>
-        <div class="col l3 "><a href="" class="btn purple darken-4 hoverable" style="margin-top: 5%">Change Password</a></div>
-        <div class="col l1"><a href="" class="btn purple darken-4 center-align hoverable" style="margin-top: 20%"> Logout</a></div>
+        <div class="col l3 "><a href="" class="btn purple darken-4 hoverable waves-effect" style="margin-top: 5%">Change Password</a></div>
+        <div class="col l1"><a href="{% url 'logout' %}" class="btn purple darken-4 center-align hoverable waves-effect" style="margin-top: 20%"> Logout</a></div>
     </div>
 </div>
+ 
+<table>
+  <thead>
+    <tr>
+        <th class="center-align">Date of Travel</th>
+        <th class="center-align">Date of Booking</th>
+        <th class="center-align">From</th>
+        <th class="center-align">To</th>
+        <th class="center-align">Type of Journey</th>
+        <th class="center-align">Ticket</th>
+    </tr>
+  </thead>
 
-
+  <tbody>
+    <tr>
+      <td class="center-align">Alvin</td>
+      <td class="center-align">Eclair</td>
+      <td class="center-align">$0.87</td>
+      <td class="center-align">$0.87</td>
+      <td class="center-align">$0.87</td>
+      <td class="center-align"><a href="" class="btn blue hoverable waves-effect">View Tickets</a></td>
+    </tr>
+  </tbody>
+</table>
 
 </div><!--container div-->
 
