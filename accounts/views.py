@@ -53,4 +53,6 @@ def login_view(request):
     
     context['login_form'] = form
     return render(request,'accounts/login.html',context)
-    
+
+def info_view(request):
+    return render(request,'accounts/info.html')
