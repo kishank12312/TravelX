@@ -14,30 +14,7 @@
 </head>
 <style>
     .page-footer{
-    background-color: #212121;
-  }
-  .btn{
-    background: white;
-    border: solid 2px #311b92;
-    z-index: 0;
-    transition: 400ms;
-    color: black;
-    padding-bottom: 10%;
-  }
-  .btn:hover{
-    border-radius: 5px;
-    background: #311b92;
-    color: white;
-    
-  }
-  .btn:focus{
-    border-radius: 5px;
-    background: #311b92;
-    color: white;
-  }
-  .btn:active{
-    transform: translateY(4px);
-  }
+    background-color: #212121;}
 
 
   .input-field{
@@ -103,11 +80,14 @@
     <div class="row">
         <div class="col l1"><i class="material-icons medium">account_circle</i></div>
         <div class="col l6 left-align"><h3 style="font-weight: lighter; display: inline; padding-bottom: 100%">{{ request.user.username }}</h3></div>
-        <div class="col l3 "><a href="" class="btn purple darken-4 vertical-align">Change Password</a></div>
-        <div class="col l1"><a href="" class="btn purple darken-4 center-align vertical-align"> Logout</a></div>
+        <div class="col l3 "><a href="" class="btn purple darken-4 hoverable" style="margin-top: 5%">Change Password</a></div>
+        <div class="col l1"><a href="" class="btn purple darken-4 center-align hoverable" style="margin-top: 20%"> Logout</a></div>
     </div>
 </div>
-</div>
+
+
+
+</div><!--container div-->
 
 <footer class="page-footer">
     <div class="container">
