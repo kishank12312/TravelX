@@ -63,9 +63,22 @@ input.value{
       <li><a href="..\.\Login\login.html" class="hoverable white-text waves-effect waves-light">LOGIN</a></li>
     </ul>
 </header>
-<body>
 
-    <div class="container"><h4>Train name</h4><table class="centered">
+
+
+<body>
+<form action="#" method="post">
+  {% csrf_token %}
+    <div class="container"><table class="centered">
+      {{DATA.data}}
+        <b>Train Name</b> : {{ data.names.0 }}<br><br id='space'>
+        <b>Train ID</b> : {{ data.names.1 }}<br><br id='space'>
+        <b>From</b> : {{ data.snames.0 }}<br><br id='space'>
+        <b>To</b> : {{ data.snames.1 }}<br><br id='space'>
+        <b>Departure Time</b> : Departing from {{ data.snames.0 }} at {{ data.da.0 }} hrs<br><br id='space'> 
+        <b>Arrival Time</b> : Arriving in {{ data.snames.1 }} at {{ data.da.1 }} hrs<br><br id='space'>
+        <b>Railway Class</b> : {{ data.c }}<br style="line-height: 0px;">
+      </h5>
         <thead>
           <tr>
               <th>Passenger Name</th>
@@ -77,6 +90,8 @@ input.value{
         </thead>
 
         <tbody>
+            <form action="#" method="post">
+                {% csrf_token %}
           <tr>
             <td><div class="input field">
                 <input type="text" class="type text" placeholder="Name">
@@ -156,6 +171,7 @@ input.value{
           </button>
         </div>
 <br></br>
+</form>
 </body>
 <footer class="page-footer grey darken-4">
     <div class="container">
