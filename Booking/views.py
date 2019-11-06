@@ -111,4 +111,4 @@ def pricedisplay(request):
 
 
 def passengerinfo(request):
-    return render(request,'Booking/Passengerinfo.html')
+    return render(request,'Booking/Passengerinfo.html',{'DATA':request.POST})
