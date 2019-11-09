@@ -55,4 +55,4 @@ def login_view(request):
     return render(request,'accounts/login.html',context)
 
 def info_view(request):
-    return render(request,'accounts/info.html')
+    return render(request,'accounts/info copy.html')
