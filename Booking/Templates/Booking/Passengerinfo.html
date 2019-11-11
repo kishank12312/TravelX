@@ -71,7 +71,7 @@ input.value{
   {% csrf_token %}
     <div class="container"><table class="centered">
       {{DATA.data}}
-        <b>Train Name</b> : {{ data.names.0 }}<br><br id='space'>
+        <b>Train Name</b> : {{ DATA.data.snames }}<br><br id='space'>
         <b>Train ID</b> : {{ data.names.1 }}<br><br id='space'>
         <b>From</b> : {{ data.snames.0 }}<br><br id='space'>
         <b>To</b> : {{ data.snames.1 }}<br><br id='space'>
