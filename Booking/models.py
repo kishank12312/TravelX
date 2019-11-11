@@ -13,7 +13,7 @@ class Passengers(models.Model):
     passenger_name = models.CharField(db_column='PASSENGER_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
     age = models.IntegerField(db_column='AGE', blank=True, null=True)  # Field name made lowercase.
     phone_number = models.BigIntegerField(db_column='PHONE_NUMBER', blank=True, null=True)  # Field name made lowercase.
-
+    email = models.EmailField(verbose_name = 'email', max_length = 250, unique = True, null=True)
     class Meta:
         managed = True
         db_table = 'PASSENGERS'
@@ -21,16 +21,23 @@ class Passengers(models.Model):
 
 class Pnr(models.Model):
     pnr_number = models.AutoField(db_column='PNR_NUMBER', primary_key=True, blank=True)  # Field name made lowercase.
-    train_id = models.IntegerField(db_column='TRAIN_ID', blank=True, null=True)  # Field name made lowercase.
-    status = models.CharField(db_column='STATUS', blank=True, null=True, max_length=200)  # Field name made lowercase.
-    seat_number = models.CharField(db_column='SEAT_NUMBER', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    booking_number = models.IntegerField(db_column='booking-number', unique=True, blank=True)
+    dateofbooking = models.DateField(db_column='dateofbooking', blank=True, null=True, max_length=200)
     user_id = models.CharField(db_column='USER_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
-    passenger_id = models.IntegerField(db_column='PASSENGER_ID', blank=True, null=True)  # Field name made lowercase.
-    boarding_point = models.IntegerField(db_column='BOARDING_POINT', blank=True, null=True)  # Field name made lowercase.
-    boarding_time = models.TimeField(db_column='BOARDING_TIME', blank=True, null=True)  # Field name made lowercase.
-    destination = models.IntegerField(db_column='DESTINATION', blank=True, null=True)  # Field name made lowercase.
-    date_of_journey = models.DateField(db_column='DATE_OF_JOURNEY', blank=True, null=True)  # Field name made lowercase.
-    ticket = models.FileField(db_column='TICKET', upload_to='tickets/')
+    status = models.CharField(db_column='STATUS', blank=True, null=True, max_length=200)  # Field name made lowercase.
+    fromcity = models.CharField(db_column='fromcity', blank=True, null=True, max_length=200)
+    tocity = models.CharField(db_column='tocity', blank=True, null=True, max_length=200)
+    typeofjourney = models.CharField(db_column='typeofjourney', blank=True, null=True, max_length=200)
+    dateofjourney = models.DateField(db_column='dateofjourney', blank=True, null=True, max_length=200)
+    train1_id = models.IntegerField(db_column='TRAIN1_ID', blank=True, null=True)  # Field name made lowercase.
+    junction = models.IntegerField(db_column='JUNCTION_ID',  blank=True, null=True)
+    train2_id = models.IntegerField(db_column='TRAIN2_ID', blank=True, null=True)  # Field name made lowercase.
+    rclass = models.CharField(db_column='rclass', blank=True, null=True, max_length=10)
+    departure_time = models.TimeField(db_column='DEPARTURE_TIME', blank=True, null=True)
+    arrival_time = models.TimeField(db_column='ARRIVAL_TIME', blank=True, null=True)
+    seat_number = models.CharField(db_column='SEAT_NUMBER', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    passenger_id = models.IntegerField(db_column='PASSENGER_ID', blank=True, null=True) 
+    ticket = models.ImageField(default='default.png', blank=True, null=True)
     class Meta:
         managed = True
         db_table = 'PNR'
