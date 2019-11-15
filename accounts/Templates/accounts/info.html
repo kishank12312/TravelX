@@ -45,7 +45,7 @@
       color: #311b92;
     }
   #contained{
-    width: 85%;
+    width: 90%;
   }
 
 </style>
@@ -96,33 +96,47 @@
         <div class="col l1"><a href="{% url 'logout' %}" class="btn purple darken-4 center-align hoverable waves-effect" style="margin-top: 20%"> Logout</a></div>
     </div>
 </div>
- 
+<br>
+<h4 style="font-weight: lighter;">Past Bookings:</h4>
+<br>
 <table>
   <thead>
     <tr>
         <th class="center-align">PNR Number</th>
+        <th class="center-align">Passenger Name</th>
         <th class="center-align">Date of Travel</th>
         <th class="center-align">Date of Booking</th>
         <th class="center-align">From</th>
         <th class="center-align">To</th>
-        <th class="center-align">Type of Journey</th>
         <th class="center-align">Ticket</th>
+        <th class="center-align">Cancel</th>
     </tr>
   </thead>
 
   <tbody>
     <tr>
       <td class="center-align">Alvin</td>
+      <td class="center-align">Alvin</td>
       <td class="center-align">Eclair</td>
       <td class="center-align">Eclair</td>
       <td class="center-align">$0.87</td>
       <td class="center-align">$0.87</td>
+      <td class="center-align"><a href="" class="btn blue hoverable waves-effect">View Ticket</a></td>
+      <td class="center-align"><a href="" class="btn blue hoverable waves-effect">Cancel Ticket</a></td>
+    </tr>
+    <tr>
+      <td class="center-align">Alvin</td>
+      <td class="center-align">Alvin</td>
+      <td class="center-align">Eclair</td>
+      <td class="center-align">Eclair</td>
       <td class="center-align">$0.87</td>
-      <td class="center-align"><a href="" class="btn blue hoverable waves-effect">View Tickets</a></td>
+      <td class="center-align">$0.87</td>
+      <td class="center-align"><a href="" class="btn blue hoverable waves-effect">View Ticket</a></td>
+      <td class="center-align"><a href="" class="btn blue hoverable waves-effect">Cancel Ticket</a></td>
     </tr>
   </tbody>
 </table>
-
+<br><br><br>
 </div><!--container div-->
 
 <footer class="page-footer">
