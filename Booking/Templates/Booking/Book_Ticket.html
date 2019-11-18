@@ -82,24 +82,30 @@
       <i class="large material-icons">menu</i>
     </a>   
     <ul class="right hide-on-med-and-down">
-      <li><a href="..\.\Index\Index.html" class="hoverable waves-effect waves-light white-text"><i class="material-icons left">home</i>HOME</a></li>
-      <li><a href="#" class="hoverable waves-effect waves-light white-text"><i class="material-icons left">train</i>TRAINS</a></li>
-      <li><a href="#" class="hoverable waves-effect waves-light white-text"><i class="material-icons left">language</i>BOOK</a></li>
-      <li><a href="#" class="hoverable waves-effect waves-light white-text"><i class="material-icons left">perm_media</i>GALLERY</a></li>
-      <li><a href="..\.\Login\login.html" class="hoverable waves-effect waves-light white-text"><i class="material-icons left">account_circle</i>LOGIN</a></li>
+      <li><a href="{% url 'home' %}" class="hoverable waves-effect waves-light"><i class="material-icons left">home</i>HOME</a></li>
+      <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">train</i>TRAINS</a></li>
+      <li><a href="#" data-target="dropdown" class="dropdown-trigger hoverable" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>MY ACCOUNT</a></li>
+      </ul>
+    <ul id='dropdown' class='dropdown-content'>
+        <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+        <li><a href="{% url 'info' %}">ACCOUNT OPTIONS</a></li>
     </ul>
   </div>
   </nav>
 </div>
 
-  <ul class="sidenav grey darken-4" id="mobile-links">
-    <li><a href="#" class="hoverable white-text waves-effect waves-light">HOME</a></li>
-    <li><a href="#" class="hoverable white-text waves-effect waves-light">TRAINS</a></li>
-    <li><a href="#" class="hoverable white-text waves-effect waves-light">BOOK</a></li>
-    <li><a href="#" class="hoverable white-text waves-effect waves-light">GALLERY</a></li>
-    <li><a href="..\.\Login\login.html" class="hoverable white-text waves-effect waves-light">LOGIN</a></li>
-  </ul>
-  </header>
+<ul class="sidenav grey darken-4" id="mobile-links">
+    <div class="user-view">
+        <div class="form-field center-align"><i class="material-icons large center-align white-text">account_circle</i><br>
+        <h4 class=" white-text">{{ request.user.username }}</h4>
+        <h5 style="font-weight: lighter;" class="white-text">{{ request.user.email }}</h5><hr></div>
+    </div>
+    <li><a href="{% url 'home' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">HOME</a></li>
+    <li><a href="#" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">TRAINS</a></li>
+    <li><a href="{% url 'logout' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%"">LOGOUT</a></li>
+    <li><a href="{% url 'info' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%"">ACCOUNT OPTIONS</a></li>
+</ul>
+</header>
   <!--END OF NAVBAR-->
 <br><br>
   <div class="row">
@@ -142,6 +148,7 @@
   <script>
     $(document).ready(function(){
       $('.sidenav').sidenav();
+      $('.dropdown-trigger').dropdown();
       $('.datepicker').datepicker({
             container: 'body',
             
