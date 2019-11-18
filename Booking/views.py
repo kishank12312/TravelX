@@ -88,7 +88,9 @@ def pricedisplay(request):
     classprice = {'1A':1,'2A':0.8333,'3A':0.6666,'FC':0.5000,'CC':0.3333,'SL':0.1666}
     c=request.POST.get('Classes')
     if method == 'Direct':
-        tid = request.POST.get('choice')
+        s='choi'+'ce'
+        #tid = request.POST.get('choice')
+        tid = request.POST.get(s)
         cost=Functions.price(tid,f,t,cur)
         cost=cost * classprice.get(request.POST.get('Classes'))
         sql='update mdata set train1={},train2=NULL,j=NULL,rclass="{}" where identifier="{}";'.format(tid,request.POST.get('Classes'),identifier)
@@ -108,7 +110,26 @@ def pricedisplay(request):
     snames = [Functions.stationfinder(f,cur),Functions.stationfinder(t,cur)]
     cost = round(cost,2)
     return render(request,'Booking/direct-price.html',{'data':{'snames':snames,'method':method,'cost':cost,'da':request.POST.get('da').split(','),'c':request.POST.get('Classes'),'names':names,'j':junc}})
+   # return render(request,'Booking/direct-price.html',{'data':[{'snames':snames,'method':method,'cost':cost,'da':request.POST.get('da').split(','),'c':request.POST.get('Classes'),'names':names,'j':junc}]})
 
 
 def passengerinfo(request):
-    return render(request,'Booking/Passengerinfo.html',{'DATA':request.POST})
+    if request.method=="post":
+        m1=metadata()
+        m2=metadata()
+        m3=metadata()
+        m4=metadata()
+        num = request.POST.get('numpass')
+        i=1
+        while i <=num:
+            s='name'+i
+            try:
+                n1 = request.POST.get(s)
+            except:
+                return render()
+            
+        
+        
+        
+    
+    return render(request,'Booking/Passengerinfo.html',{'DATA':eval(request.POST['data'])})

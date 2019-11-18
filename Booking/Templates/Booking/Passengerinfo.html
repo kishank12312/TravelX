@@ -1,4 +1,5 @@
 {% load static from staticfiles %}
+{% load indexing %}
 
 <html lang="en">
     <head>
@@ -70,14 +71,15 @@ input.value{
 <form action="#" method="post">
   {% csrf_token %}
     <div class="container"><table class="centered">
-      {{DATA.data}}
-        <b>Train Name</b> : {{ DATA.data.snames }}<br><br id='space'>
-        <b>Train ID</b> : {{ data.names.1 }}<br><br id='space'>
-        <b>From</b> : {{ data.snames.0 }}<br><br id='space'>
-        <b>To</b> : {{ data.snames.1 }}<br><br id='space'>
-        <b>Departure Time</b> : Departing from {{ data.snames.0 }} at {{ data.da.0 }} hrs<br><br id='space'> 
-        <b>Arrival Time</b> : Arriving in {{ data.snames.1 }} at {{ data.da.1 }} hrs<br><br id='space'>
-        <b>Railway Class</b> : {{ data.c }}<br style="line-height: 0px;">
+     
+      <br>
+        <b>Train Name</b> : {{DATA.names.0}}<br><br id='space'>
+        <b>Train ID</b> : {{DATA.names.1}}<br><br id='space'>
+        <b>From</b> : {{ DATA.snames.0 }}<br><br id='space'>
+        <b>To</b> : {{DATA.snames.1}}<br><br id='space'>
+        <b>Departure Time</b> : Departing from {{DATA.snames.0}} at {{ DATA.da.0 }} hrs<br><br id='space'> 
+        <b>Arrival Time</b> : Arriving in {{DATA.snames.1}} at {{ DATA.da.1 }} hrs<br><br id='space'>
+        <b>Railway Class</b> : {{DATA.c}}<br style="line-height: 0px;">
       </h5>
         <thead>
           <tr>
@@ -94,73 +96,73 @@ input.value{
                 {% csrf_token %}
           <tr>
             <td><div class="input field">
-                <input type="text" class="type text" placeholder="Name">
+                <input type="text" class="type text" placeholder="Name" name="name1">
             </div></td>
             <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Gender(M/F)">
+                    <input type="text" class="type text"placeholder="Gender(M/F)" name="gender1">
                 </div></td>
             <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Age">
+                    <input type="text" class="type text"placeholder="Age" name="age1">
                 </div></td>
             <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Email id">
+                    <input type="text" class="type text"placeholder="Email id" name="email1">
                 </div></td>
              <td><div class="input field">
-                     <input type="text" class="type text"placeholder="Number">
+                     <input type="text" class="type text"placeholder="Number" name="num1">
                 </div></td>
           </tr>
           <br></br>
           <tr>
             <td><div class="input field">
-                     <input type="text" class="type text"placeholder="Name">
+                     <input type="text" class="type text"placeholder="Name" name="name2">
                  </div></td>
             <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Gender(M/F)">
+                    <input type="text" class="type text"placeholder="Gender(M/F)" name="gender2">
                 </div></td>
             <td><div class="input field">
-                     <input type="text" class="type text"placeholder="Adult/Child">
+                     <input type="text" class="type text"placeholder="Age" name="age2">
                  </div></td>
             <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Email id">
+                    <input type="text" class="type text"placeholder="Email id" name="email2">
                 </div></td>
             <td><div class="input field">
-                     <input type="text" class="type text"placeholder="Number">
+                     <input type="text" class="type text"placeholder="Number" name="num2">
                 </div></td>
           </tr>
           <br></br>
           <tr>
              <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Name">
+                    <input type="text" class="type text"placeholder="Name" name="name3">
                  </div></td>
             <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Gender(M/F)">
+                    <input type="text" class="type text"placeholder="Gender(M/F)" name="gender3">
                 </div></td>
             <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Adult/Child">
+                    <input type="text" class="type text"placeholder="Age" name="age3">
                  </div></td>
             <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Email id">
+                    <input type="text" class="type text"placeholder="Email id" name="email3">
                 </div></td>
             <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Number">
+                    <input type="text" class="type text"placeholder="Number" name="num3">
                 </div></td>
           </tr>
           <br></br>
           <tr>
             <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Name">
+                    <input type="text" class="type text"placeholder="Name" name="name4">
                 </div></td>
             <td><div class="input field">
-                   <input type="text" class="type text"placeholder="Gender(M/F)">
+                   <input type="text" class="type text"placeholder="Gender(M/F)" name="gender4">
                </div></td>
             <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Adult/Child">
+                    <input type="text" class="type text"placeholder="Age" name="age4">
                 </div></td>
            <td><div class="input field">
-                   <input type="text" class="type text"placeholder="Email id">
+                   <input type="text" class="type text"placeholder="Email id" name="email4">
                 </div></td>
             <td><div class="input field">
-                   <input type="text" class="type text"placeholder="Number">
+                   <input type="text" class="type text"placeholder="Number" name="num4">
                 </div></td>
         </tr>
         </tbody>
