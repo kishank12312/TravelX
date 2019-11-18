@@ -80,15 +80,6 @@ INSERT INTO TRAINS VALUES
 (9,'ANVT Express','Kolkata','New Dehli','8:30:00',1500,'FC,3A,2A,1A',NULL),
 (10,'Kanyakumari Express','Kanyakumari','Chennai','8:30:00',1500,'FC,CC,2A,1A',NULL);
 
-INSERT INTO USERS VALUES
-('U001','sriram11@gmail.com','pwd1001'),
-('U002','devansh@gmail.com','abcdef'),
-('U003','shrs21@gmail.com','12345678'),
-('U004','shubam@gmail.com','passw'),
-('U005','pranav101@gmail.com','abc123'),
-('U006','jonnie@hotmail.com','13579abc'),
-('U007','aryanab84@gmail.com','xyzxyz');
-
 INSERT INTO STATIONS VALUES
 (1,'Agra',27,78),
 (2,'Jaipur',26,75),
@@ -110,26 +101,6 @@ INSERT INTO STATIONS VALUES
 (18,'Bangalore',12,77),
 (19,'Hyderabad',17,78),
 (20,'Kanpur',6,0);
-
-INSERT INTO PNR VALUES
-('P0001',2,'Active','L2','U001',1,6,'23:00:00',9,20190821),
-('P0002',2,'Active','L3','U001',2,6,'23:00:00',9,20190821),
-('P0003',2,'Active','L4','U001',3,6,'23:00:00',9,20190821),
-('P0004',1,'Active','R44','U002',4,1,'9:45:00',3,20190828),
-('P0005',4,'Active','L22','U003',5,10,'17:15:00',12,20190911),
-('P0006',4,'Active','L23','U003',6,10,'17:15:00',12,20190911),
-('P0007',4,'Active','L24','U003',7,10,'17:15:00',12,20190911),
-('P0008',4,'Active','L25','U003',8,11,'20:30:00',12,20190911),
-('P0009',6,'Cancelled','L31','U004',9,19,'14:30:00',2,20191225),
-('P00010',6,'Cancelled','R31','U004',10,19,'14:30:00',2,20191225),
-('P00011',8,'Active','L11','U005',11,5,'20:50:00',13,20191018),
-('P00012',8,'Active','L12','U005',12,5,'20:50:00',13,20191018),
-('P00013',9,'Active','R47','U005',13,4,'7:25:00',3,20191021),
-('P00014',7,'Cancelled','L41','U006',14,14,'11:45:00',5,20191123),
-('P00015',7,'Active','L42','U006',15,14,'11:45:00',5,20191123),
-('P00016',7,'Active','R42','U006',16,14,'11:45:00',5,20191123),
-('P00017',5,'Active','L37','U007',17,15,'15:40:00',18,20191128),
-('P00018',5,'Active','R37','U007',18,15,'15:40:00',18,20191128);
 
 INSERT INTO ROUTES VALUES
 (1,1,1,'9:30:00','10:00:00'),
@@ -181,5 +152,15 @@ INSERT INTO ROUTES VALUES
 (47,10,18,'22:40:00','22:50:00'),
 (48,10,13,'1:50:00',NULL);
 
+update trains set cf=854 where train_id=7;
+update trains set cf=297 where train_name='Agra Express';
+update trains set cf=622 where train_name='Bagh Express';
+update trains set cf=356 where train_name='Mail Express';
+update trains set cf=298 where train_name='Pinakini Express';
+update trains set cf=469 where train_name='Island Express';
+update trains set cf=520 where train_name='Andhra Express';
+update trains set cf=498 where train_name='BNC Express';
+update trains set cf=689 where train_name='ANVT Express';
+update trains set cf=324 where train_name='Kanyakumari Express';
 
 
