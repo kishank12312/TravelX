@@ -1,10 +1,11 @@
-["update trains set cf=854 where train_id=7;",
-"update trains set cf=297 where train_name='Agra Express';",
-"update trains set cf=622 where train_name='Bagh Express';",
-"update trains set cf=356 where train_name='Mail Express';",
-"update trains set cf=298 where train_name='Pinakini Express';",
-"update trains set cf=469 where train_name='Island Express';",
-"update trains set cf=520 where train_name='Andhra Express';",
-"update trains set cf=498 where train_name='BNC Express';",
-"update trains set cf=689 where train_name='ANVT Express';",
-"update trains set cf=324 where train_name='Kanyakumari Express';"]
+
+update trains set cf=854 where train_id=7;
+update trains set cf=297 where train_name='Agra Express';
+update trains set cf=622 where train_name='Bagh Express';
+update trains set cf=356 where train_name='Mail Express';
+update trains set cf=298 where train_name='Pinakini Express';
+update trains set cf=469 where train_name='Island Express';
+update trains set cf=520 where train_name='Andhra Express';
+update trains set cf=498 where train_name='BNC Express';
+update trains set cf=689 where train_name='ANVT Express';
+update trains set cf=324 where train_name='Kanyakumari Express';
