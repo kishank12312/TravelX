@@ -11,9 +11,9 @@ def index(value,i):
 
 @register.filter
 def station_name(value):
-    import sqlite3
-    con = sqlite3.connect('Database.db')
-    cur = con.cursor() 
+    import mysql.connector
+    con=mysql.connector.connect(host='localhost',user='root',passwd='root',database='travelxdb')
+    cur=con.cursor()
     name = Functions.stationfinder(value,cur)
     return name
 

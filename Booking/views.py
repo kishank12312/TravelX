@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from . import Functions
-import sqlite3
+import mysql.connector
 
 
 fpost,dpost,tpost=None,None,None
@@ -16,7 +16,7 @@ def choice(request,slug):
         return HttpResponse(slug)
 def Data_submit(request):
     global fpost,dpost,tpost
-    con=sqlite3.connect('Database.db')
+    con=mysql.connector.connect(host='localhost',user='root',passwd='root',database='travelxdb')
     cur=con.cursor()
     identifier=Functions.create_identifier()
     fpost,tpost,dpost=request.POST.get('From'),request.POST.get('To'),request.POST.get('Date')
@@ -72,7 +72,7 @@ def Data_submit(request):
     return render(request,'Booking/Search_results.html',{'input_data':[fpost,tpost,dpost],'direct':[train_names,train_ids,departs,arrivals,classes,rn,routes],'indirect':final,'indirectno':no,'identifier':identifier})
 
 def pricedisplay(request):
-    con=sqlite3.connect('Database.db')
+    con=mysql.connector.connect(host='localhost',user='root',passwd='root',database='travelxdb')
     cur=con.cursor()
     method = None
     print(request.POST)

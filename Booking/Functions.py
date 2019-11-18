@@ -1,5 +1,5 @@
 #import mysql.connector
-#con=mysql.connector.connect(host='localhost',user='root',passwd='root',database='travelx')
+#con=mysql.connector.connect(host='localhost',user='root',passwd='root',database='travelxdb')
 #cur=con.cursor()
 
 def route(train_id,cur):

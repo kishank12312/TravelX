@@ -37,7 +37,7 @@ class Pnr(models.Model):
     arrival_time = models.TimeField(db_column='ARRIVAL_TIME', blank=True, null=True)
     seat_number = models.CharField(db_column='SEAT_NUMBER', max_length=10, blank=True, null=True)  # Field name made lowercase.
     passenger_id = models.IntegerField(db_column='PASSENGER_ID', blank=True, null=True) 
-    ticket = models.ImageField(default='default.png', blank=True, null=True)
+    
     class Meta:
         managed = True
         db_table = 'PNR'
