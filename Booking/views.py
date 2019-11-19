@@ -114,22 +114,7 @@ def pricedisplay(request):
 
 
 def passengerinfo(request):
-    if request.method=="post":
-        m1=metadata()
-        m2=metadata()
-        m3=metadata()
-        m4=metadata()
-        num = request.POST.get('numpass')
-        i=1
-        while i <=num:
-            s='name'+i
-            try:
-                n1 = request.POST.get(s)
-            except:
-                return render()
-            
-        
-        
-        
-    
     return render(request,'Booking/Passengerinfo.html',{'DATA':eval(request.POST['data'])})
+
+def bookingconfirm(request):
+    return render(request,'Booking/confirmed.html',{'data':request.POST})

@@ -12,6 +12,22 @@
         <link rel="stylesheet" href="{% static 'materialize.min.css' %}">
         <title>Booking Home</title>
 <style>
+
+.input-field input[type=text]:focus + label {
+    color: rgb(74, 20, 140);
+   }
+   .input-field input:focus + label {
+  color: #4a148c !important;
+   }
+   /* label underline focus color */
+   .row .input-field input:focus {
+       border-bottom: 1px solid #4a148c !important;
+       box-shadow: 0 1px 0 0 #4a148c !important
+   }
+   .input-field .prefix.active {
+      color: #311b92;
+    }
+
 .btn{
   border-radius: 5px;
 }
@@ -37,8 +53,8 @@ input.value{
 </style>
 </head>
 <header>
-    <!--NAVBAR TOP-->
-    <div class="navbar-fixed">
+   <!--NAVBAR TOP-->
+   <div class="navbar-fixed">
     <nav class="nav-wraper z-depth-5 purple darken-4">
       <div class="container">
       <a href="#" class="brand-logo"><span style="font-weight: lighter;">Travel</span><span>X</span>    </a>
@@ -46,132 +62,106 @@ input.value{
         <i class="large material-icons">menu</i>
       </a>   
       <ul class="right hide-on-med-and-down">
-        <li><a href="..\.\Index\Index.html" class="hoverable waves-effect waves-light"><i class="material-icons left">home</i>HOME</a></li>
-        <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">train</i>TRAINS</a></li>
-        <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">language</i>BOOK</a></li>
-        <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">perm_media</i>GALLERY</a></li>
-        <li><a href="..\.\Login\login.html" class="hoverable waves-effect waves-light"><i class="material-icons left">account_circle</i>LOGIN</a></li>
-      </ul>
+          <li><a onclick="return confirm_alert(this);" href="{% url 'home' %}" class="hoverable waves-effect waves-light"><i class="material-icons left">home</i>HOME</a></li>
+          <li><a onclick="return confirm_alert(this);" href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">train</i>TRAINS</a></li>
+          <li><a href="#" data-target="dropdown" class="dropdown-trigger hoverable" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>MY ACCOUNT</a></li>
+          </ul>
+        <ul id='dropdown' class='dropdown-content'>
+            <li><a onclick="return confirm_alert(this);" href="{% url 'logout' %}">LOGOUT</a></li>
+            <li><a onclick="return confirm_alert(this);" href="{% url 'info' %}">ACCOUNT OPTIONS</a></li>
+        </ul>
     </div>
     </nav>
   </div>
   
-    <ul class="sidenav grey darken-4" id="mobile-links">
-      <li><a href="#" class="hoverable white-text waves-effect waves-light">HOME</a></li>
-      <li><a href="#" class="hoverable white-text waves-effect waves-light">TRAINS</a></li>
-      <li><a href="#" class="hoverable white-text waves-effect waves-light">BOOK</a></li>
-      <li><a href="#" class="hoverable white-text waves-effect waves-light">GALLERY</a></li>
-      <li><a href="..\.\Login\login.html" class="hoverable white-text waves-effect waves-light">LOGIN</a></li>
-    </ul>
+<ul class="sidenav grey darken-4" id="mobile-links">
+  <div class="user-view">
+      <div class="form-field center-align"><i class="material-icons large center-align white-text">account_circle</i><br>
+      <h4 class=" white-text">{{ request.user.username }}</h4>
+      <h5 style="font-weight: lighter;" class="white-text">{{ request.user.email }}</h5><hr></div>
+  </div>
+  <li><a onclick="return confirm_alert(this);" href="{% url 'home' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">HOME</a></li>
+  <li><a onclick="return confirm_alert(this);" href="#" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">TRAINS</a></li>
+  <li><a onclick="return confirm_alert(this);" href="{% url 'logout' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%"">LOGOUT</a></li>
+  <li><a onclick="return confirm_alert(this);" href="{% url 'info' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%"">ACCOUNT OPTIONS</a></li>
+</ul>
 </header>
 
 
 
-<body>
-<form action="#" method="post">
-  {% csrf_token %}
-    <div class="container"><table class="centered">
-     
-      <br>
-        <b>Train Name</b> : {{DATA.names.0}}<br><br id='space'>
-        <b>Train ID</b> : {{DATA.names.1}}<br><br id='space'>
-        <b>From</b> : {{ DATA.snames.0 }}<br><br id='space'>
-        <b>To</b> : {{DATA.snames.1}}<br><br id='space'>
-        <b>Departure Time</b> : Departing from {{DATA.snames.0}} at {{ DATA.da.0 }} hrs<br><br id='space'> 
-        <b>Arrival Time</b> : Arriving in {{DATA.snames.1}} at {{ DATA.da.1 }} hrs<br><br id='space'>
-        <b>Railway Class</b> : {{DATA.c}}<br style="line-height: 0px;">
-      </h5>
-        <thead>
-          <tr>
-              <th>Passenger Name</th>
-              <th>Gender</th>
-              <th>Age</th>
-              <th>Email id</th>
-              <th>Phone number</th>
-          </tr>
-        </thead>
 
-        <tbody>
-            <form action="#" method="post">
-                {% csrf_token %}
-          <tr>
-            <td><div class="input field">
-                <input type="text" class="type text" placeholder="Name" name="name1">
-            </div></td>
-            <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Gender(M/F)" name="gender1">
-                </div></td>
-            <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Age" name="age1">
-                </div></td>
-            <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Email id" name="email1">
-                </div></td>
-             <td><div class="input field">
-                     <input type="text" class="type text"placeholder="Number" name="num1">
-                </div></td>
-          </tr>
-          <br></br>
-          <tr>
-            <td><div class="input field">
-                     <input type="text" class="type text"placeholder="Name" name="name2">
-                 </div></td>
-            <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Gender(M/F)" name="gender2">
-                </div></td>
-            <td><div class="input field">
-                     <input type="text" class="type text"placeholder="Age" name="age2">
-                 </div></td>
-            <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Email id" name="email2">
-                </div></td>
-            <td><div class="input field">
-                     <input type="text" class="type text"placeholder="Number" name="num2">
-                </div></td>
-          </tr>
-          <br></br>
-          <tr>
-             <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Name" name="name3">
-                 </div></td>
-            <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Gender(M/F)" name="gender3">
-                </div></td>
-            <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Age" name="age3">
-                 </div></td>
-            <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Email id" name="email3">
-                </div></td>
-            <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Number" name="num3">
-                </div></td>
-          </tr>
-          <br></br>
-          <tr>
-            <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Name" name="name4">
-                </div></td>
-            <td><div class="input field">
-                   <input type="text" class="type text"placeholder="Gender(M/F)" name="gender4">
-               </div></td>
-            <td><div class="input field">
-                    <input type="text" class="type text"placeholder="Age" name="age4">
-                </div></td>
-           <td><div class="input field">
-                   <input type="text" class="type text"placeholder="Email id" name="email4">
-                </div></td>
-            <td><div class="input field">
-                   <input type="text" class="type text"placeholder="Number" name="num4">
-                </div></td>
-        </tr>
-        </tbody>
-      </table></div>
-      <br></br>
-      <div id="container1"><button class="btn-large waves-effect waves-light purple darken-4" type="submit" name="action">Submit
-            <i class="material-icons right">send</i>
-          </button>
-        </div>
+<body>
+<div class="container"><table class="centered">
+ <br>{{DATA}}
+ {% if DATA.method == 'Indirect' %}
+  <br>
+    <b>Method of travel</b> : Indirect Train<br><br id='space'>
+    <b>Train1 Name</b> : {{DATA.names.0}}<br><br id='space'>
+    <b>Train1 ID</b> : {{DATA.names.1}}<br><br id='space'>
+    <b>Train2 Name</b> : {{DATA.names.2}}<br><br id='space'>
+    <b>Train2 ID</b> : {{DATA.names.3}}<br><br id='space'>
+    <b>Route</b> : From {{ DATA.snames.0 }} to {{ DATA.snames.1 }} via {{ DATA.j }}<br><br id='space'>
+    <b>Departure Time</b> : Departing from {{ DATA.snames.0 }} at {{ DATA.da.0 }} hrs<br><br id='space'> 
+    <b>Arrival Time</b> : Arriving in {{ DATA.snames.1 }} at {{ DATA.da.1 }} hrs<br><br id='space'>
+    <b>Railway Class</b> : {{DATA.c}}<br style="line-height: 0px;">
+  </h5>
+  {% else %}
+  <br>
+    <b>Method of travel</b> : Direct Train<br><br id='space'>
+    <b>Train Name</b> : {{ DATA.names.0 }}<br><br id='space'>
+    <b>Train ID</b> : {{ DATA.names.1 }}<br><br id='space'>
+    <b>From</b> : {{ DATA.snames.0 }}<br><br id='space'>
+    <b>To</b> : {{ DATA.snames.1 }}<br><br id='space'>
+    <b>Departure Time</b> : Departing from {{ DATA.snames.0 }} at {{ DATA.da.0 }} hrs<br><br id='space'> 
+    <b>Arrival Time</b> : Arriving in {{ DATA.snames.1 }} at {{ DATA.da.1 }} hrs<br><br id='space'>
+    <b>Railway Class</b> : {{ DATA.c }}<br style="line-height: 0px;">
+  {% endif %}
+  <br><br>
+  <h4 style="font-weight: lighter">Please enter the details of the passengers:</h4><br><br>
+  <thead>
+    <tr>
+        <th>Passenger Name</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Email id</th>
+        <th>Phone number</th>
+    </tr>
+  </thead>
+  <tbody>
+  <form action="/Booking/booking-confirmed/"  method="post">{% csrf_token %}
+    <input type="hidden" value="{{ DATA }}" name="datat">
+    <tr>
+      <td><div class="input-field inline">
+        <label class="black-text" for="name">Name</label>
+        <input id="name" type="text" class="type text" name="name1" required>
+      </div></td>
+      <td><div class="input-field inline">
+        <label class="black-text" for="gender">Gender</label>
+        <input id="gender" type="text" class="type text" name="gender1" required>
+      </div></td>
+      <td><div class="input-field inline">
+        <label class="black-text" for="age">Age</label>
+        <input id="age" type="text" class="type text" name="age1" required>
+      </div></td>
+      <td><div class="input-field inline">
+        <label class="black-text" for="email">Email</label>
+        <input id="email"  type="text" class="type text" name="email1" required>
+      </div></td>
+       <td><div class="input-field inline">
+        <label class="black-text" for="number">Phone Number</label> 
+        <input id="number" type="text" class="type text" name="num1" required>
+        </div></td>
+    </tr>
+    
+  </tbody>
+</table>
+<br></br>
+</div><!--Container div-->
+  <br></br>
+  <div id="container1"><button class="btn-large waves-effect waves-light purple darken-4" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
 <br></br>
 </form>
 </body>
@@ -202,4 +192,10 @@ input.value{
       $("select[required]").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
       $('.collapsible').collapsible();
     });
+</script>
+
+<script type="text/javascript">
+  function confirm_alert(node) {
+      return confirm("Are you sure you want to leave this page? You will have to start your booking again.");
+  }
 </script>
