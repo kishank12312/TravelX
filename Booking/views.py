@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from . import Functions
 import mysql.connector
+from .models import Pnr,Passengers
+from datetime import date
 
 
 fpost,dpost,tpost=None,None,None
@@ -69,7 +71,7 @@ def Data_submit(request):
         name=Functions.namefinder(train_ids[i],cur);train_names.append(name)
         clses=Functions.class_finder(train_ids[i],cur);classes.append(clses)
     #---------------------------------------------------------------------------------------------------#                        
-    return render(request,'Booking/Search_results.html',{'input_data':[fpost,tpost,dpost],'direct':[train_names,train_ids,departs,arrivals,classes,rn,routes],'indirect':final,'indirectno':no,'identifier':identifier})
+    return render(request,'Booking/Search_results.html',{'input_data':[fpost,tpost,dpost],'direct':[train_names,train_ids,departs,arrivals,classes,rn,routes],'indirect':final,'indirectno':no,'identifier':identifier,'date':date})
 
 def pricedisplay(request):
     con=mysql.connector.connect(host='localhost',user='root',passwd='root',database='travelxdb')
@@ -109,12 +111,22 @@ def pricedisplay(request):
         junc = Functions.stationfinder(int(request.POST.get('choice')[2]),cur)
     snames = [Functions.stationfinder(f,cur),Functions.stationfinder(t,cur)]
     cost = round(cost,2)
-    return render(request,'Booking/direct-price.html',{'data':{'snames':snames,'method':method,'cost':cost,'da':request.POST.get('da').split(','),'c':request.POST.get('Classes'),'names':names,'j':junc}})
+    date = request.POST.get('date')
+    return render(request,'Booking/direct-price.html',{'data':{'snames':snames,'method':method,'cost':cost,'da':request.POST.get('da').split(','),'c':request.POST.get('Classes'),'names':names,'j':junc},'date':date})
    # return render(request,'Booking/direct-price.html',{'data':[{'snames':snames,'method':method,'cost':cost,'da':request.POST.get('da').split(','),'c':request.POST.get('Classes'),'names':names,'j':junc}]})
 
 
 def passengerinfo(request):
-    return render(request,'Booking/Passengerinfo.html',{'DATA':eval(request.POST['data'])})
+    return render(request,'Booking/Passengerinfo.html',{'date':request.POST.get('date'),'DATA':eval(request.POST['data']),'d':request.POST['Classes']})
 
 def bookingconfirm(request):
+    today = str(date.today().year)+'-'+str(date.today().month)+'-'+str(date.today().day)
+    username = request.user.username
+    status = 'Active'
+    fromcity = eval(request.POST['datat'])['snames'][0]
+    tocity = eval(request.POST['datat'])['snames'][1]
+    typeofjourney = eval(request.POST['datat'])['method']
+    date = request.POST.get('date')
+    date = date[0:4]+'-'+date[]
+    
     return render(request,'Booking/confirmed.html',{'data':request.POST})

@@ -118,6 +118,7 @@ input.value{
               <td class="center-align">{{ direct.3|index:i }}</td>
               <td  id="classes"><div class="browser-default">
                 <form action="/Booking/direct-price/" method="POST">{% csrf_token %}
+                <input type="hidden" name="date" value="{{ date }}"></input>
                 <input type="hidden" name="choice" value="{{ direct.1|index:i }}"></input>
                 <input type="hidden" name='identifier' value='{{ identifier }}'></input>
                 <input type="hidden" name='da' value='{{ direct.2|index:i }},{{ direct.3|index:i }}'></input>

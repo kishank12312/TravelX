@@ -94,6 +94,8 @@
     <div class="col l4">
     <form action="/Booking/passenger-info/" method="POST">{% csrf_token %}
       <input type="hidden" name="data" value="{{ data }}">
+      <input type="hidden" name="date" value="{{ date }}">
+
         <select class="form" name="Classes" required>
           <option value="" disabled selected>Choose</option>
           <option value="1">1</option>
@@ -124,7 +126,9 @@
     <div class="col l3">Number of Passengers :</div>
     <div class="col l4">
     <form action="/Booking/passenger-info/" method="POST">{% csrf_token %}
-      <input type="hidden" name="data" value="{{ data }}">  
+      <input type="hidden" name="data" value="{{ data }}">
+      <input type="hidden" name="date" value="{{ date }}">
+
       <select class="form" name="Classes" required>
           <option value="" disabled selected>Choose</option>
           <option value="1">1</option>

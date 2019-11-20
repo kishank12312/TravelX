@@ -28,6 +28,7 @@ def direct_check(value):
 
 @register.filter
 def trange(value):
+    value=int(value)
     l=[]
     for i in range(value):
         l.append(i)

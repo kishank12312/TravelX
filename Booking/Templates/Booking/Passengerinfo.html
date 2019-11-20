@@ -92,7 +92,9 @@ input.value{
 
 <body>
 <div class="container"><table class="centered">
- <br>{{DATA}}
+ <br>
+ 
+ {{ DATA }}
  {% if DATA.method == 'Indirect' %}
   <br>
     <b>Method of travel</b> : Indirect Train<br><br id='space'>
@@ -130,29 +132,32 @@ input.value{
   <tbody>
   <form action="/Booking/booking-confirmed/"  method="post">{% csrf_token %}
     <input type="hidden" value="{{ DATA }}" name="datat">
+    <input type="hidden" value="{{ date }}" name="date">
+    <input type="hidden" value="{{ d }}" name="passengerno">
+    {% for i in d|trange %}
     <tr>
       <td><div class="input-field inline">
         <label class="black-text" for="name">Name</label>
-        <input id="name" type="text" class="type text" name="name1" required>
+        <input id="name" type="text" class="type text" name="name{{i}}" required>
       </div></td>
       <td><div class="input-field inline">
         <label class="black-text" for="gender">Gender</label>
-        <input id="gender" type="text" class="type text" name="gender1" required>
+        <input id="gender" type="text" class="type text" name="gender{{i}}" required>
       </div></td>
       <td><div class="input-field inline">
         <label class="black-text" for="age">Age</label>
-        <input id="age" type="text" class="type text" name="age1" required>
+        <input id="age" type="text" class="type text" name="age{{i}}" required>
       </div></td>
       <td><div class="input-field inline">
         <label class="black-text" for="email">Email</label>
-        <input id="email"  type="text" class="type text" name="email1" required>
+        <input id="email"  type="text" class="type text" name="email{{i}}" required>
       </div></td>
        <td><div class="input-field inline">
         <label class="black-text" for="number">Phone Number</label> 
-        <input id="number" type="text" class="type text" name="num1" required>
+        <input id="number" type="text" class="type text" name="num{{i}}" required>
         </div></td>
     </tr>
-    
+    {% endfor %}
   </tbody>
 </table>
 <br></br>
