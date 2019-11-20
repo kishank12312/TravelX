@@ -127,6 +127,7 @@ def bookingconfirm(request):
     tocity = eval(request.POST['datat'])['snames'][1]
     typeofjourney = eval(request.POST['datat'])['method']
     date = request.POST.get('date')
-    date = date[0:4]+'-'+date[]
-    
+    date = date[0:4]+'-'+date[4:6]+'-'+date[6:]
+
+     
     return render(request,'Booking/confirmed.html',{'data':request.POST})

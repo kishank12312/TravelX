@@ -123,3 +123,18 @@ def stationfinder(station_id,cur):
     cur.execute(sql)
     res=cur.fetchall()
     return res[0][0]
+
+def pnrgenerator(cur):
+    sql = 'select pnr_number from pnr ORDER BY booking-number DESC LIMIT 1;'
+    cur.execute(sql);res=cur.fetchall()
+    lastpnr =  res[0][0]
+    number = int(lastpnr[1:])
+    number+=1
+    newpnr = lastpnr[0]+str(number)
+    return newpnr
+def bookingno(cur):
+    sql = 'select booking-number from pnr ORDER BY booking-number DESC LIMIT 1;'
+    cur.execute(sql);res=cur.fetchall()
+    lastpnr =  res[0][0]
+    newbkno = lastpnr+1
+    return newbkno
