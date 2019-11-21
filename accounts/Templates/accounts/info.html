@@ -67,7 +67,6 @@
     <li><a href="{% url 'home' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">home</i>HOME</a></li>
     <li><a href="#" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">train</i>TRAINS</a></li>
     <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">language</i>BOOKING</a></li>
-    <li><a href="..\.\Login\login.html" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>LOGIN</a></li>
   </ul>
 </div>
 </nav>
@@ -89,12 +88,14 @@
 
 <div class="container" id="contained">
     <div class="card z-depth-0">
+    <hr style="height:1px;border:none;color:#333;background-color:rgb(219, 215, 215);">
     <div class="row">
         <div class="col l1"><i class="material-icons medium">account_circle</i></div>
         <div class="col l6 left-align"><h3 style="font-weight: lighter; display: inline; padding-bottom: 100%">{{ request.user.username }}</h3></div>
         <div class="col l3 "><a href="" class="btn purple darken-4 hoverable waves-effect" style="margin-top: 5%">Change Password</a></div>
         <div class="col l1"><a href="{% url 'logout' %}" class="btn purple darken-4 center-align hoverable waves-effect" style="margin-top: 20%"> Logout</a></div>
     </div>
+    <hr style="height:1px;border:none;color:#333;background-color:rgb(219, 215, 215);">
 </div>
 <br>
 <h4 style="font-weight: lighter;">Past Bookings:</h4>
@@ -112,18 +113,10 @@
         <th class="center-align">Cancel</th>
     </tr>
   </thead>
-
-  <tbody>
-    <tr>
-      <td class="center-align">Alvin</td>
-      <td class="center-align">Alvin</td>
-      <td class="center-align">Eclair</td>
-      <td class="center-align">Eclair</td>
-      <td class="center-align">$0.87</td>
-      <td class="center-align">$0.87</td>
-      <td class="center-align"><a href="" class="btn blue hoverable waves-effect">View Ticket</a></td>
-      <td class="center-align"><a href="" class="btn blue hoverable waves-effect">Cancel Ticket</a></td>
-    </tr>
+{% for i in pnrs %}
+{{ i.pnr_number }}
+{% endfor %}
+<tbody>
     <tr>
       <td class="center-align">Alvin</td>
       <td class="center-align">Alvin</td>

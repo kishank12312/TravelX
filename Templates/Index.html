@@ -89,7 +89,7 @@
       <li><a href="#" data-target="dropdown" class="dropdown-trigger hoverable" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>MY ACCOUNT</a></li>
       {% else %}
       <li><a href="{% url 'login' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>LOGIN</a></li>
-      <li><a href="{% url 'capture' slug='accounts' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>SIGN UP</a></li>
+      <li><a href="{% url 'capture' slug='accounts' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">add_circle</i>SIGN UP</a></li>
       {% endif %}
     </ul>
     <ul id='dropdown' class='dropdown-content'>
@@ -241,7 +241,7 @@
           <div class="col s6 l2 push-l2">
               <div class="center-align"><i class="material-icons large white-text">people</i></div>
               <h4 class="white-text center-align" style="font-weight: lighter; font-size: 250%">Multiple Booking</h4>
-              <p class="white-text center-align" style="font-size: 150%; font-weight: lighter">Thanks to the efficient database design, you can book tickets for multiple people from just one account</p>
+              <p class="white-text center-align" style="font-size: 150%; font-weight: lighter">Thanks to the efficient database design, you can book tickets for upto 4 people from just one booking</p>
           </div>
           <div class="col s6 l2 push-l2">
             <div class="center-align"><i class="material-icons large white-text">money_off</i></div>
@@ -256,7 +256,7 @@
           <div class="col s6 l2 push-l2">
             <div class="center-align"><i class="material-icons large white-text">phone</i></div>
             <h4 class="white-text center-align" style="font-weight: lighter; font-size: 250%">Booking Options</h4>
-            <p class="white-text center-align" style="font-size: 150%; font-weight: lighter">Head over to the Booking tab for:<br><br>Booking tickets<br>Reservations<br>Ticket status<br>Cancel Tickets</p>
+            <p class="white-text center-align" style="font-size: 150%; font-weight: lighter">Head over to the Booking tab for booking tickets or for cancelling already booked Tickets</p>
           </div>
         </div>
       </div>

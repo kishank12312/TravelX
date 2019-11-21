@@ -149,23 +149,26 @@ def bookingconfirm(request):
     arrivaltime = eval(request.POST['datat'])['da'][1]
     
     seatnumbers = Functions.seatnumber(eval(request.POST['passengerno']))
+    print(eval(request.POST['passengerno']))
     for i in range(eval(request.POST['passengerno'])):
         passenger = Passengers()
         pid = Functions.pidgenerator(cur)
-        passenger.passenger_id = pid 
+        passenger.passenger_id = pid+i
         passenger.gender = request.POST['gender'+str(i)]
         passenger.passenger_name = request.POST['name'+str(i)]
         passenger.age = int(request.POST['age'+str(i)])
         passenger.phone_number = int(request.POST['num'+str(i)])
         passenger.email = request.POST['email'+str(i)]
-        passenger.save()
+        passenger.save(force_insert=True)
+        print(dateofjourney,today)
 
+        booking_number = Functions.bookingno(cur)
         pnr = Pnr()
-        pnr.pnr_number = Functions.pnrgenerator(cur)
-        pnr.passenger_id = pid
-        pnr.booking_number = booking_number
+        pnr.pnr_number = Functions.pnrgenerator(cur)[0]+'0000'+str(int(Functions.pnrgenerator(cur)[1:])+i)
+        pnr.passenger_id = pid+i
+        pnr.booking_number = booking_number+i
         pnr.dateofbooking = today
-        pnr.user_id = username
+        pnr.user_name = username
         pnr.status = status
         pnr.fromcity = fromcity
         pnr.tocity = tocity
@@ -178,6 +181,6 @@ def bookingconfirm(request):
         pnr.departure_time = departuretime
         pnr.arrival_time = arrivaltime
         pnr.seat_number = seatnumbers[i]
-        pnr.save()
+        pnr.save(force_insert=True)
 
     return render(request,'Booking/confirmed.html',{'data':request.POST})

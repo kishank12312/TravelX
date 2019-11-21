@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login,authenticate,logout
 from accounts.forms import RegistrationForm,LoginForm
 from . import functions
+from Booking.models import Pnr,Passengers
 
 
 def registration_view(request):
@@ -55,4 +56,5 @@ def login_view(request):
     return render(request,'accounts/login.html',context)
 
 def info_view(request):
-    return render(request,'accounts/info.html')
+    pnrs = Pnr.objects.filter(user_name=request.user.username)
+    return render(request,'accounts/info.html',{'pnrs':pnrs})

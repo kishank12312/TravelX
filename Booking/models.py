@@ -14,7 +14,7 @@ class Passengers(models.Model):
     passenger_name = models.CharField(db_column='PASSENGER_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
     age = models.IntegerField(db_column='AGE', blank=True, null=True)  # Field name made lowercase.
     phone_number = models.BigIntegerField(db_column='PHONE_NUMBER', blank=True, null=True)  # Field name made lowercase.
-    email = models.EmailField(verbose_name = 'email', max_length = 250, unique = True, null=True)
+    email = models.EmailField(verbose_name = 'email', max_length = 250, null=True)
     
     class Meta:
         managed = True

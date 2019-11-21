@@ -70,9 +70,9 @@ INSERT INTO PASSENGERS VALUES
 
 INSERT INTO TRAINS VALUES
 (1,'Agra Express','Agra Cantt','New Dehli','10:00:00',2100,'FC,SL,CC',NULL),
-(2,'Bagh Express','Kolkata','Mumbai','8:00:00',1800,'2S,SL,CC,FC,3A',NULL),
+(2,'Bagh Express','Kolkata','Mumbai','8:00:00',1800,'SL,CC,FC,3A',NULL),
 (3,'Mail Express','New Delhi','Ahmedabad','16:00:00',2500,'FC,SL,3A,2A,1A',NULL),
-(4,'Pinakini Express','Vijayawada','Chennai','17:30:00',2500,'2S,SL,CC,FC,3A',NULL),
+(4,'Pinakini Express','Vijayawada','Chennai','17:30:00',2500,'SL,CC,FC,3A',NULL),
 (5,'Island Express','Kanyakumari','Bangalore','11:15:00',2250,'FC,SL,CC',NULL),
 (6,'Andhra Express','Hyderabad','New Dehli','15:00:00',3000,'FC,SL,3A,2A,1A',NULL),
 (7,'Rajdhani express','New Delhi','Kanyakumari','12:00:00',3000,'CC,3A,2A,1A',NULL),
@@ -163,4 +163,5 @@ update trains set cf=498 where train_name='BNC Express';
 update trains set cf=689 where train_name='ANVT Express';
 update trains set cf=324 where train_name='Kanyakumari Express';
 
-
+insert into pnr values('P00000',NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+insert into passengers values(0,NULL,NULL,NULL,NULL,NULL);

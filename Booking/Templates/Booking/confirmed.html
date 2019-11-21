@@ -1,11 +1,112 @@
+{% load static from staticfiles %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <!--Import Google Icon Font-->
+    <link href="{% static 'css/material-icons.css' %}" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'materialize.min.css' %}">
+    <title>Booking Home</title>
+
+<style>
+@keyframes scale {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+</style>
+
 </head>
+
+
 <body>
-    {{ data }}
-</body>
-</html>
+  <header>
+  <!--NAVBAR TOP-->
+  <div class="navbar-fixed">
+  <nav class="nav-wraper z-depth-5 purple darken-4">
+    <div class="container">
+    <a href="#" class="brand-logo">TravelX</a>
+    <a href="#" class="sidenav-trigger btn-floating btn-large waves-effect waves-light transparent z-depth-0" data-target="mobile-links">
+      <i class="large material-icons">menu</i>
+    </a>   
+    <ul class="right hide-on-med-and-down">
+      <li><a href="{% url 'home' %}" class="hoverable waves-effect waves-light"><i class="material-icons left">home</i>HOME</a></li>
+      <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">train</i>TRAINS</a></li>
+      <li><a href="#" data-target="dropdown" class="dropdown-trigger hoverable" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>MY ACCOUNT</a></li>
+      </ul>
+    <ul id='dropdown' class='dropdown-content'>
+        <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+        <li><a href="{% url 'info' %}">ACCOUNT OPTIONS</a></li>
+    </ul>
+  </div>
+  </nav>
+</div>
+
+<ul class="sidenav grey darken-4" id="mobile-links">
+  <div class="user-view">
+      <div class="form-field center-align"><i class="material-icons large center-align white-text">account_circle</i><br>
+      <h4 class=" white-text">{{ request.user.username }}</h4>
+      <h5 style="font-weight: lighter;" class="white-text">{{ request.user.email }}</h5><hr></div>
+  </div>
+  <li><a href="{% url 'home' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">HOME</a></li>
+  <li><a href="#" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">TRAINS</a></li>
+  <li><a href="{% url 'logout' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%"">LOGOUT</a></li>
+  <li><a href="{% url 'info' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%"">ACCOUNT OPTIONS</a></li>
+</ul>
+  </header>
+  <!--END OF NAVBAR-->
+<br><br><br><br><br><br><br><br>
+
+<div class="container center-align">
+<i style="color: greenyellow;" class="material-icons large">check_circle</i>
+<h3 style="font-weight: lighter;">Payment Confirmed!</h3>
+<h4 style="font-weight: lighter;">Your Booking has been confirmed. You may download tickets from below:</h4>
+{% for i in pnrs %}
+{{ i.pnr_number }}
+{% endfor %}
+</div>
+
+
+
+
+
+
+
+<footer class="page-footer grey darken-4">
+    <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text"><span style="font-weight: lighter;">Travel</span><span>X</span></h5>
+        <p class="grey-text text-lighten-4"><span>A simple and easy to use railway booking site.</span></p>
+      </div>
+    </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2019 Copyright TravelX, all right reserved.
+      </div>
+    </div>
+</footer>
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------->
+<script src="{% static 'JS/jquery.js' %}"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="{% static 'JS/materialize.min.js' %}"></script>
+
+<script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+      $('.dropdown-trigger').dropdown();
+      $('select').formSelect();
+      $("select[required]").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
+      $('.collapsible').collapsible();
+    });
+</script>
+    
