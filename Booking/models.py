@@ -9,21 +9,23 @@ from django.db import models
 
 
 class Passengers(models.Model):
-    passenger_id = models.AutoField(db_column='PASSENGER_ID', primary_key=True, blank=True)  # Field name made lowercase.
+    passenger_id = models.IntegerField(db_column='PASSENGER_ID', primary_key=True, blank=True)  # Field name made lowercase.
+    gender = models.CharField(db_column='GENDER', max_length=1, blank=True, null=True)
     passenger_name = models.CharField(db_column='PASSENGER_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
     age = models.IntegerField(db_column='AGE', blank=True, null=True)  # Field name made lowercase.
     phone_number = models.BigIntegerField(db_column='PHONE_NUMBER', blank=True, null=True)  # Field name made lowercase.
     email = models.EmailField(verbose_name = 'email', max_length = 250, unique = True, null=True)
+    
     class Meta:
         managed = True
         db_table = 'PASSENGERS'
 
 
 class Pnr(models.Model):
-    pnr_number = models.AutoField(db_column='PNR_NUMBER', primary_key=True, blank=True)  # Field name made lowercase.
-    booking_number = models.IntegerField(db_column='booking-number', unique=True, blank=True)
+    pnr_number = models.CharField(db_column='PNR_NUMBER', primary_key=True, blank=True, max_length=15)  # Field name made lowercase.
+    booking_number = models.IntegerField(db_column='booking_number', unique=True, blank=True)
     dateofbooking = models.DateField(db_column='dateofbooking', blank=True, null=True, max_length=200)
-    user_id = models.CharField(db_column='USER_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    user_name = models.CharField(db_column='USER_NAME', max_length=20, blank=True, null=True)  # Field name made lowercase.
     status = models.CharField(db_column='STATUS', blank=True, null=True, max_length=200)  # Field name made lowercase.
     fromcity = models.CharField(db_column='fromcity', blank=True, null=True, max_length=200)
     tocity = models.CharField(db_column='tocity', blank=True, null=True, max_length=200)

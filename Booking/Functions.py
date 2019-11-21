@@ -26,6 +26,14 @@ def namefinder(train_id,cur):
     train_name=res[0][0]
     return train_name
 
+def idfinder(train_name,cur):
+    '''Takes int(train id) and returns the train name as str'''
+    sql='select train_id from trains where train_name="{}";'.format(train_name)
+    cur.execute(sql)
+    res=cur.fetchall()
+    train_id=res[0][0]
+    return train_id
+
 def timings(train_id,f,t,cur):
     '''Returns tuple of strings as (arrival,departure)'''
     sql1='select departure_time from routes where train_id={} and station_id={};'
@@ -124,16 +132,30 @@ def stationfinder(station_id,cur):
     res=cur.fetchall()
     return res[0][0]
 
+def pid(name,cur):
+    sql='select passenger_id from passengers where passenger_name="{}";'.format(name)
+    cur.execute(sql)
+    res=cur.fetchall()
+    return res[0][0]
+
+
 def pnrgenerator(cur):
-    sql = 'select pnr_number from pnr ORDER BY booking-number DESC LIMIT 1;'
+    sql = 'select pnr_number from pnr ORDER BY booking_number DESC LIMIT 1;'
     cur.execute(sql);res=cur.fetchall()
     lastpnr =  res[0][0]
     number = int(lastpnr[1:])
     number+=1
-    newpnr = lastpnr[0]+str(number)
+    newpnr = lastpnr[0]+'0000'+str(number)
     return newpnr
+def pidgenerator(cur):
+    sql = 'select passenger_id from passengers ORDER BY passenger_id DESC LIMIT 1;'
+    cur.execute(sql);res=cur.fetchall()
+    number = res[0][0]
+    number+=1
+    return number
+
 def bookingno(cur):
-    sql = 'select booking-number from pnr ORDER BY booking-number DESC LIMIT 1;'
+    sql = 'select booking_number from pnr ORDER BY booking_number DESC LIMIT 1;'
     cur.execute(sql);res=cur.fetchall()
     lastpnr =  res[0][0]
     newbkno = lastpnr+1

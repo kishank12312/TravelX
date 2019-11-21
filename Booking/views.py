@@ -124,6 +124,7 @@ def bookingconfirm(request):
     cur=con.cursor()
     
     pnrnumber = Functions.pnrgenerator(cur)
+    print(pnrnumber)
     booking_number = Functions.bookingno(cur)
     today = str(date.today().year)+'-'+str(date.today().month)+'-'+str(date.today().day)
     username = request.user.username
@@ -131,20 +132,52 @@ def bookingconfirm(request):
     fromcity = eval(request.POST['datat'])['snames'][0]
     tocity = eval(request.POST['datat'])['snames'][1]
     typeofjourney = eval(request.POST['datat'])['method']
-    date = request.POST.get('date')
-    dateofjourney = date[0:4]+'-'+date[4:6]+'-'+date[6:]
-    if method=="direct":
-        train1=eval(request.POST['datat'])['names'][0]
+    date1 = request.POST.get('date')
+    dateofjourney = date1[0:4]+'-'+date1[4:6]+'-'+date1[6:]
+    if typeofjourney=="Direct":
+        train1=Functions.idfinder(eval(request.POST['datat'])['names'][0],cur)
         junction=None
         train2=None
+        
     else:
-        train1=eval(request.POST['datat'])['names'][0]
+        #print(eval(request.POST['datat']))
+        train1=Functions.idfinder(eval(request.POST['datat'])['names'][0],cur)
         junction=Functions.convert_id(eval(request.POST['datat'])['j'],'agra',cur)[0]
-        train2=eval(request.POST['datat'])['names'][2]
+        train2=Functions.idfinder(eval(request.POST['datat'])['names'][2],cur)
     rclass = eval(request.POST['datat'])['c']
     departuretime = eval(request.POST['datat'])['da'][0]
     arrivaltime = eval(request.POST['datat'])['da'][1]
-    rclass = eval(request.POST['datat'])['c']
-
     
+    seatnumbers = Functions.seatnumber(eval(request.POST['passengerno']))
+    for i in range(eval(request.POST['passengerno'])):
+        passenger = Passengers()
+        pid = Functions.pidgenerator(cur)
+        passenger.passenger_id = pid 
+        passenger.gender = request.POST['gender'+str(i)]
+        passenger.passenger_name = request.POST['name'+str(i)]
+        passenger.age = int(request.POST['age'+str(i)])
+        passenger.phone_number = int(request.POST['num'+str(i)])
+        passenger.email = request.POST['email'+str(i)]
+        passenger.save()
+
+        pnr = Pnr()
+        pnr.pnr_number = Functions.pnrgenerator(cur)
+        pnr.passenger_id = pid
+        pnr.booking_number = booking_number
+        pnr.dateofbooking = today
+        pnr.user_id = username
+        pnr.status = status
+        pnr.fromcity = fromcity
+        pnr.tocity = tocity
+        pnr.typeofjourney = typeofjourney 
+        pnr.dateofjourney = dateofjourney
+        pnr.train1_id = train1
+        pnr.junction = junction
+        pnr.train2_id = train2
+        pnr.rclass = rclass
+        pnr.departure_time = departuretime
+        pnr.arrival_time = arrivaltime
+        pnr.seat_number = seatnumbers[i]
+        pnr.save()
+
     return render(request,'Booking/confirmed.html',{'data':request.POST})
