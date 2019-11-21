@@ -133,6 +133,14 @@ def bookingconfirm(request):
     typeofjourney = eval(request.POST['datat'])['method']
     date = request.POST.get('date')
     dateofjourney = date[0:4]+'-'+date[4:6]+'-'+date[6:]
+    if method=="direct":
+        train1=eval(request.POST['datat'])['names'][0]
+        junction=None
+        train2=None
+    else:
+        train1=eval(request.POST['datat'])['names'][0]
+        junction=Functions.convert_id(eval(request.POST['datat'])['j'],'agra',cur)[0]
+        train2=eval(request.POST['datat'])['names'][2]
     rclass = eval(request.POST['datat'])['c']
     departuretime = eval(request.POST['datat'])['da'][0]
     arrivaltime = eval(request.POST['datat'])['da'][1]
