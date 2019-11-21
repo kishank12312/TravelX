@@ -120,6 +120,11 @@ def passengerinfo(request):
     return render(request,'Booking/Passengerinfo.html',{'date':request.POST.get('date'),'DATA':eval(request.POST['data']),'d':request.POST['Classes']})
 
 def bookingconfirm(request):
+    con=mysql.connector.connect(host='localhost',user='root',passwd='root',database='travelxdb')
+    cur=con.cursor()
+    
+    pnrnumber = Functions.pnrgenerator(cur)
+    booking_number = Functions.bookingno(cur)
     today = str(date.today().year)+'-'+str(date.today().month)+'-'+str(date.today().day)
     username = request.user.username
     status = 'Active'
@@ -127,7 +132,11 @@ def bookingconfirm(request):
     tocity = eval(request.POST['datat'])['snames'][1]
     typeofjourney = eval(request.POST['datat'])['method']
     date = request.POST.get('date')
-    date = date[0:4]+'-'+date[4:6]+'-'+date[6:]
+    dateofjourney = date[0:4]+'-'+date[4:6]+'-'+date[6:]
+    rclass = eval(request.POST['datat'])['c']
+    departuretime = eval(request.POST['datat'])['da'][0]
+    arrivaltime = eval(request.POST['datat'])['da'][1]
+    rclass = eval(request.POST['datat'])['c']
 
-     
+    
     return render(request,'Booking/confirmed.html',{'data':request.POST})

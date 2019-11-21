@@ -138,3 +138,19 @@ def bookingno(cur):
     lastpnr =  res[0][0]
     newbkno = lastpnr+1
     return newbkno
+
+def seatnumber(n):
+    import random
+    number = random.randint(11,120)
+    nos=[]
+    for i in range(n):
+        nos.append(number+i)
+    
+    l,s = ['L','U'],['A','B']
+    ln = l[random.randint(0,1)]
+    sn = s[random.randint(0,1)]
+    seatnumbers = []
+    for i in nos:
+        seatnumbers.append(sn+ln+str(i))
+    return seatnumbers
+
