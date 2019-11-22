@@ -63,4 +63,9 @@ def info_view(request):
     return render(request,'accounts/info.html',{'pnrs':pnrs,'passengers':names})
 
 def ticket_view(request):
-    return render(request,'accounts/ticket.html',{'data':request.POST})
+    pnrno = request.POST.get('pnrno')
+    pid = int(request.POST.get( 'passengerid'))
+
+    pnr = Pnr.objects.get(pnr_number=pnrno,passenger_id=pid)
+    passenger = Passengers.objects.get(passenger_id=pid)
+    return render(request,'accounts/ticket.html',{'data':request.POST,'pnr':pnr,'p':passenger})

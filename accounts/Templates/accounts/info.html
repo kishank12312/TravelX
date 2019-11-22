@@ -125,7 +125,7 @@
       <td class="center-align">{{ i.tocity }}</td>
       <form action="/viewticket/" method="POST">{% csrf_token %}
       <input type="hidden" name="pnrno"  value="{{ i.pnr_number }}">
-      <input type="hidden"  name="passengername" value="{{ passengers|dictindex:i.pnr_number }}">
+      <input type="hidden"  name="passengerid" value="{{ i.passenger_id}}">
       <td class="center-align"><button name='button' class="btn blue hoverable waves-effect">View Ticket</button></td>
       </form>
       <td class="center-align"><a href="" class="btn blue hoverable waves-effect">Cancel Ticket</a></td>

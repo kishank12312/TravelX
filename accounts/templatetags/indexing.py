@@ -11,6 +11,30 @@ def index(value,i):
     return value[index]
 
 @register.filter
+def idfinder(value):
+    import mysql.connector
+    con=mysql.connector.connect(host='localhost',user='root',passwd='root',database='travelxdb')
+    cur=con.cursor()
+    '''Takes int(train id) and returns the train name as str'''
+    sql='select train_name from trains where train_id={};'.format(int(value))
+    cur.execute(sql)
+    res=cur.fetchall()
+    train_name=res[0][0]
+    return train_name
+
+
+@register.filter
+def stationname(value): 
+    import mysql.connector
+    con=mysql.connector.connect(host='localhost',user='root',passwd='root',database='travelxdb')
+    cur=con.cursor()
+    sql='select station_name from stations where station_id={};'.format(value)
+    cur.execute(sql)
+    res=cur.fetchall()
+    return res[0][0]
+    
+
+@register.filter
 def dictindex(value,i): 
     return value.get(i)
 
