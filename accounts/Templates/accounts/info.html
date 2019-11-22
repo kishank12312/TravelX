@@ -1,5 +1,5 @@
 {% load static from staticfiles %}
-
+{% load indexing %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -113,20 +113,24 @@
         <th class="center-align">Cancel</th>
     </tr>
   </thead>
-{% for i in pnrs %}
-{{ i.pnr_number }}
-{% endfor %}
-<tbody>
+  
+  <tbody>
+    {% for i in pnrs %}
     <tr>
-      <td class="center-align">Alvin</td>
-      <td class="center-align">Alvin</td>
-      <td class="center-align">Eclair</td>
-      <td class="center-align">Eclair</td>
-      <td class="center-align">$0.87</td>
-      <td class="center-align">$0.87</td>
-      <td class="center-align"><a href="" class="btn blue hoverable waves-effect">View Ticket</a></td>
+      <td class="center-align">{{ i.pnr_number }}</td>
+      <td class="center-align"> {{ passengers|dictindex:i.pnr_number }} </td>
+      <td class="center-align">{{ i.dateofjourney }}</td>
+      <td class="center-align">{{ i.dateofbooking }}</td>
+      <td class="center-align">{{ i.fromcity }}</td>
+      <td class="center-align">{{ i.tocity }}</td>
+      <form action="/viewticket/" method="POST">{% csrf_token %}
+      <input type="hidden" name="pnrno"  value="{{ i.pnr_number }}">
+      <input type="hidden"  name="passengername" value="{{ passengers|dictindex:i.pnr_number }}">
+      <td class="center-align"><button name='button' class="btn blue hoverable waves-effect">View Ticket</button></td>
+      </form>
       <td class="center-align"><a href="" class="btn blue hoverable waves-effect">Cancel Ticket</a></td>
     </tr>
+    {% endfor %}
   </tbody>
 </table>
 <br><br><br>

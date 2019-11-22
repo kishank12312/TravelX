@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import include,path
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from accounts.views import logout_view,login_view,info_view
+from accounts.views import logout_view,login_view,info_view,ticket_view
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -26,11 +26,12 @@ from django.conf import settings
 urlpatterns = [
     
     path(r'logout/', logout_view,name='logout'),
+    path(r'viewticket/', ticket_view),
     path(r'login/', login_view,name='login'),
-    path(r'accountinfo/', info_view,name='info'),
+    #path(r'accountinfo/', info_view,name='info'),
     path(r'admin/', admin.site.urls),
     path(r'Booking/',include('Booking.urls')),
-    path(r'accounts/',include('accounts.urls')),
+    path(r'accountinfo/',include('accounts.urls')),
     path(r'home/',views.home,name='home'),
     path(r'<slug:slug>/',views.test,name='capture'),
 

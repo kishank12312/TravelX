@@ -1,5 +1,7 @@
 from django import template
 from Booking import Functions
+from django.template.defaultfilters import stringfilter
+
 
 register = template.Library()
 
@@ -8,10 +10,9 @@ def index(value,i):
     index=int(i)
     return value[index]
 
-
 @register.filter
-def dictindex(value,i):
-    return value[index]
+def dictindex(value,i): 
+    return value.get(i)
 
 
 @register.filter

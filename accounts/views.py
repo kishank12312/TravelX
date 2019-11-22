@@ -57,4 +57,10 @@ def login_view(request):
 
 def info_view(request):
     pnrs = Pnr.objects.filter(user_name=request.user.username)
-    return render(request,'accounts/info.html',{'pnrs':pnrs})
+    names = {}
+    for i in pnrs:
+        names[i.pnr_number]=Passengers.objects.get(passenger_id=i.passenger_id).passenger_name
+    return render(request,'accounts/info.html',{'pnrs':pnrs,'passengers':names})
+
+def ticket_view(request):
+    return render(request,'accounts/ticket.html',{'data':request.POST})

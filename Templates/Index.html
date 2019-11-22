@@ -94,7 +94,7 @@
     </ul>
     <ul id='dropdown' class='dropdown-content'>
         <li><a href="{% url 'logout' %}">LOGOUT</a></li>
-        <li><a href="{% url 'info' %}">ACCOUNT OPTIONS</a></li>
+        <li><a href="accountinfo">ACCOUNT OPTIONS</a></li>
     </ul>
   </div>
   </nav>
@@ -118,7 +118,7 @@
     <li><a href="#" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">TRAINS</a></li>
     <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">BOOK</a></li>
     <li><a href="{% url 'logout' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%"">LOGOUT</a></li>
-    <li><a href="{% url 'info' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%"">ACCOUNT OPTIONS</a></li>
+    <li><a href="accountinfo" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%"">ACCOUNT OPTIONS</a></li>
     {% else %}
     <li><a href="{% url 'home' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">HOME</a></li>
     <li><a href="#" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">TRAINS</a></li>
@@ -165,7 +165,7 @@
         <div class="card-content center-align">
           <div class="card-image center-align"><img src="{% static 'Images/Index_pdf.jpg' %}" id='image'></div><hr>
           <p>Download tickets of your past bookings</p>
-          <a href="{% url 'info' %}"><buttton class="btn-large waves-effect waves-light" id='button'>Download<i class="material-icons right tiny">picture_as_pdf</i></buttton></a>
+          <a href="/accountinfo/info/"><buttton class="btn-large waves-effect waves-light" id='button'>Download<i class="material-icons right tiny">picture_as_pdf</i></buttton></a>
         </div>
       </div>
     </div>

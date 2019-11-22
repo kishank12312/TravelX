@@ -21,5 +21,6 @@ app_name = 'accounts'
 
 urlpatterns = [
     path(r'',views.registration_view),
+    path(r'info/',views.info_view),
 
 ]
