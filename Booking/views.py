@@ -4,11 +4,13 @@ from . import Functions
 import mysql.connector
 from .models import Pnr,Passengers
 from datetime import date
+from django.contrib.auth.decorators import login_required
 
 
 fpost,dpost,tpost=None,None,None
 
 # Create your views here.
+@login_required(login_url='/login/')
 def booking_home(request):
     return render(request,'Booking/Booking_home.html')
 def choice(request,slug):

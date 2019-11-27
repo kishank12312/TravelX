@@ -84,12 +84,13 @@
     </a>   
     <ul class="right hide-on-med-and-down">
       <li><a href="#" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">train</i>TRAINS</a></li>
-      <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">language</i>BOOKING</a></li>
       {% if request.user.is_authenticated %}
+      <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">language</i>BOOKING</a></li>
       <li><a href="#" data-target="dropdown" class="dropdown-trigger hoverable" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>MY ACCOUNT</a></li>
       {% else %}
+      <li><a onclick="return confirm_alert(this)" href="{% url 'capture' slug='Booking' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">language</i>BOOKING</a></li>
       <li><a href="{% url 'login' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>LOGIN</a></li>
-      <li><a href="{% url 'capture' slug='accounts' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">add_circle</i>SIGN UP</a></li>
+      <li><a href="{% url 'capture' slug='accountinfo' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">add_circle</i>SIGN UP</a></li>
       {% endif %}
     </ul>
     <ul id='dropdown' class='dropdown-content'>
@@ -122,9 +123,9 @@
     {% else %}
     <li><a href="{% url 'home' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">HOME</a></li>
     <li><a href="#" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">TRAINS</a></li>
-    <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">BOOK</a></li>
+    <li><a onclick="return confirm_alert(this)" href="{% url 'capture' slug='Booking' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">BOOK</a></li>
     <li><a href="{% url 'login' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">LOGIN</a></li>
-    <li><a href="{% url 'capture' slug='accounts' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">SIGN UP</a></li>   
+    <li><a href="{% url 'capture' slug='accountinfo' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">SIGN UP</a></li>   
     {% endif %}
 </ul>
   
@@ -164,7 +165,7 @@
       <div class="card small card1 z-depth-5 ">
         <div class="card-content center-align">
           <div class="card-image center-align"><img src="{% static 'Images/Index_pdf.jpg' %}" id='image'></div><hr>
-          <p>Download tickets of your past bookings</p>
+          <p>Download tickets of your past bookings</p><br>
           <a href="/accountinfo/info/"><buttton class="btn-large waves-effect waves-light" id='button'>Download<i class="material-icons right tiny">picture_as_pdf</i></buttton></a>
         </div>
       </div>
@@ -185,7 +186,7 @@
         <div class="card-content center-align">
           <div class="card-image center-align"><img src="{% static 'Images/Index_tickets.jpg' %}" id='image'></div><hr>
           <h5 style="font-weight: lighter;" class="center-align">Book Tickets</h5>
-          <a href="{% url 'capture' slug='Booking' %}"><buttton class="btn-large waves-effect waves-light" id='button'>Book Now</buttton></a>
+          <a onclick="return confirm_alert(this)" href="{% url 'capture' slug='Booking' %}"><buttton class="btn-large waves-effect waves-light" id='button'>Book Now</buttton></a>
         </div>
       </div>
     </div>
@@ -203,7 +204,7 @@
         <div class="card-content center-align">
           <div class="card-image center-align"><img src="{% static 'Images/Index_signup.jpg' %}" id='image'></div><hr>
           <h5 style="font-weight: lighter;" class="center-align">Create a new account</h5>
-          <a href="{% url 'capture' slug='accounts' %}"><buttton class="btn-large waves-effect waves-light" id='button'>SIGN UP</buttton></a>
+          <a href="{% url 'capture' slug='accountinfo' %}"><buttton class="btn-large waves-effect waves-light" id='button'>SIGN UP</buttton></a>
         </div>
       </div>
     </div>
@@ -307,5 +308,10 @@
     $('.parallax').parallax();
       });
   </script>
+<script type="text/javascript">
+  function confirm_alert(node) {
+      return confirm("You'll need to login first.");
+  }
+</script>
 </body>
 </html>

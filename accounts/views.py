@@ -47,7 +47,10 @@ def login_view(request):
 
             if user:
                 login(request,user)
-                return redirect('home')
+                if 'next' in request.POST:
+                    return redirect(request.POST.get('next'))
+                else:
+                    return redirect('home')
 
     else:
         form = LoginForm()
@@ -69,3 +72,14 @@ def ticket_view(request):
     pnr = Pnr.objects.get(pnr_number=pnrno,passenger_id=pid)
     passenger = Passengers.objects.get(passenger_id=pid)
     return render(request,'accounts/ticket.html',{'data':request.POST,'pnr':pnr,'p':passenger})
+
+
+def cancel_ticket(request):
+    pnrno = request.POST.get('pnrno')
+    pid = int(request.POST.get( 'passengerid'))
+
+    pnr = Pnr.objects.get(pnr_number=pnrno,passenger_id=pid)
+    passenger = Passengers.objects.get(passenger_id=pid)
+    pnr.status = 'Cancelled'
+    pnr.save(force_update=True )
+    return render(request,'accounts/cancel.html',{'data':request.POST,'pnr':pnr,'p':passenger.passenger_name})

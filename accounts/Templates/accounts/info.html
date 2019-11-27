@@ -126,9 +126,26 @@
       <form action="/viewticket/" method="POST">{% csrf_token %}
       <input type="hidden" name="pnrno"  value="{{ i.pnr_number }}">
       <input type="hidden"  name="passengerid" value="{{ i.passenger_id}}">
+      {% if i.status == 'Active' %}
       <td class="center-align"><button name='button' class="btn blue hoverable waves-effect">View Ticket</button></td>
       </form>
-      <td class="center-align"><a href="" class="btn blue hoverable waves-effect">Cancel Ticket</a></td>
+      <form action="/cancelticket/" method="POST">{% csrf_token %}
+      <input type="hidden" name="pnrno"  value="{{ i.pnr_number }}">
+      <input type="hidden"  name="passengerid" value="{{ i.passenger_id}}">
+      <td class="center-align"><a href="#cancelmodal" class="btn blue hoverable waves-effect modal-trigger">CANCEL Ticket</a></td>
+      <div id="cancelmodal" class="modal">
+          <div class="modal-content">
+            <h4>Confirm Cancellation</h4><br>
+            <h5 style="font-weight: lighter">You have requested a ticket cancellation.<br>Are you sure you want to cancel this ticket? This action cant be undone.</h5>
+            <br><div class="form-field center-align"><a href="#!" class="modal-close btn red hoverable waves-effect">No, I DONT WANT TO CANCEL</a>&nbsp;<button name='button' class="btn green hoverable waves-effect">CONFIRM AND CANCEL TICKET</button></div> 
+          </div>
+      </div>
+      </form>
+      {% else %}
+      <td class="center-align"><button name='button' class="disabled btn blue hoverable waves-effect">TICKET CANCELLED</button></td>
+      </form>
+      <td class="center-align"><a href="" class="disabled btn blue hoverable waves-effect">TICKET CANCELLED</a></td>
+      {% endif %}
     </tr>
     {% endfor %}
   </tbody>
@@ -164,6 +181,7 @@
 <script>
     $(document).ready(function(){
         $('.sidenav').sidenav();
+        $('.modal').modal();
     })
     
 </script>
