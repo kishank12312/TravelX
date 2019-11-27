@@ -83,7 +83,7 @@
     </a>   
     <ul class="right hide-on-med-and-down">
       <li><a href="{% url 'home' %}" class="hoverable waves-effect waves-light"><i class="material-icons left">home</i>HOME</a></li>
-      <li><a href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">train</i>TRAINS</a></li>
+      <li><a href="{% url 'trains' %}" class="hoverable waves-effect waves-light"><i class="material-icons left">train</i>TRAINS</a></li>
       <li><a href="#" data-target="dropdown" class="dropdown-trigger hoverable" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>MY ACCOUNT</a></li>
       </ul>
     <ul id='dropdown' class='dropdown-content'>
@@ -151,7 +151,7 @@
       $('.dropdown-trigger').dropdown();
       $('.datepicker').datepicker({
             container: 'body',
-            
+            minDate: new Date({{today}}),
             autoClose: true
         });
       $('input.autocomplete').autocomplete({

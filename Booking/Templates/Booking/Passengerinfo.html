@@ -63,7 +63,7 @@ input.value{
       </a>   
       <ul class="right hide-on-med-and-down">
           <li><a onclick="return confirm_alert(this);" href="{% url 'home' %}" class="hoverable waves-effect waves-light"><i class="material-icons left">home</i>HOME</a></li>
-          <li><a onclick="return confirm_alert(this);" href="#" class="hoverable waves-effect waves-light"><i class="material-icons left">train</i>TRAINS</a></li>
+          <li><a onclick="return confirm_alert(this);" href="{% url 'trains' %}" class="hoverable waves-effect waves-light"><i class="material-icons left">train</i>TRAINS</a></li>
           <li><a href="#" data-target="dropdown" class="dropdown-trigger hoverable" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>MY ACCOUNT</a></li>
           </ul>
         <ul id='dropdown' class='dropdown-content'>
@@ -94,7 +94,6 @@ input.value{
 <div class="container"><table class="centered">
  <br>
  
- {{ DATA }}
  {% if DATA.method == 'Indirect' %}
   <br>
     <b>Method of travel</b> : Indirect Train<br><br id='space'>

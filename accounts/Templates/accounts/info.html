@@ -65,7 +65,7 @@
   </a>   
   <ul class="right hide-on-med-and-down">
     <li><a href="{% url 'home' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">home</i>HOME</a></li>
-    <li><a href="#" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">train</i>TRAINS</a></li>
+    <li><a href="{% url 'trains' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">train</i>TRAINS</a></li>
     <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">language</i>BOOKING</a></li>
   </ul>
 </div>
@@ -92,8 +92,7 @@
     <div class="row">
         <div class="col l1"><i class="material-icons medium">account_circle</i></div>
         <div class="col l6 left-align"><h3 style="font-weight: lighter; display: inline; padding-bottom: 100%">{{ request.user.username }}</h3></div>
-        <div class="col l3 "><a href="" class="btn purple darken-4 hoverable waves-effect" style="margin-top: 5%">Change Password</a></div>
-        <div class="col l1"><a href="{% url 'logout' %}" class="btn purple darken-4 center-align hoverable waves-effect" style="margin-top: 20%"> Logout</a></div>
+        <div class="col l1 push-l3"><a href="{% url 'logout' %}" class="btn purple darken-4 center-align hoverable waves-effect" style="margin-top: 20%"> Logout</a></div>
     </div>
     <hr style="height:1px;border:none;color:#333;background-color:rgb(219, 215, 215);">
 </div>

@@ -65,32 +65,47 @@
 
 <!--NAVBAR TOP-->
 <div class="navbar-fixed">
-<nav class="nav-wraper z-depth-5 purple darken-4">
-  <div class="container">
-  <a href="#" class="brand-logo"><i class="material-icons large">train</i>TravelX</a>
-  <a href="#" class="sidenav-trigger btn-floating btn-large waves-effect waves-light transparent z-depth-0" data-target="mobile-links">
-    <i class="large material-icons">menu</i>
-  </a>   
-  <ul class="right hide-on-med-and-down">
-    <li><a href="#" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">home</i>HOME</a></li>
-    <li><a href="#" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">train</i>TRAINS</a></li>
-    <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">language</i>BOOKING</a></li>
-    <li><a href="..\.\Login\login.html" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>LOGIN</a></li>
-  </ul>
+  <nav class="nav-wraper z-depth-5 purple darken-4">
+    <div class="container">
+    <a href="{% url 'home' %}" class="brand-logo"><span style="font-weight: lighter;">Travel</span><span>X</span></a>
+    <a href="#" class="sidenav-trigger btn-floating btn-large waves-effect waves-light transparent z-depth-0" data-target="mobile-links">
+      <i class="large material-icons">menu</i>
+    </a>   
+    <ul class="right hide-on-med-and-down">
+      <li><a href="{% url 'trains' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">train</i>TRAINS</a></li>
+      <li><a onclick="return confirm_alert(this)" href="{% url 'capture' slug='Booking' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">language</i>BOOKING</a></li>
+      <li><a href="{% url 'login' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>LOGIN</a></li>
+
+    </ul>
+    <ul id='dropdown' class='dropdown-content'>
+        <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+        <li><a href="accountinfo">ACCOUNT OPTIONS</a></li>
+    </ul>
+  </div>
+  </nav>
 </div>
-</nav>
-</div>
-    <style>
-      nav{
-        transition: 1000ms;
-        background: rgba(255, 255, 255, 0.1);
-      }
-    </style>
-<ul class="sidenav grey darken-4" id="mobile-links">
-  <li><a href="#" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">HOME</a></li>
-  <li><a href="#" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">TRAINS</a></li>
-  <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">BOOK</a></li>
-  <li><a href="..\.\Login\login.html" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">LOGIN</a></li>
+  <style>
+  </style>
+
+  <ul class="sidenav grey darken-4" id="mobile-links">
+    {% if request.user.is_authenticated %}
+    <div class="user-view">
+      <div class="form-field center-align"><i class="material-icons large center-align white-text">account_circle</i><br>
+      <h4 class=" white-text">{{ request.user.username }}</h4>
+      <h5 style="font-weight: lighter;" class="white-text">{{ request.user.email }}</h5><hr></div>
+    </div>
+    <li><a href="{% url 'home' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">HOME</a></li>
+    <li><a href="{% url 'trains' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">TRAINS</a></li>
+    <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">BOOK</a></li>
+    <li><a href="{% url 'logout' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%"">LOGOUT</a></li>
+    <li><a href="accountinfo" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%"">ACCOUNT OPTIONS</a></li>
+    {% else %}
+    <li><a href="{% url 'home' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">HOME</a></li>
+    <li><a href="{% url 'trains' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">TRAINS</a></li>
+    <li><a onclick="return confirm_alert(this)" href="{% url 'capture' slug='Booking' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">BOOK</a></li>
+    <li><a href="{% url 'login' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">LOGIN</a></li>
+    <li><a href="{% url 'capture' slug='accountinfo' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">SIGN UP</a></li>   
+    {% endif %}
 </ul>
 </header>
 <br><br><br><br>
