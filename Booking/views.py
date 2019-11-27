@@ -150,7 +150,7 @@ def bookingconfirm(request):
     rclass = eval(request.POST['datat'])['c']
     departuretime = eval(request.POST['datat'])['da'][0]
     arrivaltime = eval(request.POST['datat'])['da'][1]
-    
+    pnrno = Functions.pnrgenerator(cur)
     seatnumbers = Functions.seatnumber(eval(request.POST['passengerno']))
     print(eval(request.POST['passengerno']))
     for i in range(eval(request.POST['passengerno'])):
@@ -167,7 +167,7 @@ def bookingconfirm(request):
 
         booking_number = Functions.bookingno(cur)
         pnr = Pnr()
-        pnr.pnr_number = Functions.pnrgenerator(cur)[0]+'0000'+str(int(Functions.pnrgenerator(cur)[1:])+i)
+        pnr.pnr_number = pnrno
         pnr.passenger_id = pid+i
         pnr.booking_number = booking_number+i
         pnr.dateofbooking = today

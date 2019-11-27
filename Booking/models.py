@@ -22,8 +22,8 @@ class Passengers(models.Model):
 
 
 class Pnr(models.Model):
-    pnr_number = models.CharField(db_column='PNR_NUMBER', primary_key=True, blank=True, max_length=15)  # Field name made lowercase.
-    booking_number = models.IntegerField(db_column='booking_number', unique=True, blank=True)
+    pnr_number = models.CharField(db_column='PNR_NUMBER',null=True , blank=True, max_length=15)  # Field name made lowercase.
+    booking_number = models.IntegerField(db_column='booking_number', primary_key=True, unique=True, blank=True)
     dateofbooking = models.DateField(db_column='dateofbooking', blank=True, null=True, max_length=200)
     user_name = models.CharField(db_column='USER_NAME', max_length=20, blank=True, null=True)  # Field name made lowercase.
     status = models.CharField(db_column='STATUS', blank=True, null=True, max_length=200)  # Field name made lowercase.
