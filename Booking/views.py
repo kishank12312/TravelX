@@ -15,7 +15,8 @@ def booking_home(request):
     return render(request,'Booking/Booking_home.html')
 def choice(request,slug):
     if slug=='Book_Ticket':
-        return render(request,'Booking/Book_Ticket.html')
+        today = str(date.today().year)+','+str(date.today().month-1)+','+str(date.today().day)
+        return render(request,'Booking/Book_Ticket.html',{'today':today})
     else:
         return HttpResponse(slug)
 def Data_submit(request):

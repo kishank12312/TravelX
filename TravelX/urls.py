@@ -29,6 +29,7 @@ urlpatterns = [
     path(r'viewticket/', ticket_view),
     path(r'cancelticket/', cancel_ticket),
     path(r'login/', login_view,name='login'),
+    path(r'trains/', views.trains,name='trains'),
     #path(r'accountinfo/', info_view,name='info'),
     path(r'admin/', admin.site.urls),
     path(r'Booking/',include('Booking.urls')),

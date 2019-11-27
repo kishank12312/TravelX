@@ -1,0 +1,274 @@
+{% load static from staticfiles %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Import Google Icon Font-->
+  <link href="{% static 'css/material-icons.css' %}" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="{% static 'materialize.min.css' %}">
+  <title>Train Search Results</title>
+
+<style>
+.btn{
+  border-radius: 5px;
+}
+.container{
+  width: 85%;
+}
+.browser-default{
+  width: 65%;
+}
+.material-icons{
+  vertical-align:-30%;
+}
+#container1
+{
+    text-align:center;
+}
+#classes{
+  padding-left: 3%;
+}
+input.value{
+  vertical-align: middle;
+}
+</style>
+</head>
+<header>
+    <!--NAVBAR TOP-->
+    <div class="navbar-fixed purple darken-4">
+      <nav class="nav-wraper z-depth-5 purple darken-4">
+        <div class="container">
+        <a href="{% url 'home' %}" class="brand-logo"><span style="font-weight: lighter;">Travel</span><span>X</span></a>
+        <a href="#" class="sidenav-trigger btn-floating btn-large waves-effect waves-light transparent z-depth-0" data-target="mobile-links">
+          <i class="large material-icons">menu</i>
+        </a>   
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{% url 'trains' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">train</i>TRAINS</a></li>
+          {% if request.user.is_authenticated %}
+          <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">language</i>BOOKING</a></li>
+          <li><a href="#" data-target="dropdown" class="dropdown-trigger hoverable" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>MY ACCOUNT</a></li>
+          {% else %}
+          <li><a onclick="return confirm_alert(this)" href="{% url 'capture' slug='Booking' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">language</i>BOOKING</a></li>
+          <li><a href="{% url 'login' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">account_circle</i>LOGIN</a></li>
+          <li><a href="{% url 'capture' slug='accountinfo' %}" class="hoverable waves-effect waves-light" style="font-weight: lighter; font-size: 120%"><i class="material-icons left">add_circle</i>SIGN UP</a></li>
+          {% endif %}
+        </ul>
+        <ul id='dropdown' class='dropdown-content'>
+            <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+            <li><a href="accountinfo">ACCOUNT OPTIONS</a></li>
+        </ul>
+      </div>
+      </nav>
+    </div>
+      <style>
+      </style>
+    
+      <ul class="sidenav grey darken-4" id="mobile-links">
+        {% if request.user.is_authenticated %}
+        <div class="user-view">
+          <div class="form-field center-align"><i class="material-icons large center-align white-text">account_circle</i><br>
+          <h4 class=" white-text">{{ request.user.username }}</h4>
+          <h5 style="font-weight: lighter;" class="white-text">{{ request.user.email }}</h5><hr></div>
+        </div>
+        <li><a href="{% url 'home' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">HOME</a></li>
+        <li><a href="{% url 'trains' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">TRAINS</a></li>
+        <li><a href="{% url 'capture' slug='Booking' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">BOOK</a></li>
+        <li><a href="{% url 'logout' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%"">LOGOUT</a></li>
+        <li><a href="accountinfo" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%"">ACCOUNT OPTIONS</a></li>
+        {% else %}
+        <li><a href="{% url 'home' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">HOME</a></li>
+        <li><a href="{% url 'trains' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">TRAINS</a></li>
+        <li><a onclick="return confirm_alert(this)" href="{% url 'capture' slug='Booking' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">BOOK</a></li>
+        <li><a href="{% url 'login' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">LOGIN</a></li>
+        <li><a href="{% url 'capture' slug='accountinfo' %}" class="hoverable white-text waves-effect waves-light" style="font-weight: lighter; font-size: 120%">SIGN UP</a></li>   
+        {% endif %}
+    </ul>
+</header>
+<body>
+
+
+
+  <div class="container">
+    <h2>Trains</h2>
+
+    <div class="row">
+      <div class="col s12 16">
+        <div class="card">
+          <div class="card-image">
+          </div>
+          <div class="card-content">
+            <span class="card-title">Agra Express</span>
+            <p>Agra Express is super fast train belonging to the North Central Railway Zone thats run between Agra and New Delhi<br>
+            Stations:<br>New Delhi<br>
+                       Jaipur<br>
+                      Agra Cantt</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 16">
+        <div class="card">
+          <div class="card-image">
+          </div>
+          <div class="card-content">
+            <span class="card-title">Bagh Express</span>
+            <p>Bagh Express is a mail/express type train of Indian Railways connecting Kolkata (Howrah) with northern Indian town of Kathgodam (Uttarakhand). No pantry car service is available in this train. It is a very popular train among tourists of Eastern India, who are going for the Uttarakhand and Jim Corbett National Park trip. It travels through Indian states of West Bengal, Jharkhand, Bihar, Uttar Pradesh, and Uttarakhand.<br>
+            Stations:<br>Mumbai<br>
+                       Surat<br>
+                      Ahmedabad<br>
+                    Indore<br>
+                  Nagpur<br>
+                Kolkata</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 16">
+        <div class="card">
+          <div class="card-image">
+          </div>
+          <div class="card-content">
+            <span class="card-title">Pinakini Express</span>
+            <p>Pinakini Express is a Superfast Express of Indian Railways, operated between Vijayawada Junction and Chennai Central.It administers under the Vijayawada railway division of the South Coast Railway zone.<br>
+            Stations:<br>Vijayawada<br>
+                       Nellore<br>
+                      Tirupati<br>
+                    Chennai</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 16">
+        <div class="card">
+          <div class="card-image">
+          </div>
+          <div class="card-content">
+            <span class="card-title">Island Express</span>
+            <p>The Island Express is an Indian Railways train running between Bangalore and Kanyakumari. Train No. 16526 runs from Bangalore to Kanyakumari, and Train No. 16525 runs in the reverse direction. The train runs daily through the state of Kerala.No part of the train's route is on an island; the name was given because the predecessor of this train used to end its journey at the Cochin Harbour Terminus station in Willingdon Island, Cochin, until the mid-1970s. At that time, it was the only train that connected Bangalore (Karnataka state) to Kerala.<br>
+            Stations:<br>Bangalore<br>
+                       Madhurai<br>
+                      Coimbatore<br>
+                    Mysuru<br>
+                  Bengaluru</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 16">
+        <div class="card">
+          <div class="card-image">
+          </div>
+          <div class="card-content">
+            <span class="card-title">Andhra Express</span>
+            <p>The Andhra Pradesh AC Express is a daily AC Superfast Express train that connects the national capital of India, New Delhi and the largest city of Andhra Pradesh, Visakhapatnam. The express is administered under Indian Railways' South Coast Railway Zone with the service numbers 22415 (Visakhapatnam to New Delhi) and 22416 (New Delhi to Visakhapatnam). The train service was first commissioned by Suresh Prabhu on 12 August 2015.[1][2]This train is named on the State Andhra Pradesh, as previously when Andhra Pradesh and Telangana states were combined this train was from Hyderabad to New Delhi.<br>
+            Stations:<br>Hyderabad<br>
+                       Nagpur<br>
+                      Indore<br>
+                    Jaipur<br>
+                  New Delhi</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 16">
+        <div class="card">
+          <div class="card-image">
+          </div>
+          <div class="card-content">
+            <span class="card-title">Rajdhani Express</span>
+            <p>The Rajdhani Express is a series of express passenger train services in India operated by Indian Railways connecting the national capital New Delhi with the capital and/or largest cities of various states. Rajdhani means "The Capital" in many Indian languages. The Rajdhanis are one of the fastest trains in India along, with Vande Bharat Express being the fastest,[1] Tejas Express, Gatimaan Express, Shatabdi Express and Duronto Express and get the highest priority on the Indian railway network. The Rajdhani was the first Fully Air conditioned train in India which was introduced for providing fast connections (up to 180 km/h or 110 mph, speed variation depending upon the particular track section) from New Delhi to the capital cities of various states in India.<br>
+            Stations:<br>New Delhi<br>
+                       Agra<br>
+                      Indore<br>
+                    Nagpur<br>
+                  Hyderbabad<br>
+                Vijayawada<br>
+              Bengaluru<br>
+            Kanyakumari</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 16">
+        <div class="card">
+          <div class="card-image">
+          </div>
+          <div class="card-content">
+            <span class="card-title">Mail Express</span>
+            <p>Mail Express is super fast train belonging to the North Central Railway Zone thats run between Ahmedabad and New Delho<br>
+            Stations:<br>New Delhi<br>
+                       Jaipur<br>
+                      Ahmedabad</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 16">
+        <div class="card">
+          <div class="card-image">
+          </div>
+          <div class="card-content">
+            <span class="card-title">BNC Express</span>
+            <p>BNC Express is super fast train in India operated by the Indian Railways.It is one of the most reliable and efficient train which connects Nagpur and Chennai through Andhra Pradesh<br>
+            Stations:<br>Napur<br>
+                       Vijayawada<br>
+                      Nellore<br>
+                    Tirupati</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 16">
+        <div class="card">
+          <div class="card-image">
+          </div>
+          <div class="card-content">
+            <span class="card-title">ANVT Express</span>
+            <p>ANVT Express is a new super fast next gen train belonging to the North Central Railway Zone with the most advanced technology to provide fast and comfortable travel to the passengers.It is the first electric train  thats run between Kolkata and New Delhi<br>
+            Stations:<br>New Delhi<br>
+                       Agra<br>
+                      Kanpur</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 16">
+        <div class="card">
+          <div class="card-image">
+          </div>
+          <div class="card-content">
+            <span class="card-title">Kanyakumari Express</span>
+            <p>The Kanyakumari Express is a superfast daily overnight Train operated by Southern Railway zone of Indian Railways.This train runs between Kanyakumari and Chennai Egmore. It covers the distance of Chennai - Trichy in a very short time. This was classified as a superfast train as the average speed of the train is greater than 55 km/h<br>
+            Stations:<br>Kanyakumari<br>
+                       Coimbatore<br>
+                      Mysore<br>
+                    Bengaluru<br>
+                  Chennai</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<footer class="page-footer grey darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col s6 ">
+          <h5 class="white-text"><span style="font-weight: lighter;">Travel</span><span>X</span></h5>
+          <p class="grey-text text-lighten-4"><span>A simple and easy to use railway booking site.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2019 Copyright TravelX, all right reserved.
+      </div>
+    </div>
+</footer>
+<script src="{% static 'JS/jquery.js' %}"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="{% static 'JS/materialize.min.js' %}"></script>
+
+<script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+      $('.dropdown-trigger').dropdown();
+      $('select').formSelect();
+      $("select[required]").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
+      $('.collapsible').collapsible();
+    });
+</script>

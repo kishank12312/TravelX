@@ -58,14 +58,7 @@
   <h3>Booking</h3>
   <p style="font-size: 150%; font-weight: lighter">Welcome to the booking menu. Choose one of the options below</p>
 <div class="row">
-    <div class="col s6 m6 l3">
-        <div class="card purple darken-4  hoverable waves-effect waves-light">
-            <a href="#">
-            <div class="card-content white-text">
-              <span class="card-title">Reserve a Seat</span>
-            </div></a>
-        </div>
-    </div>
+   
     <div class="col s6 m6 l3">
         <div class="card purple darken-4  hoverable waves-effect waves-light">
             <a href="{% url 'Booking:capture' slug='Book_Ticket' %}">
@@ -76,19 +69,13 @@
     </div>
     <div class="col s6 m6 l3">
         <div class="card purple darken-4  hoverable waves-effect waves-light">
-            <a href="#">
+            <a href="/accountinfo/info/">
             <div class="card-content white-text">
               <span class="card-title">Cancel Ticket</span>
             </div></a>
         </div>
     </div>
-    <div class="col s6 m6 l3">
-        <div class="card purple darken-4  hoverable waves-effect waves-light">
-            <a href="#">
-            <div class="card-content white-text">
-              <span class="card-title">Modify Ticket</span>
-            </div></a>
-        </div>
+    
     </div>
     </div>
 </div>

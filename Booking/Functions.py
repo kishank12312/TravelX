@@ -39,8 +39,13 @@ def timings(train_id,f,t,cur):
     sql1='select departure_time from routes where train_id={} and station_id={};'
     print(sql1.format(train_id,f),train_id,f)
     cur.execute(sql1.format(train_id,f))
-    res=cur.fetchall();print(res)
+    res=cur.fetchall()
     depart=str(res[0][0]);print(depart)
+    if depart=='None':
+        sql2='select arrival_time from routes where train_id={} and station_id={};'
+        cur.execute(sql2.format(train_id,f))
+        res=cur.fetchall()
+        depart=str(res[0][0])
     sql2='select arrival_time from routes where train_id={} and station_id={};'
     print(sql2.format(train_id,t),train_id,t)
     cur.execute(sql2.format(train_id,t))
