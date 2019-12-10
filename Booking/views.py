@@ -107,6 +107,7 @@ def pricedisplay(request):
         tid = int(request.POST.get('choice')[0])
         cost=Functions.price(tid,f,t,cur)
         cost=cost * classprice.get(request.POST.get('Classes'));cost = round(cost,2)
+        print(request.POST.get('choice')[2])
         sql='update mdata set train1={},train2={},j={},rclass="{}" where identifier="{}";'.format(tid,int(request.POST.get('choice')[4]),int(request.POST.get('choice')[2]),request.POST.get('Classes'),identifier)
         cur.execute(sql)
         con.commit()

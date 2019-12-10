@@ -62,7 +62,7 @@ def info_view(request):
     pnrs = Pnr.objects.filter(user_name=request.user.username)
     names = {}
     for i in pnrs:
-        names[i.pnr_number]=Passengers.objects.get(passenger_id=i.passenger_id).passenger_name
+        names[i.booking_number]=Passengers.objects.get(passenger_id=i.passenger_id).passenger_name
     return render(request,'accounts/info.html',{'pnrs':pnrs,'passengers':names})
 
 def ticket_view(request):

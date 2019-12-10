@@ -112,12 +112,11 @@
         <th class="center-align">Cancel</th>
     </tr>
   </thead>
-  
   <tbody>
     {% for i in pnrs %}
     <tr>
       <td class="center-align">{{ i.pnr_number }}</td>
-      <td class="center-align"> {{ passengers|dictindex:i.pnr_number }} </td>
+      <td class="center-align"> {{ passengers|dictindex:i.booking_number }} </td>
       <td class="center-align">{{ i.dateofjourney }}</td>
       <td class="center-align">{{ i.dateofbooking }}</td>
       <td class="center-align">{{ i.fromcity }}</td>
