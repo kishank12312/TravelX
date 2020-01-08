@@ -77,7 +77,7 @@
   <div class="navbar-fixed">
   <nav class="nav-wraper z-depth-5 purple darken-4">
     <div class="container">
-    <a href="#" class="brand-logo white-text">TravelX</a>
+    <a href="#" class="brand-logo white-text"><span style="font-weight: lighter;">Travel</span><span>X</span></a>
     <a href="#" class="sidenav-trigger btn-floating btn-large waves-effect waves-light transparent z-depth-0" data-target="mobile-links">
       <i class="large material-icons">menu</i>
     </a>   
@@ -119,14 +119,54 @@
       <br>
       <form action="/Booking/Data_submit/" method="POST">
         {% csrf_token %}
-        <div class="input-field">
-            <input type=text id="autocomplete-input" class="autocomplete" name="From"  required>
-            <label for="autocomplete-input" class="black-text">From</label>
-      </div>
-      <div class="input-field">
-            <input type=text id="autocomplete-input" class="autocomplete" name="To" required>
-            <label for="autocomplete-input" class="black-text">To</label>
-      </div>
+        <div class="browser-default"></div>
+        <select class="form" name="From" required>
+          <option value="" disabled selected>From</option>
+          <option value="Agra">Agra</option>
+          <option value="Jaipur">Jaipur</option>
+          <option value="New Delhi">New Delhi</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Nagpur">Nagpur</option>
+          <option value="Indore">Indore</option>
+          <option value="Ahmedabad">Ahmedabad</option>
+          <option value="Surat">Surat</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Vijayawada">Vijayawada</option>
+          <option value="Nellore">Nellore</option>
+          <option value="Tirupati">Tirupati</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Kanyakumari">Kanyakumari</option>
+          <option value="Madurai">Madurai</option>
+          <option value="Coimbatore">Coimbatore</option>
+          <option value="Mysore">Mysore</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Kanpur">Kanpur</option>
+        </select>
+        <div class="browser-default"></div><br>
+        <select class="form" name="To" required>
+          <option value="" disabled selected>To</option>
+          <option value="Agra">Agra</option>
+          <option value="Jaipur">Jaipur</option>
+          <option value="New Delhi">New Delhi</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Nagpur">Nagpur</option>
+          <option value="Indore">Indore</option>
+          <option value="Ahmedabad">Ahmedabad</option>
+          <option value="Surat">Surat</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Vijayawada">Vijayawada</option>
+          <option value="Nellore">Nellore</option>
+          <option value="Tirupati">Tirupati</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Kanyakumari">Kanyakumari</option>
+          <option value="Madurai">Madurai</option>
+          <option value="Coimbatore">Coimbatore</option>
+          <option value="Mysore">Mysore</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Kanpur">Kanpur</option>
+        </select>
       <div class="input-field">
         <i class="material-icons prefix">today</i>
         <input type="text" id="date" class="datepicker" name="Date"  required>
@@ -154,6 +194,7 @@
             minDate: new Date({{today}}),
             autoClose: true
         });
+        $('select').formSelect();
       $('input.autocomplete').autocomplete({
       data: {
         "Agra": null,

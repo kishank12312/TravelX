@@ -69,7 +69,7 @@
 <div class="navbar-fixed">
 <nav class="nav-wraper z-depth-5 purple darken-4">
   <div class="container">
-  <a href="#" class="brand-logo"><i class="material-icons large">train</i>TravelX</a>
+  <a href="#" class="brand-logo"><span style="font-weight: lighter;">Travel</span><span>X</span></a>
   <a href="#" class="sidenav-trigger btn-floating btn-large waves-effect waves-light transparent z-depth-0" data-target="mobile-links">
     <i class="large material-icons">menu</i>
   </a>   
@@ -110,7 +110,7 @@
         <div class="col l3"><h5 style="font-weight: lighter;"><b>Type of Journey:</b> {{ pnr.typeofjourney }}</h5></div>
         <div class="col l3"><h5 style="font-weight: lighter;"><b>Date of Journey:</b>{{ pnr.dateofjourney }}</h5></div>
       </div><br><br>
-      <h4 style="padding-left: 1%;">Train Details<i class="material-icons">train</i></h4><br>
+      <h4 style="padding-left: 1%;">Train Details</h4><br>
       <div class="row">
         {% if pnr.typeofjourney == 'Direct' %}
         <div class="col l4"><h5 style="font-weight: lighter;"><b>Train Name:</b>{{ pnr.train1_id|idfinder }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Train ID:</b> 7</h5></div>
@@ -120,12 +120,14 @@
       </div>
       <div class="row">
         {% else %}
-        <div class="col l2"><h5 style="font-weight: lighter;"><b>Train1 Name:</b>{{ pnr.train1_id|idfinder }}</h5></div>
-        <div class="col l2"><h5 style="font-weight: lighter;"><b>Train2 Name:</b>{{ pnr.train2_id|idfinder }}</h5></div>
-        <div class="col l2"><h5 style="font-weight: lighter;"><b>Junction Station:</b>{{ pnr.junction|stationname }}</h5></div>
-        <div class="col l2"><h5 style="font-weight: lighter;"><b>Railway Class:</b> {{pnr.rclass}}</h5></div>
-        <div class="col l2"><h5 style="font-weight: lighter;"><b>Departure From {{ pnr.fromcity }}:</b> {{ pnr.departure_time }}</h5></div>
-        <div class="col l2"><h5 style="font-weight: lighter;"><b>Arrival in {{ pnr.tocity }}:</b> {{ pnr.arrival_time }}</h5></div>
+        <div class="col l"><h5 style="font-weight: lighter;"><b>Train1 Name:</b>{{ pnr.train1_id|idfinder }}</h5></div>
+        <div class="col l"><h5 style="font-weight: lighter;"><b>Train2 Name:</b>{{ pnr.train2_id|idfinder }}</h5></div>
+        <div class="col l"><h5 style="font-weight: lighter;"><b>Junction Station:</b>{{ pnr.junction|stationname }}</h5></div>
+      </div>
+      <div class="row">
+        <div class="col l"><h5 style="font-weight: lighter;"><b>Railway Class:</b> {{pnr.rclass}}</h5></div>
+        <div class="col l"><h5 style="font-weight: lighter;"><b>Departure From {{ pnr.fromcity }}:</b> {{ pnr.departure_time }}</h5></div>
+        <div class="col l"><h5 style="font-weight: lighter;"><b>Arrival in {{ pnr.tocity }}:</b> {{ pnr.arrival_time }}</h5></div>
       </div>
       {% endif %}
       <br><hr><br><h4 style="padding-left: 1%;">Passenger Details:</h4>
