@@ -93,20 +93,22 @@ def direct_search(f,t,cur):
 def indirect_search(f,t,cur):
     '''Returns [list of train_ids(ints) till junction,train_id of junction itself,list of train_ids(ints) from junction to destination]'''
     junctions=[5,1,7,6,13]
+    final=[]
     for i in junctions:
         train1=direct_search(f,i,cur)
         if train1!=[]:
             train2=direct_search(i,t,cur)
             if train2!=[]:
                 result=[train1,i,train2]
-                return result
-    return []
+                final.append(result)
+    return final
 #print(indirect_search(13,3,cur))
-def train_lister(l):
+def train_lister(s):
     x=[]
-    for i in l[0]:
-        for j in l[2]:
-            x.append([i,l[1],j])
+    for k in s:
+        for i in k[0]:
+            for j in k[2]:
+                x.append([i,k[1],j])
     return x
 #print(train_lister([[1,2],3,[5,6]]))
 

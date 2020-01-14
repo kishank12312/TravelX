@@ -120,14 +120,14 @@
       </div>
       <div class="row">
         {% else %}
-        <div class="col l"><h5 style="font-weight: lighter;"><b>Train1 Name:</b>{{ pnr.train1_id|idfinder }}</h5></div>
-        <div class="col l"><h5 style="font-weight: lighter;"><b>Train2 Name:</b>{{ pnr.train2_id|idfinder }}</h5></div>
-        <div class="col l"><h5 style="font-weight: lighter;"><b>Junction Station:</b>{{ pnr.junction|stationname }}</h5></div>
+        <div class="col l4"><h5 style="font-weight: lighter;"><b>Train1 Name:</b>{{ pnr.train1_id|idfinder }}</h5></div>
+        <div class="col l4"><h5 style="font-weight: lighter;"><b>Train2 Name:</b>{{ pnr.train2_id|idfinder }}</h5></div>
+        <div class="col l4"><h5 style="font-weight: lighter;"><b>Junction Station:</b>{{ pnr.junction|stationname }}</h5></div>
       </div>
       <div class="row">
-        <div class="col l"><h5 style="font-weight: lighter;"><b>Railway Class:</b> {{pnr.rclass}}</h5></div>
-        <div class="col l"><h5 style="font-weight: lighter;"><b>Departure From {{ pnr.fromcity }}:</b> {{ pnr.departure_time }}</h5></div>
-        <div class="col l"><h5 style="font-weight: lighter;"><b>Arrival in {{ pnr.tocity }}:</b> {{ pnr.arrival_time }}</h5></div>
+        <div class="col l4"><h5 style="font-weight: lighter;"><b>Railway Class:</b> {{pnr.rclass}}</h5></div>
+        <div class="col l4"><h5 style="font-weight: lighter;"><b>Departure From {{ pnr.fromcity }}:</b> {{ pnr.departure_time }}</h5></div>
+        <div class="col l4"><h5 style="font-weight: lighter;"><b>Arrival in {{ pnr.tocity }}:</b> {{ pnr.arrival_time }}</h5></div>
       </div>
       {% endif %}
       <br><hr><br><h4 style="padding-left: 1%;">Passenger Details:</h4>
